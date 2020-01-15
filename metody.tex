@@ -1,0 +1,31 @@
+\chapter{Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego lądowania drona}
+%Przegląd systemów wizyjnych wspomagających autonomiczne lądowanie drona
+\label{cha:Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego lądowania drona}
+W przypadku lądowania na stacjonarnym celu głównym problemem jest skuteczna detekcja znacznika znajdującego się na~lądowisku. Do realizacji tego zadania niezbędne jest wykonanie szeregu etapów przetwarzania wizyjnego. W~pracy \cite{Rings} przedstawione zostały następujące kroki przetwarzania obrazów:
+\begin{itemize}
+	\item zamiana obrazu kolorowego na obraz w skali szarości,
+	\item binaryzacja ze stałym progiem,
+	\item indeksacja,
+	\item odrzucenie obiektów o~liczbie pikseli mniejszej niż zadany próg,
+	\item binaryzacja ze stałym progiem,
+	\item identyfikacja znacznika.
+\end{itemize}
+
+Progi binaryzacji oraz odrzucenia małych obiektów zostały dobrane eksperymentalnie.\\ 
+Aby dodatkowo wyeliminować biały szum oraz zakłócenia typu ,,sól i pieprz'' w \cite{H_median} wprowadzono operację mediany z~oknem 3x3 na obrazie w skali szarości. Aby~usunąć zbyt duże obiekty, zdecydowano się również wprowadzić górną granicę liczby pikseli należących do obiektu. W algorytmie przedstawionym w pracy \cite{FPGA} binaryzacji dokonano w~przestrzeni HSV, na~podstawie składowych S i~V. Pozwoliło to na przeprowadzenie segmentacji niezależnej od koloru. Przed rozpoznawaniem kształtów, na~obrazie binarnym dokonano kolejno erozji, detekcji krawędzi oraz dylatacji. Wykonanie erozji pozwoliło na eliminację z~obrazu małych grup pikseli.\par 
+Istotnym elementem planowania autonomicznego lądowania drona jest wybór charakterystyki znacznika. W~\cite{Falanga}  przedstawiono marker złożony z trzech figur: kwadratu, koła i~krzyża. Zaimplementowany został algorytm detekcji lądowiska polegający na kolejnym wykrywaniu figur i~uzyskiwaniu coraz lepszej znajomości pozycji celu.\\
+Prostsze rozwiązanie zostało pokazane w \cite{H}, gdzie znacznik ma kształt litery H. Odległość drona od lądowiska obliczana jest na podstawie liczby pikseli dzielących środek ciężkości znacznika od~środka obrazu. Opisano tam również metodę wyznaczania orientacji drona względem takiego markera. Polega ona na~znalezieniu piksela najbardziej odległego od środka ciężkości.\\
+Inny znacznik został użyty w \cite{Rings}. Składa się on z~czterech pierścieni na czarnym tle. Każdy pierścień posiada unikalny stosunek promienia wewnętrznego do zewnętrznego i~stanowi oddzielny obiekt dla systemu wizyjnego. Obiekty, które nie mają dokładnie jednej dziury wewnątrz, są~pomijane. Każdy z~pozostałych jest ostatecznie identyfikowany za pomocą współczynnika kształtu. Zaletą takiego znacznika jest możliwość dołożenia kolejnych, większych pierścieni, jeśli lądowisko ma być widoczne z~większej wysokości.\par 
+Implementacja toru wizyjnego w systemie potokowym na~platformie sprzętowej rodzi dodatkowe trudności. Bez dołączenia dodatkowej pamięci RAM niemożliwe są działania na~całej ramce obrazu. Jest to uciążliwe przy wykonywaniu operacji kontekstowych, wymagających znajomości otoczenia piksela. Problem rozwiązano w \cite{FPGA}, gdzie przedstawiono koncepcję realizacji takich operacji przy użyciu tablicy 3x3 i~bufora.\par 
+W procesie autonomicznego lądowania drona, na~podstawie wyznaczonej odległości od celu, do UAV wysyłane są sygnały sterujące. W \cite{Sudevan} wykorzystano trzy regulatory PID, zadające prędkość drona. Równocześnie minimalizowana jest każda ze~składowych wektora położenia. \cite{Rings} zwraca uwagę na błędy spowodowane pochyleniem i~przechyleniem drona. Przed wysłaniem sygnału do regulatora wykonywana jest korekta uchybu na podstawie pomiaru kąta pochylenia i~przechylenia.\par 
+Metody lądowania na statycznym lądowisku nie zawsze znajdują zastosowanie do śledzenia poruszającej się platformy. W~przypadku, gdy lądowisko przestaje być widoczne, możliwe jest przewidywanie jego ruchu.  W~\cite{Falanga} użyto algrytmu pozwalającego na predykcję zachowania platformy. Wykorzystano model dynamiczny celu oraz rozszerzony filtr Kalmana. Spośród możliwych trajektorii dotarcia do celu wybierana jest najlepsza pod względem energetycznym.\par 
+Podsumowując, wykonanie lądowania na statycznym lądowisku wymaga skutecznej detekcji znacznika znajdującego się na platformie. Znalezienie względnej pozycji markera umożliwia przekazanie informacji o uchybie do regulatora sterującego dronem. Lądowanie na poruszającej się platformie może zostać wykonane w~podobny sposób, jednak wprowadzenie przewidywania ruchu lądowiska daje odporność na zaniki widoczności. Wymaga to jednak użycia znacznie bardziej zaawansowanych narzędzi.
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+
+

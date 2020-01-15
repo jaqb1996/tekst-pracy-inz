@@ -1,0 +1,32 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {polish}{}
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{7}%
+\contentsline {section}{\numberline {1.1}Cele pracy}{7}%
+\contentsline {section}{\numberline {1.2}Zawartość pracy}{7}%
+\contentsline {chapter}{\numberline {2}Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego lądowania drona}{9}%
+\contentsline {chapter}{\numberline {3}Opis implementacji}{11}%
+\contentsline {section}{\numberline {3.1}Zastosowana platforma sprzętowa}{11}%
+\contentsline {section}{\numberline {3.2}Implementacja modelu programowego}{11}%
+\contentsline {section}{\numberline {3.3}Implementacja toru wizyjnego w układzie}{12}%
+\contentsline {subsection}{\numberline {3.3.1}Konwersja z przestrzeni barw RGB do YCbCr}{12}%
+\contentsline {subsection}{\numberline {3.3.2}Binaryzacja}{12}%
+\contentsline {subsection}{\numberline {3.3.3}Mediana}{12}%
+\contentsline {subsection}{\numberline {3.3.4}Erozja i dylatacja}{13}%
+\contentsline {subsection}{\numberline {3.3.5}Środek ciężości i prostokąt otaczający}{13}%
+\contentsline {subsection}{\numberline {3.3.6}Indeksacja}{14}%
+\contentsline {section}{\numberline {3.4}Komunikacja układu ZYBO Z7-20 ze sterownikiem Pixhawk}{17}%
+\contentsline {chapter}{\numberline {4}Testy i ocena wyników}{19}%
+\contentsline {section}{\numberline {4.1}Test wykrywania koloru znacznika w przestrzeni barw YCbCr}{19}%
+\contentsline {section}{\numberline {4.2}Wyznaczenie kąta widzenia kamery przy różnych ustawieniach rozdzielczości}{20}%
+\contentsline {section}{\numberline {4.3}Test detekcji znacznika na obrazie}{20}%
+\contentsline {section}{\numberline {4.4}Test regulacji położenia drona}{21}%
+\contentsline {section}{\numberline {4.5}Lądowanie na nieruchomym lądowisku}{22}%
+\contentsline {chapter}{\numberline {5}Podsumowanie i kierunki dalszych prac}{29}%
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
