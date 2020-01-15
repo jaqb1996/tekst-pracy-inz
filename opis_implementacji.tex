@@ -9,7 +9,7 @@ Producent na swojej stronie internetowej zapewnia projekt demonstracyjny połąc
 	\item 1920 x 1080, 15 fps,
 	\item 1920 x 1080, 30 fps.
 \end{itemize}
-Testy pokazały również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Kwestię tę opisano w~sekcji \ref{sec:Wyznaczenie kąta widzenia kamery przy różnych ustawieniach}. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
+Testy pokazały również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Kwestię tę opisano w~sekcji \ref{sec:wyznaczenia_kata_kamery}. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
 Pobrany projekt stanowił bazę do dalszych prac. 
 \section{Implementacja modelu programowego}
 \label{sec:Implementacja modelu programowego}
@@ -17,7 +17,7 @@ Model programowy został napisany w pakiecie Matlab przy wykorzystaniu funkcji d
 Aby możliwe było wprowadzanie ramek obrazu do modelu, należało umożliwić akwizycję obrazów na kartę SD. Uaktywniono interfejs procesora SD0, do~projektu w~SDK dodano bibliotekę ,,xilffs'' i,~korzystając z~funkcji systemu plików opisanych w~\cite{xilffs}, napisano zapis ramek do~pliku. Ze~względu na~prostotę pliku, składającego się jedynie z~nagłówka oraz wartości kolejnych składowych RGB, zdecydowano się na format ppm.\\
 W~późniejszym stadium projektu, z~powodu różnic na obrazie zapisywanym na ramkę i~wyświetlanym na ekranie, zdecydowano się na zmianę tej koncepcji. Zaimplementowano cały tor wizyjny w~części PL układu Zybo Z7-20 i~przechwytywano przetworzone obrazy wyświetlane na~monitorze. Dzięki takiemu podejściu podczas testowania widziano rzeczywiste wyniki przetwarzania.
 \section{Implementacja toru wizyjnego w układzie}
-\label{sec:Implementacja toru wizyjnego w układzie}
+\label{sec:impl_tor_wizyjny}
 \subsection{Konwersja z przestrzeni barw RGB do YCbCr}
 \label{subsec:konwersja}
 Przestrzeń barw YCbCr wykorzystuje 3~zmienne: składową luminancji Y, składową różnicową chrominancji Cb, która wyraża różnicę między luminancją, a niebieskim, oraz składową różnicową chrominancji Cr, oznaczającą różnicę między luminancją,~a~czerwonym. Zaletą stosowania tej przestrzeni barw jest oddzielenie sygnału luminancji od~sygnałów chrominancji, pozwalające na~dokonywanie dalszej obróbki sygnału przy mniejszej zależności od~oświetlenia.
@@ -130,6 +130,6 @@ Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_s
 \end{figure}
 \\Główną trudnością w~implementacji opisanego algorytmu w~układzie FPGA jest stosunkowo duze zapotrzebowanie na~zasoby sprzętowe. Należy zarezerwować miejsce na~cechy każdego potencjalnego obiektu. Ogranicza to~liczbę możliwych etykiet. Zarezerwowanie miejsca dla 30~obiektów nie~przekroczyło możliwości układu Zybo. Badania pokazały, że~jest to wystarczająca liczba etykiet do~sprawnego działania toru wizyjnego.
 \section{Komunikacja układu ZYBO Z7-20 ze sterownikiem Pixhawk}
-\label{sec:Komunikacja układu ZYBO Z7-20 ze sterownikiem Pixhawk} 
+\label{sec:komunikacja_pixhawk} 
 --- Tutaj chciałbym opisać protokół Mavlink używany do komunikacji ze sterownikiem. Obecnie została nawiązana komunikacja i udało się wysłać komendę uzbrojenia drona w trybie STABILIZE. W najbliższym czasie planuję przeprowadzić test wysyłania komend ruchu w trybie GUIDED, który wymaga połączenia GPS.
 %-------------------------------------------------------------------------
