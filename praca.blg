@@ -1,10 +1,5 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: praca.aux
-The style file: biblatex.bst
-A level-1 auxiliary file: wprowadzenie.aux
-A level-1 auxiliary file: metody.aux
-A level-1 auxiliary file: opis_implementacji.aux
-A level-1 auxiliary file: testy.aux
-A level-1 auxiliary file: podsumowanie.aux
-Database file #1: praca-blx.bib
-Database file #2: bibliografia.bib
-Biblatex version: 3.13
+[0] Config.pm:302> INFO - This is Biber 2.9
+[0] Config.pm:305> INFO - Logfile is 'praca.blg'
+[16] biber:313> INFO - === Fri Jan 17, 2020, 16:46:29
+[90] Utils.pm:185> ERROR - Cannot find control file 'praca.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
+[90] Biber.pm:114> INFO - ERRORS: 1

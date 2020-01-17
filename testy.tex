@@ -1,9 +1,16 @@
 \chapter{Testy i ocena wyników}
-\label{cha:Testy i ocena wyników}
+\label{cha:testy_i_ocena_wynikow}
+
 \section{Test wykrywania koloru znacznika w przestrzeni barw YCbCr} 
-\label{sec:Test wykrywania koloru znacznika w przestrzeni barw YCbCr}
-W celu zbadania możliwości wykrycia koloru znacznika przygotowano 3~fotografie wykonane kamerą PCAM~5C. Każde ze~zdjęć przedstawia czerwone koło (kształt znacznika był przy tym teście mniej istotny) i~zostało zrobione przy innym oświetleniu.\\
---- Tutaj planuję opis poniższych zdjęć (szczególnie histogramów) wraz z wnioskami, że możliwa jest skuteczna detekcja czerwonego znacznika na podstawie składowej Cr.
+\label{sec:test_wykrywania_koloru_znacznika_w_przestrzeni_barw_ycbcr}
+
+%TODO A nie robił Pan w innnych też ?
+
+W celu zbadania możliwości wykrycia koloru znacznika przygotowano 3~fotografie wykonane kamerą PCAM~5C. 
+Każde ze~zdjęć przedstawia czerwone koło (kształt znacznika był przy tym teście mniej istotny) i~zostało zrobione przy innym oświetleniu.\\
+%TODO--- Tutaj planuję opis poniższych zdjęć (szczególnie histogramów) wraz z wnioskami, że możliwa jest skuteczna detekcja czerwonego znacznika na podstawie składowej Cr.
+%TODO OK. Choć trzeba się wytłumaczyć z czerwonego...
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{osw1.jpg}
@@ -58,9 +65,17 @@ W celu zbadania możliwości wykrycia koloru znacznika przygotowano 3~fotografie
 	\caption{Binaryzacja obrazu wykonanego przy największym z badanych oświetleń}
 	\label{fig:bin3}
 \end{figure}
+
+%TODO Wnioski no i coś o tym progu - choć pewnie stały.
+
+
 \section{Wyznaczenie kąta widzenia kamery przy różnych ustawieniach rozdzielczości}
-\label{sec:Wyznaczenie kąta widzenia kamery przy różnych ustawieniach}
-Do zbadania kąta widzenia kamery wykorzystano moduł wyznaczający prostopadłe linie przechodzące przez środek obrazu. Następnie umieszczono kamerę na wysokości 49 cm i~skierowano ją w~dół. Odczytanie odległości od~środka obrazu do~jego krawędzi w~poziomie i~pionie pozwoliło na wyznaczenie kątów widzenia kamery. Skorzystano ze wzoru \ref{eq:kat}.
+\label{sec:wyznaczenie_kata_widzenia_kamery_przy_roznych_ustawieniach}
+
+Do zbadania kąta widzenia kamery wykorzystano moduł wyznaczający prostopadłe linie przechodzące przez środek obrazu. %TODO dla mnie to brzemi niejasno
+Następnie umieszczono kamerę na wysokości 49 cm i~skierowano ją w~dół. 
+Odczytanie odległości od~środka obrazu do~jego krawędzi w~poziomie i~pionie pozwoliło na wyznaczenie kątów widzenia kamery. 
+Skorzystano ze wzoru \eqref{eq:kat}.
 \begin{equation}
 \label{eq:kat}
 \alpha=\arctan{\frac{l}{h}}
@@ -71,7 +86,9 @@ gdzie:
 	\item[$h$] wysokość, na jakiej umieszczona jest kamera,
 	\item[$l$] odległość środka obrazu od jego krawędzi.
 \end{eqwhere}
-Na podstawie obrazu przedstawionego na rysunku \ref{fig:1080p} obliczono kąty widzenia kamery w~pionie i~poziomie dla rozdzielczości 1920 x 1080. Dla rozdzielczości 1280 x 720 skorzystano z~obrazu pokazanego na rysunku \ref{fig:720p}. Korzystając ze wzoru \ref{eq:kat} otrzymano przybliżone wyniki, przedstawione w tabeli \ref{tab:rozdzielczosc}.
+Na podstawie obrazu przedstawionego na rysunku \ref{fig:1080p} obliczono kąty widzenia kamery w~pionie i~poziomie dla rozdzielczości 1920 x 1080. 
+Dla rozdzielczości 1280 x 720 skorzystano z~obrazu pokazanego na rysunku \ref{fig:720p}. 
+Korzystając ze wzoru \eqref{eq:kat} otrzymano przybliżone wyniki, przedstawione w tabeli \ref{tab:rozdzielczosc}.
 \begin{table}[]
 	\caption{Wartości kąta widzenia kamery w zależności od rozdzielczości}
 	\label{tab:rozdzielczosc}
@@ -97,9 +114,26 @@ Na podstawie obrazu przedstawionego na rysunku \ref{fig:1080p} obliczono kąty w
 	\label{fig:720p}
 \end{figure}
 
+%TODO Jakieś wnioski...
+
 \section{Test detekcji znacznika na obrazie}
 \label{sec:Test wydobycia znacznika}
-Na rysunku \ref{fig:h} przedstawiono zdjęcie znacznika wykonane z~wysokości jednego metra. Zastosowanie binaryzacji (rysunek \ref{fig:bin}) pozwoliło na oddzielenie znacznika od tła. Na obrazie znajdują się jednak inne niewielkie obszary, które również uzyskały kolor biały. Wykorzystanie mediany spowodowało znaczne zmniejszenie tych obszarów, jednakże na rysunku \ref{fig:median} widoczne są nadal małe grupy białych pikseli nienależących do~markera. Zastosowanie morfologicznego otwarcia, składającego się z~erozji i~dylatacji,  pozwoliło na całkowite wyeliminowanie błędnych białych pikseli. Na~koniec wykorzystano również operację zamknięcia, polegającej na wykonaniu najpierw dylatacji, a potem erozji. Na rysunkach \ref{fig:opened} i \ref{fig:closed}, przedstawiających rezultaty kolejno otwarcia i~zamknięcia, nie widać większych różnic. W~pewnych sytuacjach jednak otwarcie prowadzi do~podziału obiektu na~kilka części. W~takich przypadkach wykonanie zamknięcia może ponownie połączyć obiekty. Może to być istotne w~dalszych pracach nad projektem przy wykorzystaniu indeksacji. 
+
+Na rysunku \ref{fig:h} przedstawiono zdjęcie znacznika wykonane z~wysokości jednego metra. 
+Zastosowanie binaryzacji (rysunek \ref{fig:bin}) pozwoliło na oddzielenie znacznika od tła. %TODO ze stałym progiem ?
+Na obrazie znajdują się jednak inne niewielkie obszary (zakłócenia), które zostały wykryte. 
+Wykorzystanie mediany spowodowało znaczne zmniejszenie tych obszarów, jednakże na rysunku \ref{fig:median} widoczne są nadal małe grupy białych pikseli nienależących do~markera. 
+Zastosowanie morfologicznego otwarcia, składającego się z~erozji i~dylatacji,  pozwoliło na całkowite wyeliminowanie błędnych białych pikseli. 
+Na~koniec wykorzystano również operację zamknięcia, polegającej na wykonaniu najpierw dylatacji, a potem erozji. 
+Na rysunkach \ref{fig:opened} i \ref{fig:closed}, przedstawiających rezultaty kolejno otwarcia i~zamknięcia, nie widać większych różnic. 
+W~pewnych sytuacjach jednak otwarcie prowadzi do~podziału obiektu na~kilka części. 
+W~takich przypadkach wykonanie zamknięcia może ponownie połączyć obiekty. 
+%TODO Jakby Pan miał inne zdjęcie to byłoby to bardziej wiaryggodne. Inna sprawa, że można wykorzystać subfigure, bo to strasznie wielkie jest. Np dla 2-3 zdjęć zrobić 2/3 kolumny
+
+
+%TODO tego ponieżej bym nie pisał.
+%Może to być istotne w~dalszych pracach nad projektem przy wykorzystaniu indeksacji. 
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{h.jpg}
@@ -130,10 +164,14 @@ Na rysunku \ref{fig:h} przedstawiono zdjęcie znacznika wykonane z~wysokości je
 	\caption{Obraz po zamknięciu}
 	\label{fig:closed}
 \end{figure}
+
 \section{Test regulacji położenia drona}
-\label{sec:Test regulacji położenia drona}
---- Test będzie polegał na zadawaniu prędkości w x i y proporcjonalnej do liczby pikseli dzielącej środek obrazu od aktualnego położenia znacznika. Celem będzie doprowadzenie do sytuacji stabilnego unoszenia drona nad znacznikiem. Rejestrowanie uchybu w x i y i ich zapis na kartę SD pozwoli na sporządzenie wykresów tych wartości w czasie.
+\label{sec:test_regulacji_polozenia_drona}
+--- Test będzie polegał na zadawaniu prędkości w x i y proporcjonalnej do liczby pikseli dzielącej środek obrazu od aktualnego położenia znacznika. 
+Celem będzie doprowadzenie do sytuacji stabilnego unoszenia drona nad znacznikiem. 
+Rejestrowanie uchybu w x i y i ich zapis na kartę SD pozwoli na sporządzenie wykresów tych wartości w czasie.
+
 \section{Lądowanie na nieruchomym lądowisku}
-\label{sec:Lądowanie na nieruchomym lądowisku}
+\label{sec:ladowanie_na_nieruchomym_ladowisku}
 --- Do poprzedniego testu zostanie dodana funkcjonalność lądowania.
 %---------------------------------------------------------------------------
