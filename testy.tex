@@ -1,22 +1,68 @@
 \chapter{Testy i ocena wyników}
 \label{cha:testy_i_ocena_wynikow}
+\section{Test wykrywania koloru znacznika w różnych przestrzeniach barw} 
+\label{sec:Test wykrywania koloru znacznika w różnych przestrzeniach barw}
+W celu zbadania możliwości wykrycia koloru znacznika przygotowano 3~fotografie wykonane kamerą Digilent PCAM~5C. Każde ze~zdjęć przedstawia czerwone koło (kształt znacznika był przy tym teście mniej istotny) i~zostało zrobione przy innym oświetleniu. Zdjęcia zostały przedstawione na rysunku \ref{fig:zdjecia_wejsciowe}. Sprawdzono trzy systemy barw: RGB, YCbCr i~HSV. Badania przeprowadzono wykorzystując znormalizowane histogramy oraz dostępne w programie Matlab narzędzie Data Cursor.
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{osw1.jpg}
+		\caption{Zdjęcie wykonane przy najmniejszym oświetleniu}
+		\label{fig:osw1}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{osw2.jpg}
+		\caption{Zdjęcie wykonane przy średnim oświetleniu}
+		\label{fig:osw2}
+	\end{subfigure}\\
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{osw3.jpg}
+		\caption{Zdjęcie wykonane przy największym oświetleniu}
+		\label{fig:osw3}
+	\end{subfigure}
+	\caption{Zdjęcia, które wykorzystano do przeprowadzenia testu wykrywania koloru w różnych systemach barw}
+	\label{fig:zdjecia_wejsciowe}
+\end{figure}
+\subsection{Przestrzeń barw RGB}
+\label{sec:RGB}
+Histogramy składowych RGB dla~różnych poziomów oświetlenia przedstawiono na~rysunku \ref{fig:rgb_hist}.
+Analiza histogramów prowadzi do~wniosku, że~wartości składowych silnie zależą od~oświetlenia i~detekcja koloru w~tej przestrzeni barw jest bardzo trudna.
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{hist_rgb1.jpg}
+		\caption{Histogram obrazu o~najmniejszym z~badanych oświetleń}
+		\label{fig:rgb_hist1}
+	\end{subfigure}
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{hist_rgb2.jpg}
+		\caption{Histogram obrazu o~średnim oświetleniu}
+		\label{fig:rgb_hist2}
+	\end{subfigure}\\
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{hist_rgb3.jpg}
+		\caption{Histogram obrazu o~największym z~badanych oświetleń}
+		\label{fig:rgb_hist3}
+	\end{subfigure}
+	\caption{Histogramy obrazów w~przestrzeni RGB}
+	\label{fig:rgb_hist}
+\end{figure}
+\subsection{Przestrzeń barw YCbCr} 
+\label{sec:ycbcr}
 
-\section{Test wykrywania koloru znacznika w przestrzeni barw YCbCr} 
-\label{sec:test_wykrywania_koloru_znacznika_w_przestrzeni_barw_ycbcr}
-
+\subsection{Przestrzeń barw HSV} 
+\label{sec:hsv}
 %TODO A nie robił Pan w innnych też ?
 
-W celu zbadania możliwości wykrycia koloru znacznika przygotowano 3~fotografie wykonane kamerą PCAM~5C. 
-Każde ze~zdjęć przedstawia czerwone koło (kształt znacznika był przy tym teście mniej istotny) i~zostało zrobione przy innym oświetleniu.\\
 %TODO--- Tutaj planuję opis poniższych zdjęć (szczególnie histogramów) wraz z wnioskami, że możliwa jest skuteczna detekcja czerwonego znacznika na podstawie składowej Cr.
 %TODO OK. Choć trzeba się wytłumaczyć z czerwonego...
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{osw1.jpg}
-	\caption{Obraz wykonany przy najmniejszym z badanych oświetleń}
-	\label{fig:osw1}
-\end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{hist1.jpg}
@@ -31,12 +77,6 @@ Każde ze~zdjęć przedstawia czerwone koło (kształt znacznika był przy tym t
 \end{figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{osw2.jpg}
-	\caption{Obraz wykonany przy średnim oświetleniu}
-	\label{fig:osw2}
-\end{figure}
-\begin{figure}[h]
-	\centering
 	\includegraphics[width=\textwidth]{hist2.jpg}
 	\caption{Histogram obrazu wykonanego przy średnim oświetleniu}
 	\label{fig:hist2}
@@ -46,12 +86,6 @@ Każde ze~zdjęć przedstawia czerwone koło (kształt znacznika był przy tym t
 	\includegraphics[width=\textwidth]{bin2.jpg}
 	\caption{Binaryzacja obrazu wykonanego przy średnim oświetleniu}
 	\label{fig:bin2}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{osw3.jpg}
-	\caption{Obraz wykonany przy największym z badanych oświetleń}
-	\label{fig:osw3}
 \end{figure}
 \begin{figure}[h]
 	\centering
@@ -98,7 +132,7 @@ Korzystając ze wzoru \eqref{eq:kat} otrzymano przybliżone wyniki, przedstawion
 		\begin{tabular}[c]{@{}c@{}}Rozdzielczość\end{tabular} &  Kąt widzenia kamery w pionie w stopniach  &  Kąt widzenia kamery w poziomie w stopniach  \\ \hline
 		1920 x 1080                                                                          & 14 & 27 \\ \hline
 		1280 x 720                                                                         & 19 & 38 \\ \hline
-
+		
 	\end{tabular}
 \end{table}
 \begin{figure}[h]
@@ -120,7 +154,7 @@ Korzystając ze wzoru \eqref{eq:kat} otrzymano przybliżone wyniki, przedstawion
 \label{sec:Test wydobycia znacznika}
 
 Na rysunku \ref{fig:h} przedstawiono zdjęcie znacznika wykonane z~wysokości jednego metra. 
-Zastosowanie binaryzacji (rysunek \ref{fig:bin}) pozwoliło na oddzielenie znacznika od tła. %TODO ze stałym progiem ?
+Zastosowanie binaryzacji ze stałym progiem (rysunek \ref{fig:bin}) pozwoliło na oddzielenie znacznika od tła. %TODO ze stałym progiem ?
 Na obrazie znajdują się jednak inne niewielkie obszary (zakłócenia), które zostały wykryte. 
 Wykorzystanie mediany spowodowało znaczne zmniejszenie tych obszarów, jednakże na rysunku \ref{fig:median} widoczne są nadal małe grupy białych pikseli nienależących do~markera. 
 Zastosowanie morfologicznego otwarcia, składającego się z~erozji i~dylatacji,  pozwoliło na całkowite wyeliminowanie błędnych białych pikseli. 
@@ -174,4 +208,5 @@ Rejestrowanie uchybu w x i y i ich zapis na kartę SD pozwoli na sporządzenie w
 \section{Lądowanie na nieruchomym lądowisku}
 \label{sec:ladowanie_na_nieruchomym_ladowisku}
 --- Do poprzedniego testu zostanie dodana funkcjonalność lądowania.
+%---------------------------------------------------------------------------
 %---------------------------------------------------------------------------

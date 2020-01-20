@@ -1,34 +1,8 @@
 \chapter{Zaimplementowany system wspomagający autonomiczne lądowanie drona}
 \label{cha:opis_implementacji}
-
-%TODO Opis platformy sprzętowej + PCAM do osobnego rodziału + poszerzyć
-\section{Zastosowana platforma sprzętowa}
-\label{sec:zastosowana_platforma_sprzetowa}
-
-W~pracy wykorzystano platformę Digilent~Zybo~Z7-20 z układem Zynq SoC (ang. \textit{System on Chip}) XC7Z020-1CLG400C oraz~kamerę~Digilent PCAM~5C. %TODO uzupełnić
-Przeprowadzenie syntezy i~implementacji możliwe było przy użyciu darmowego oprogramowania Vivado oraz SDK w wersji WebPack -- używano wersji~2018.2. 
-Układ dostępny na karcie określa się jako heterogeniczny tj. stanowi połączenie części rekonfigurowalnej (PL -- ang. \textit{programmable logic}) oraz systemy procesorowego z~dwurdzeniowym procesorem ARM Cortex-A9 taktowanym z~częstotliwością 667~MHz (PS -- ang. \textit{processing system}). 
-
-%TODO W tym mejscu rozbudowa tj. omówinie architektury Zynq na podstawie schematu (są takie ładne obrazki dostępne) i kilka słów o komponentach.
-
-%TODO potem to zdanie, nieco przeredagowane.
-Do dyspozycji projektanta pozostawało 53 200 tablic LUT (ang. \textit{Look-up Table}), 106 400 przerzutników \textit{flip-flop} oraz 630 KB pamięci blokowej RAM. \\
-
-
-%TODO Coś o kamerze, ale parametry. Te szczegóły techniczne to przy implementacji
-
-Producent na swojej stronie internetowej zapewnia projekt demonstracyjny połączenia kamery i~płytki~\cite{projektPCAM}. Przez port szeregowy możliwa jest zmiana rozdzielczości, szybkości akwizycji ramek, współczynnika korekcji gamma, ustawień balansu bieli. Możliwe są następujące opcje dotyczące dwóch pierwszych parametrów:
-\begin{itemize}
-	\item 1280 x 720, 60 fps,
-	\item 1920 x 1080, 15 fps,
-	\item 1920 x 1080, 30 fps.
-\end{itemize}
-Testy pokazały również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Kwestię tę opisano w~sekcji \ref{sec:wyznaczenie_kata_widzenia_kamery przy_roznych_ustawieniach}. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
-Pobrany projekt stanowił bazę do dalszych prac. 
-
-
 %TODO Tu będzie początek tego nowego rozdziału. Przed modelem programowy proszę kilka zdań wstępu (co bedzie w treści)
-
+W~rozdziale omówiono zagadnienia związane ze~szczegółami implementacji systemu. Ważną rolę w~tworzeniu kolejnych modułów odegrał model programowy, czyli program napisany w~dowolnym języku programowania i~wykonywany na~komputerze~PC, którego działanie oddaje funkcje modułu tworzonego w~sprzęcie. Porównanie wyników działania modelu programowego i~symulacji modułu daje informację o~poprawności implementacji. \\
+Następnie opisano wszystkie części przetwarzania sygnału, od~przesłania obrazu przez kamerę, do~wysyłania żądanych komend do~autopilota.
 \section{Implementacja i ewaluacja modelu programowego}
 \label{sec:implementacja_modelu_programowego}
 
@@ -39,56 +13,64 @@ Pozwoliło to na szybkie prototypownie systemu wizyjnego.
 %TODO jest niejasne...bo jest mieszanie HW i modelu. Może proszę napisać dwa zdania o sekwencjach, bo chyba Pan zaczął od zwykłych, a potem z PCAM. Natomiast sprawę PCAM proszę "załatwić" w ten sposób, że ten opis ponież w części SW (jakiś subsectio), a tu się powołać
 
 %TODO W kolejnych podrozdziałch uzasadnienie wyboru poszczególnych komponentów. Treść z "testy".
-%TODO Znacznik. Potem przestrzenie barw i reszta
 
 
-\subsection{} 
-
-
-Aby możliwe było wprowadzanie ramek obrazu do modelu, należało umożliwić akwizycję obrazów na kartę SD. 
-Uaktywniono interfejs procesora SD0, do~projektu w~SDK dodano bibliotekę ,,xilffs'' i,~korzystając z~funkcji systemu plików opisanych w~\cite{xilffs}, napisano zapis ramek do~pliku. 
+Aby możliwe było wprowadzanie ramek obrazu do modelu, należało umożliwić akwizycję obrazów na~kartę SD. 
+Uaktywniono interfejs procesora SD0, do~projektu w~SDK dodano bibliotekę ,,xilffs'' i,~korzystając z~funkcji systemu plików opisanych w~\cite{xilffs}, napisano zapis ramek do~pliku na~karcie~SD. 
 Ze~względu na~prostotę pliku, składającego się jedynie z~nagłówka oraz wartości kolejnych składowych RGB, zdecydowano się na format ppm.\\
 %TODO Ten opis powyżej trzeba nieco rozwinąć.
 
-W~późniejszym stadium projektu, z~powodu różnic na obrazie zapisywanym na ramkę i~wyświetlanym na ekranie, zdecydowano się na zmianę tej koncepcji.  %TODO chyba na kartę.
+%W~późniejszym stadium projektu, z~powodu różnic na obrazie zapisywanym na kartę i~wyświetlanym na ekranie, zdecydowano się na zmianę tej koncepcji.  %TODO chyba na kartę.
 %TODO a co to za róznice.
-Zaimplementowano cały tor wizyjny w~części PL układu Zybo Z7-20 i~przechwytywano przetworzone obrazy wyświetlane na~monitorze. 
-Dzięki takiemu podejściu podczas testowania widziano rzeczywiste wyniki przetwarzania.
-
-
-
-
-
-
+%Zaimplementowano cały tor wizyjny w~części PL układu Zybo Z7-20 i~przechwytywano przetworzone obrazy wyświetlane na~monitorze. 
+%Dzięki takiemu podejściu podczas testowania widziano rzeczywiste wyniki przetwarzania.
 
 \section{Implementacja sprzętowo-programowa}
 \label{sec:implementacja_sprzetowo_programowa}
+Na Rys. \ref{fig:system} przedstawiono ogólny schemat implementacji systemu. Na~niebiesko zaznaczone zostały komponenety sprzętowe, na~żółto oznaczono moduły zaimplementowane w~części rekonfigurowalnej, natomiast na~zielono zaznaczono system procesorowy. Z~kamery trafia do~układu sygnał wizyjny, który następnie jest przetwarzany przez poszczególne moduły. Po~wyborze znacznika informacja o~jego pozycji i~uchybie regulacji trafia do~procesora. System procesorowy wysyła komendy zmiany sterujące do~autopilota. Zadaniem układu regulacji jest przesunięcie drona nad~lądowisko, umożliwiając wykonanie lądowania.
+W~dalszej części rozdziału omówiono poszczególne komponenty systemu.   
 %TODO Krótki wstęp np. ogólny scheamt implementacji ze wskazaniem na podział HW/SW, taki schemat sprzętu (z peryferiami). Potem będzie Pan omawiał poszczególne komponenty. 
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{system.jpg}
+	\caption{Schemat przedstawiający zaimplementowany system.}
+	\label{fig:system}
+\end{figure}  
+\subsection{Integracja kamery i płytki}
+\label{sec:integracja_uklad_kamera}
+Producent na swojej stronie internetowej zapewnia projekt demonstracyjny połączenia kamery i~płytki~\cite{projektPCAM}. Przez port szeregowy możliwa jest zmiana rozdzielczości, szybkości akwizycji ramek, współczynnika korekcji gamma, ustawień balansu bieli. Możliwe są następujące opcje dotyczące dwóch pierwszych parametrów:
+\begin{itemize}
+	\item 1280 x 720, 60 fps,
+	\item 1920 x 1080, 15 fps,
+	\item 1920 x 1080, 30 fps.
+\end{itemize}
+Testy pokazały również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Kwestię tę opisano w~sekcji \ref{sec:wyznaczenie_kata_widzenia_kamery przy_roznych_ustawieniach}. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
+Przeprowadzanie syntezy i~implementacji projektu możliwe było przy użyciu darmowego oprogramowania Vivado oraz SDK w wersji WebPack -- używano wersji~2018.2. \\
+Pobrany projekt stanowił bazę do dalszych prac.
 \subsection{Konwersja z przestrzeni barw RGB do YCbCr}
 \label{subsec:konwersja}
 
-Piksel w~przestrzenie barw YCbCr opisują trzy składowe: Y (luminancja), Cb (chrominancja, która wyraża różnicę między luminancją, a~kolorem niebieskim) oraz Cr ( chrominancja, która wyraża różnicę między luminancją,~a~kolorem czerwonym). 
+Piksel w~przestrzeni barw YCbCr opisują trzy składowe: Y (luminancja), Cb (chrominancja, która wyraża różnicę między luminancją, a~kolorem niebieskim) oraz Cr ( chrominancja, która wyraża różnicę między luminancją,~a~kolorem czerwonym). 
 Zaletą stosowania tej przestrzeni barw jest oddzielenie sygnału luminancji od~sygnałów chrominancji, pozwalające na~dokonywanie przetwarzania sygnału przy mniejszej zależności od~oświetlenia.
 Konwersję z przestrzeni barw RGB do YCbCr wykonano zgodnie ze wzorem \ref{eq:ycbcr}. 
 Przy implementacji wykorzystano sprzętowe mnożarki oraz sumatory.
 \begin{equation}
 \label{eq:ycbcr}
 \begin{bmatrix} Y \\ 
-				Cb\\
-				Cr
+Cb\\
+Cr
 \end{bmatrix}=
 \begin{bmatrix} 0,299 & 0,587 & 0,114\\ 
-				-0,168736 & -0,331264 & 0,5\\
-				0,5 & -0,418688 & 0,081312
+-0,168736 & -0,331264 & 0,5\\
+0,5 & -0,418688 & 0,081312
 \end{bmatrix}
 \begin{bmatrix} R\\
-				G\\
-				B
+G\\
+B
 \end{bmatrix}+
 \begin{bmatrix} 0\\
-				128\\
-				128
+128\\
+128
 \end{bmatrix}
 \end{equation}
 
@@ -98,11 +80,11 @@ Przy implementacji wykorzystano sprzętowe mnożarki oraz sumatory.
 \subsection{Binaryzacja}
 \label{subsec:Binaryzacja}
 % dobieranie progu: 2 multiplekser sterowany buttonem?
-Piksel wyjściowy otrzymywał wartość maksymalną (kolor biały), jeśli wartości Cb i~Cr mieściły się pomiędzy wyznaczonymi eksperymentalnie progami. 
+Piksel wyjściowy otrzymywał wartość maksymalną (kolor biały), jeśli wartości Cb i~Cr mieściły się pomiędzy wyznaczonymi eksperymentalnie progami.  
 W~innym przypadku pikselowi przypisywana była wartość 0 (kolor czarny). 
-Moduł binaryzacji pracował z zerową latencją.
+Do~szybkiej zmiany progów wykorzystano komunikację PS-PL z~wykorzystaniem rejestrów AXI - progi mogły być zmieniane z~poziomu terminala i~testy nie wymagały ponownych implementacji.  
 
-%TODO Prawda jest taka, że to najlepiej zrobić z wykorzystaniem rejestrów AXI - to jest to przerobienia w kolejnej iteracji.
+%TODO Prawda jest taka, że to najlepiej zrobić z wykorzystaniem rejestrów AXI - to jest to przerobienia w kolejnej iteracji.(wykonane)
 
 
 \subsection{Mediana}
@@ -117,7 +99,8 @@ Spowodowało to~konieczność zapamiętywania kontekstu piksela w~25 rejestrach 
 Schemat wyznaczania kontekstu przedstawiono na rysunku \ref{fig:kontekst}. 
 Sygnały synchronizacji zostały doklejone do wartości piksela i~w~przedstawionej strukturze przesuwają się razem z~nim. 
 Sumę wyliczano w~2~etapach, dodając najpierw elementy w~wierszach, potem sumując wyniki. 
-Latencja modułu wynosiła 2, należało zatem opóźnić sygnały synchronizacji o~tyle taktów zegara. %TODO Modułu to więcej bo 4 linie i trochę.
+%Latencja modułu wynosiła 2, należało zatem opóźnić sygnały synchronizacji o~tyle taktów zegara. 
+%TODO Modułu to więcej bo 4 linie i trochę.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kontekst.jpg}
@@ -134,54 +117,21 @@ Sąsiedztwo piksela określa kształt i~rozmiar elementu strukturalnego.
 Podobnie jak w~przypadku mediany, zdecydowano się na~kwadrat o~boku 5~pikseli. 
 Moduł erozji ustawia wartość piksela wyjściowego na~maksymalną wartość, gdy~w~sąsiedztwie znajdują się same białe piksele. 
 W~module dylatacji zwracana jest wartość maksymalna, gdy przynajmniej jeden piksel w~sąsiedztwie ma kolor biały. 
-Latencja modułów wynosi~1. %TODO Jw. skoro kontkst to 4 linie i trochę...
+%Latencja modułów wynosi~1. 
+%TODO Jw. skoro kontkst to 4 linie i trochę...
 
-\subsection{Środek ciężkości i prostokąt otaczający}
-\label{subsec:srodek_ciezosci}
+\subsection{Prostokąt otaczający i pole powierzchni}
+\label{subsec:prostokat_otaczajacy}
 
-Do wyznaczania środka ciężkości pikseli należących do~obiektu wykorzystano wzory \eqref{eq:m00}, \eqref{eq:m10} i~\eqref{eq:m01}.
-
-\begin{equation}
-\label{eq:m00}
-m_{00}=\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} x_{ij}
-\end{equation}
-\begin{equation}
-\label{eq:m10}
-m_{10}=\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} i*x_{ij}
-\end{equation}
-\begin{equation}
-\label{eq:m01}
-m_{01}=\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} j*x_{ij}
-\end{equation}
-gdzie:
-\begin{eqwhere}[2cm]
-	\item[$N$] szerokość obrazu w pikselach,
-	\item[$M$] wysokość obrazu w pikselach,
-	\item[$x_{ij}$] wartość piksela o~współrzędnych $i$, $j$ obrazu zbinaryzowanego.
-\end{eqwhere}
-Na ich podstawie obliczono środek ciężkości przy zastosowaniu wzorów \eqref{eq:xsc} i~\eqref{eq:ysc}.
-\begin{equation}
-\label{eq:xsc}
-X_{sc}=\frac{m_{10}}{m_{00}}
-\end{equation}
-\begin{equation}
-\label{eq:ysc}
-Y_{sc}=\frac{m_{01}}{m_{00}}
-\end{equation}
-\begin{eqwhere}[2cm]
-	\item[$X_{sc}$] współrzędna pozioma środka ciężkości,
-	\item[$Y_{sc}$] współrzędna pionowa środka ciężkości.
-\end{eqwhere}
-
-W~module na podstawie sygnałów synchronizacji oraz wymiarów obrazka wyznaczono współrzędne aktualnie przetwarzanego piksela. 
-Jeśli jest to piksel należący do obiektu, następuje zwiększenie wartości odpowiednich rejestrów zgodnie ze wzorami
-\ref{eq:m00}, \ref{eq:m10} i~\ref{eq:m01}. 
-Po przejściu przez całą ramkę obrazu wykonywane jest dzielenie na podstawie wzorów \ref{eq:xsc} i~\ref{eq:ysc}.\\
-
-W module zintegrowano wyznaczanie środka ciężkości oraz prostokąta otaczającego. 
-Znalezienie prostokąta sprowadza się do wyznaczenia skrajnych jego punktów na górze, dole, po lewej oraz prawej stronie. 
-Do odpowiednich rejestrów trafiają wartości współrzędnych piksela, jeśli wykraczają poza aktualną zawartość rejestrów.\\ %TODO to by można opisać bardziej prezycyjnie
-Moduł zwraca wartości współrzędnych środka ciężkości oraz skrajnych punktów prostokąta otaczającego.
+Znalezienie prostokąta otaczającego sprowadza się do wyznaczenia skrajnych jego punktów na górze, dole, po lewej oraz prawej stronie. Na podstawie sygnałów synchronizacji oraz wymiarów obrazka wyznaczano współrzędne aktualnie przetwarzanego piksela. 
+Jeśli jest to piksel należący do obiektu, następuje inkrementacja jego pola powierzchni. Do~odpowiednich rejestrów trafiają wówczas również wartości współrzędnych piksela, jeśli wykraczają poza aktualną zawartość rejestrów:
+\begin{itemize}
+	\item do~rejestru zawierającego górny bok prostokąta trafi współrzędna wierszowa, jeśli będzie ona mniejsza od aktualnej,
+	\item do~rejestru zawierającego dolny bok prostokąta trafi współrzędna wierszowa, jeśli będzie ona większa od aktualnej,
+	\item do~rejestru zawierającego lewy bok prostokąta trafi współrzędna kolumnowa, jeśli będzie ona mniejsza od aktualnej,
+	\item do~rejestru zawierającego prawy bok prostokąta trafi współrzędna kolumnowa, jeśli będzie ona większa od aktualnej,
+\end{itemize}  %TODO to by można opisać bardziej prezycyjnie (wykonane)
+Obliczeń pola powierzchi i~współrzędnych prostokąta otaczającego nie~wykonywano w~oddzielnym module, lecz stanowiły one część modułu indeksacji.
 
 \subsection{Indeksacja}
 \label{subsec:indeksacja}
@@ -196,16 +146,16 @@ Indeksacji dokonuje się bezpośrednio na~obrazie wejściowym.
 Podczas iteracji po wszystkich pikselach, w~przypadku znalezienia piksela należącego do któregoś z~obiektów, może zajść jeden z~trzech przypadków:
 \begin{enumerate}[label=(\alph*)]
 	\item w otoczeniu piksela znajdują się tylko piksele należące do tła,
-	\item otoczenie zawiera jeden lub więcej pikseli, którym została wcześniej przypisana taka sama etykieta~L,
+	\item otoczenie zawiera jeden lub więcej pikseli, którym została wcześniej przypisana taka sama etykieta~$L$,
 	\item w otoczeniu znajdują się piksele posiadające różne etykiety.
 \end{enumerate} 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{ind_sasiedztwo.jpg}
+	\includegraphics[width=0.5\textwidth]{ind_sasiedztwo.jpg}
 	\caption{Sąsiedztwo piksela brane pod uwagę przy indeksacji}
 	\label{fig:ind_sasiedztwo}
 \end{figure}
-%TODO za duży rysunek
+%TODO za duży rysunek(wykonane)
 
 W~pierwszym przypadku pikselowi zostaje przypisana nowa etykieta. 
 Gdy spełniony jest warunek $b$, punkt otrzymuje etykietę $L$, natomiast jeśli zachodzi przypadek $c$, przypisywana jest mniejsza z~etykiet. 
@@ -222,41 +172,43 @@ Pomimo tego, możliwe jest obliczenie pewnych cech obiektów, takich jak: pole, 
 W~pracy \cite{COG} podano sposób, w~jaki można tego dokonać. 
 Opiera się on~na~scaleniu nie samych wartości pikseli, ale~obliczanych na~bieżąco parametrów obiektu.\\ 
 Implementacja w~języku Verilog rodzi dodatkowo trudności związane z~określeniem przypadku istnienia tej~samej lub~różnych etykiet w~otoczeniu piksela. 
-Utrudnienie stanowi brak możliwości wykorzystania funkcji eliminującej zera z~wektora, czy znajdującej minimum i~maksimum. %TODO niejasne
+%Utrudnienie stanowi brak możliwości wykorzystania funkcji eliminującej zera z~wektora, czy znajdującej minimum i~maksimum. 
+%TODO niejasne
 O~ile~wykrycie przypadku $a$ jest łatwe, to~przypadki $b$~i~$c$ wymagały rozważenia kilku możliwości. 
 Zdecydowano się na~wykrywanie ich za~pomocą flag bitowych. 
-Na~ich podstawie wnioskowano o~zachodzącym aktualnie przypadku oraz wskazywano, od~którego piksela z~otoczenia powinna zostać przepisana etykieta. 
-Oprócz tego, na bieżąco obliczano prostokąt otaczający oraz liczbę pikseli należących do~każdego ze~znalezionych obiektów.\\
-%TODO No a co z tworzeniem tablicy sklejeń ?
+Na~ich podstawie wnioskowano o~zachodzącym aktualnie przypadku oraz wskazywano, od~którego piksela z~otoczenia powinna zostać przepisana etykieta. Zgodnie z~opisanymi wcześniej zasadami uzupełniano również tablicę sklejeń.
+Oprócz tego, na bieżąco obliczano prostokąt otaczający oraz liczbę pikseli należących do~każdego ze~znalezionych obiektów. \\
+%TODO No a co z tworzeniem tablicy sklejeń ?(wykonane)
 
 Po poetykietowaniu całej ramki obrazu wykorzystano tablicę sklejeń do~złączenia obliczanych na~bieżąco cech. 
 Ten~etap algorytmu zaimplementowano jako maszynę stanów:
 \begin{itemize}
-	\item Stan 0 -- Oczekiwanie na sygnał końca ramki wyznaczany na podstawie synchronizacji pionowej. W~momencie wykrycia sygnału następuje rejestrowanie tablicy sklejeń i~obliczonych parametrów, zerowanie tablic wypełnianych w~kolejnym etapie oraz przejście do~stanu~1. %TODO rejestreowanie, czy resetowanie ?
+	\item Stan 0 -- Oczekiwanie na sygnał końca ramki wyznaczany na podstawie synchronizacji pionowej. W~momencie wykrycia sygnału następuje rejestrowanie tablicy sklejeń i~obliczonych parametrów (w~następnym takcie zostaną one zresetowane), zerowanie tablic wypełnianych w~kolejnym etapie oraz przejście do~stanu~1. %TODO rejestreowanie, czy resetowanie ?(wykonane)
 	\item Stan 1 -- Iteracja po tablicy sklejeń i~uzupełnianie rzeczywistych wartości cech obiektów.
 	\item Stan 2 -- Uporządkowanie tablic z~wyznaczonymi parametrami.
 	\item Stan 3 -- Obliczenie pola prostokąta otaczającego dla każdego znalezionego obiektu. Wykorzystywana jest mnożarka o~latencji 3.
-	\item Stan 4 -- Szukanie obiektu spełniającego warunki minimalnej wielkości pola powierzchni oraz stosunku pola prostokąta otaczającego do pola obiektu. W~przypadku znalezienia takiego kształtu, na~wyjście trafiają współrzędne jego prostokąta otaczającego. Jeśli żądany kształt nie zostanie znaleziony, informacja o~tym również pojawi się na~wyjściu.
+	\item Stan 4 -- Szukanie obiektu spełniającego warunki minimalnej wielkości pola powierzchni oraz stosunku pola prostokąta otaczającego do pola obiektu. W~przypadku znalezienia takiego kształtu, na~wyjście trafiają współrzędne jego środka ciężkości. Jeśli żądany kształt nie zostanie znaleziony, informacja o~tym również pojawi się na~wyjściu.
 \end{itemize}
-Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_schemat}
+Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_schemat}.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{ind_schemat.jpg}
-	\caption{Schemat procesu przetwarzania informacji po~każdej ramce obrazu z przykładowymi danymi.}
+	\caption{Schemat procesu przetwarzania informacji po~każdej ramce obrazu z przykładowymi danymi. Tablica sklejeń daje informację o~konieczności sklejenia etyket 1, 2, 3. Ponieważ przykład dotyczy lewego boku prostokąta, spośród liczb 15, 10, 20 (odpowiadającym etykietom 1, 2, 3) wybierana jest najmniejsza. Ostatni krok przetwarzania to~usunięcie środkowych zer z~wektora.}
 	\label{fig:ind_schemat}
 \end{figure}
-%TODO Schemat niejasny.
+%TODO Schemat niejasny.(dodany opis)
 
 Główną trudnością w~implementacji opisanego algorytmu w~układzie FPGA jest stosunkowo duże zapotrzebowanie na~zasoby sprzętowe. 
 Należy zarezerwować miejsce na~cechy każdego potencjalnego obiektu. 
 Ogranicza to~liczbę możliwych etykiet. 
-Zarezerwowanie miejsca dla 30~obiektów nie~przekroczyło możliwości układu Zybo. 
-Badania pokazały, że~jest to wystarczająca liczba etykiet do~sprawnego działania toru wizyjnego.
-
+Zarezerwowanie miejsca dla 30~obiektów nie~przekroczyło możliwości układu ZYBO. 
+Badania pokazały, że~jest to wystarczająca liczba etykiet do~sprawnego działania toru wizyjnego i~ostatecznie zaimplementowano moduł w~tej wersji.\par
 %TODO 1. Zostało to zaimplementowane ?
-%TODO 2. Skoro indeksacja to po co wcześniejszy środek ciężkości
+%TODO 2. Skoro indeksacja to po co wcześniejszy środek ciężkości (usunięty środek ciężkości)
 
-\section{Komunikacja układu ZYBO Z7-20 ze sterownikiem Pixhawk}
-\label{sec:komunikacja_ukladu_ZYBO_ze_sterownikiem_ Pixhawk} 
---- Tutaj chciałbym opisać protokół Mavlink używany do komunikacji ze sterownikiem. Obecnie została nawiązana komunikacja i udało się wysłać komendę uzbrojenia drona w trybie STABILIZE. W najbliższym czasie planuję przeprowadzić test wysyłania komend ruchu w trybie GUIDED, który wymaga połączenia GPS.
+
+\subsection{Integracja płytki z autopilotem}
+\label{sec:integracja_plytka_autopilot}
+
+%TODO Znacznik. Potem przestrzenie barw i reszta
 %-------------------------------------------------------------------------

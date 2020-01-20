@@ -3,7 +3,8 @@
 
 %Ogolny opis znaczenia dronow, gdzie może się przydać takie lądowanie oraz akapit o FPGA, czy też ogólnie embedded - dlaczego to jest ważne.
 %https://spectrum.ieee.org/aerospace/aviation/us-commercial-drone-deliveries-will-finally-be-a-thing-in-2020
-
+Ostatnie lata pokazały wszechstronność i~przydatność dronów w~wielu dziadzinach przemysłu. Według raportu Skyward z~2018 roku, 1~na~10 przebadanych firm w~Stanach~Zjednoczonych używała bezzałogowych statków powietrznych. Aż~88~procent z~nich odczuła pozytywne strony rozpoczęcia korzystania z~nich w~przeciągu roku lub krócej. Do~najczęściej wymienianych zalet dronów należy zdobywanie większej ilości informacji, bardziej efektywna praca oraz oszczędzanie czasu. Udział dronów w~rynku będzie się stale powiększał, gdyż 3~na~4 przedsiębiorców planuje zwiększać wydatki przeznaczane na~operacje wykonywane przez drony \cite{skyward}. O~planach częstszego stosowania dronów może również świadczyć fakt wprowadzania regulacji prawnych - konieczności wyposażania dronów w~nadajnik numeru identyfikacyjnego \cite{drone_article}. Odpowiednia regulacja zwiększy bezpieczeństwo lotów i~może otworzyć drogę do~masowego wykorzystania dronów.\par
+Ważnym kierunkiem rozwoju bezzałogowych statków powietrznych jest ich autonomizacja, czyli przystosowanie do~lotów bez nadzoru człowieka. Oznacza to~wyposażenie dronów w~systemy monitorowania otoczenia i~implementację algorytmów sterowania działających w~oparciu o~zebrane informacje. Kluczową fazą autonomicznego lotu drona jest lądowanie. Bliskość ziemi wymaga dokładnego sterowania ruchem statku powietrznego. W~przypadku, gdy dostarczane dane pochodzą z~systemu wizyjnego, decydujące jest szybkie przetwarzanie obrazów. Podejście sekwencyjne, oparte o~mikrokontrolery i~procesory sygnałowe, często okazuje się~nieskuteczne. Przekroczone zostają możliwości obliczeniowe takich układów, uniemożliwiając dodawanie kolejnych funkcjonalności związanych z~autonomizacją. Układy FPGA (ang. \textit{Field Programmagle Gate Arrays}) są~preferowaną platformą obliczeniową do~realizacji zadań przetwarzania strumienia wideo. Oferują możliwość zrównoleglenia obliczeń oraz niewielkie opóźnienie przetwarzania. 
 %---------------------------------------------------------------------------
 
 \section{Cele pracy}
@@ -12,9 +13,9 @@
 %TODO Parafraza tego co wkleiłem /ale trzeba to przeredagować !!!/:
 W ramach pracy należy stworzyć sprzętowo-programowy podsystem wizyjny, który będzie komponentem systemu autonomicznego lądowanie drona. W pierwszym kroku należy przeprowadzić analizę literatury naukowej związanej z tematem - głównie dotyczącej detekcji i śledzenia oznaczonego lądowiska. 
 W
- drugim etapie należy wykonać model programowy algorytmu (Matlab, Python, C++, OpenCV), który pozwala na wykrycie i śledzenie lądowiska. Dodatkowo należy wybrać sposób jego oznaczenia. Zakłada się, że dron będzie wyposażony w kamerę o osi optycznej skierowanej prostopadle do podłoża, a lądowisko w dalszych etapach projektu będzie ruchome (umieszczone na pojeździe) - należy to uwzględnić przy rejestracji sekwencji testowych. 
- 
- Ponadto należy sprawdzić, czy tylko na podstawie systemu wizyjnego możliwe jest określenie wysokości drona nad lądowiskiem - z dokładnością wystarczającą do przeprowadzenia procedury lądowania.
+drugim etapie należy wykonać model programowy algorytmu (Matlab, Python, C++, OpenCV), który pozwala na wykrycie i śledzenie lądowiska. Dodatkowo należy wybrać sposób jego oznaczenia. Zakłada się, że dron będzie wyposażony w kamerę o osi optycznej skierowanej prostopadle do podłoża, a lądowisko w dalszych etapach projektu będzie ruchome (umieszczone na pojeździe) - należy to uwzględnić przy rejestracji sekwencji testowych. 
+
+Ponadto należy sprawdzić, czy tylko na podstawie systemu wizyjnego możliwe jest określenie wysokości drona nad lądowiskiem - z dokładnością wystarczającą do przeprowadzenia procedury lądowania.
 
 W trzecim etapie należy wspomniany system podzielić na część sprzętową i programową oraz zaimplementować w układzie Zynq SoC na wybranej karcie ewaluacyjnej. Wejściem powinien być obraz z kamery PCAM, a wyjściem sterowanie dla drona - położenie względem lądowiska oraz wysokość.
 Ostatnim etapem będzie próba integracji wykonanego podsystemu ze sterownikiem drona i wykonanie lądowania w sposób autonomiczny. W przypadku niesatysfakcjonującego pomiaru wysokości metodą wizyjną, możliwe jest użycie specjalistycznego czujnika laserowego. Kluczowym zagadnieniem będzie takie sterowanie dronem, aby lądowanie odbyło się bezpiecznie i w wyznaczonym miejscu, w szczególności w przypadku lądowiska zamontowanego na ruchomym pojeździe.
@@ -28,6 +29,3 @@ Ostatnim etapem będzie próba integracji wykonanego podsystemu ze sterownikiem 
 \label{sec:zawartoscPracy}
 
 %TODO widomo
-
-
-

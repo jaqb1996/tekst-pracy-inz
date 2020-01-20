@@ -1,25 +1,36 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {polish}{}
-\contentsline {chapter}{\numberline {1}Wprowadzenie}{7}
-\contentsline {section}{\numberline {1.1}Cele pracy}{7}
-\contentsline {section}{\numberline {1.2}Zawarto\IeC {\'s}\IeC {\'c} pracy}{7}
-\contentsline {chapter}{\numberline {2}Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego l\IeC {\k a}dowania drona}{9}
-\contentsline {chapter}{\numberline {3}Zaimplementowany system wspomagaj\IeC {\k a}cy autonomiczne l\IeC {\k a}dowanie drona}{11}
-\contentsline {section}{\numberline {3.1}Zastosowana platforma sprz\IeC {\k e}towa}{11}
-\contentsline {section}{\numberline {3.2}Implementacja i ewaluacja modelu programowego}{11}
-\contentsline {subsection}{\numberline {3.2.1}}{12}
-\contentsline {section}{\numberline {3.3}Implementacja sprz\IeC {\k e}towo-programowa}{12}
-\contentsline {subsection}{\numberline {3.3.1}Konwersja z przestrzeni barw RGB do YCbCr}{12}
-\contentsline {subsection}{\numberline {3.3.2}Binaryzacja}{12}
-\contentsline {subsection}{\numberline {3.3.3}Mediana}{12}
-\contentsline {subsection}{\numberline {3.3.4}Erozja i dylatacja}{13}
-\contentsline {subsection}{\numberline {3.3.5}\IeC {\'S}rodek ci\IeC {\k e}\IeC {\.z}ko\IeC {\'s}ci i prostok\IeC {\k a}t otaczaj\IeC {\k a}cy}{13}
-\contentsline {subsection}{\numberline {3.3.6}Indeksacja}{14}
-\contentsline {section}{\numberline {3.4}Komunikacja uk\IeC {\l }adu ZYBO Z7-20 ze sterownikiem Pixhawk}{17}
-\contentsline {chapter}{\numberline {4}Testy i ocena wynik\IeC {\'o}w}{19}
-\contentsline {section}{\numberline {4.1}Test wykrywania koloru znacznika w przestrzeni barw YCbCr}{19}
-\contentsline {section}{\numberline {4.2}Wyznaczenie k\IeC {\k a}ta widzenia kamery przy r\IeC {\'o}\IeC {\.z}nych ustawieniach rozdzielczo\IeC {\'s}ci}{19}
-\contentsline {section}{\numberline {4.3}Test detekcji znacznika na obrazie}{20}
-\contentsline {section}{\numberline {4.4}Test regulacji po\IeC {\l }o\IeC {\.z}enia drona}{21}
-\contentsline {section}{\numberline {4.5}L\IeC {\k a}dowanie na nieruchomym l\IeC {\k a}dowisku}{21}
-\contentsline {chapter}{\numberline {5}Podsumowanie i~wskazanie kierunk\IeC {\'o}w dalszych prac}{29}
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{7}%
+\contentsline {section}{\numberline {1.1}Cele pracy}{7}%
+\contentsline {section}{\numberline {1.2}Zawartość pracy}{8}%
+\contentsline {chapter}{\numberline {2}Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego lądowania drona}{9}%
+\contentsline {chapter}{\numberline {3}Sprzęt wykorzystany w projekcie}{13}%
+\contentsline {section}{\numberline {3.1}Platforma obliczeniowa}{13}%
+\contentsline {section}{\numberline {3.2}Moduł rejestrujący obraz}{14}%
+\contentsline {section}{\numberline {3.3}Platforma statku powietrznego}{14}%
+\contentsline {section}{\numberline {3.4}Autopilot}{16}%
+\contentsline {chapter}{\numberline {4}Zaimplementowany system wspomagający autonomiczne lądowanie drona}{17}%
+\contentsline {section}{\numberline {4.1}Implementacja i ewaluacja modelu programowego}{17}%
+\contentsline {section}{\numberline {4.2}Implementacja sprzętowo-programowa}{17}%
+\contentsline {subsection}{\numberline {4.2.1}Integracja kamery i płytki}{18}%
+\contentsline {subsection}{\numberline {4.2.2}Konwersja z przestrzeni barw RGB do YCbCr}{18}%
+\contentsline {subsection}{\numberline {4.2.3}Binaryzacja}{19}%
+\contentsline {subsection}{\numberline {4.2.4}Mediana}{19}%
+\contentsline {subsection}{\numberline {4.2.5}Erozja i dylatacja}{19}%
+\contentsline {subsection}{\numberline {4.2.6}Prostokąt otaczający i pole powierzchni}{20}%
+\contentsline {subsection}{\numberline {4.2.7}Indeksacja}{20}%
+\contentsline {subsection}{\numberline {4.2.8}Integracja płytki z autopilotem}{22}%
+\contentsline {chapter}{\numberline {5}Testy i ocena wyników}{25}%
+\contentsline {section}{\numberline {5.1}Test wykrywania koloru znacznika w różnych przestrzeniach barw}{25}%
+\contentsline {subsection}{\numberline {5.1.1}Przestrzeń barw RGB}{25}%
+\contentsline {subsection}{\numberline {5.1.2}Przestrzeń barw YCbCr}{25}%
+\contentsline {subsection}{\numberline {5.1.3}Przestrzeń barw HSV}{25}%
+\contentsline {section}{\numberline {5.2}Wyznaczenie kąta widzenia kamery przy różnych ustawieniach rozdzielczości}{25}%
+\contentsline {section}{\numberline {5.3}Test detekcji znacznika na obrazie}{26}%
+\contentsline {section}{\numberline {5.4}Test regulacji położenia drona}{29}%
+\contentsline {section}{\numberline {5.5}Lądowanie na nieruchomym lądowisku}{30}%
+\contentsline {chapter}{\numberline {6}Podsumowanie i kierunki dalszych prac}{35}%
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
