@@ -1,24 +1,61 @@
 \chapter{Zaimplementowany system wspomagający autonomiczne lądowanie drona}
 \label{cha:opis_implementacji}
 %TODO Tu będzie początek tego nowego rozdziału. Przed modelem programowy proszę kilka zdań wstępu (co bedzie w treści)
-W~rozdziale omówiono zagadnienia związane ze~szczegółami implementacji systemu. Ważną rolę w~tworzeniu kolejnych modułów odegrał model programowy, czyli program napisany w~dowolnym języku programowania i~wykonywany na~komputerze~PC, którego działanie oddaje funkcje modułu tworzonego w~sprzęcie. Porównanie wyników działania modelu programowego i~symulacji modułu daje informację o~poprawności implementacji. \\
-Następnie opisano wszystkie części przetwarzania sygnału, od~przesłania obrazu przez kamerę, do~wysyłania żądanych komend do~autopilota.
+W~rozdziale omówiono zagadnienia związane ze~szczegółami implementacji systemu. Ważną rolę w~tworzeniu kolejnych modułów odegrał model programowy, czyli program napisany w~dowolnym języku programowania i~wykonywany na~komputerze~PC, którego działanie oddaje funkcje modułu tworzonego w~sprzęcie. Porównanie wyników działania modelu programowego i~symulacji modułu daje informację o~poprawności implementacji. Model programowy wraz z~uzasadnieniem użycia poszczególnych modułów przedstawiono na~początku rozdziału.\\
+Następnie opisano wszystkie części przetwarzania sygnału, od~przesłania obrazu przez kamerę, do~wysyłania komend do~autopilota.
 \section{Implementacja i ewaluacja modelu programowego}
 \label{sec:implementacja_modelu_programowego}
-
 Model programowy został napisany w pakiecie Matlab przy wykorzystaniu funkcji dostępnych w~bibliotece \textit{Image Processing Toolbox}. 
-Pozwoliło to na szybkie prototypownie systemu wizyjnego.
+Pozwoliło to~na~szybkie prototypownie systemu wizyjnego, składającego się~z:
 %TODO Przedstawić ogólny schemat algorytmu oraz go skórtowo omówić.
-
+\begin{itemize}
+	\item konwersji z~przestrzeni RGB do YCbCr,
+	\item binaryzacji ze~stałymi progami,
+	\item mediany,
+	\item otwarcia,
+	\item indeksacji jednoprzebiegowej wyznaczającej pole powierzchni i~prostokąt otaczający obiektów.
+\end{itemize}
+Piksel w~przestrzeni barw YCbCr opisują trzy składowe: Y (luminancja), Cb (chrominancja, która wyraża różnicę między luminancją, a~kolorem niebieskim) oraz Cr (chrominancja, która wyraża różnicę między luminancją,~a~kolorem czerwonym). \\
+Zaletą stosowania tej przestrzeni barw jest oddzielenie sygnału luminancji od~sygnałów chrominancji, pozwalające na~dokonywanie przetwarzania sygnału przy mniejszej zależności od~oświetlenia.\\
+Zastosowanie binaryzacji pozwala na~oddzielenie znacznika od~tła. Na~wyjściu modułu znajdują się tylko dwa rodzaje pikseli: należące i~nienależące do~obiektu (Rys. \ref{fig:bin_1}).
+Na~obrazie często znajdują się jednak inne niewielkie obszary (zakłócenia), które zostały wykryte. Pozostawienie ich na~wejściu modułu indeksacji zwiększyłoby niepotrzebnie liczbę nadawanych etykiet, która jest ograniczona (sekcja \ref{subsec:indeksacja}).\\
+Częściowym rozwiązaniem problemu jest zastosowanie mediany. Jest to~operacja kontekstowa, w~której pikselowi wyjściowemu przypisuje się wartość środkową uporządkowanego zbioru wartości pikseli z~otoczenia piksela wejściowego. \\
+Wykorzystanie mediany powoduje znaczne zmniejszenie błędnych obszarów, jednakże niekiedy na~obrazie obecne są~nadal małe grupy białych pikseli nienależących do~obiektu (Rys. \ref{fig:median_1}).\\
+Z~tego powodu zdecydowano się na~wykorzystanie erozji. Erozja i~dylatacja to~operacje morfologiczne, w~których pikselowi wyjściowemu przypisuje się wartość odpowiednio najmniejszego i~największego piksela w~sąsiedztwie piksela wejściowego. Sąsiedztwo piksela określa kształt i~rozmiar elementu strukturalnego.  
+Zastosowanie morfologicznego otwarcia, składającego się z~erozji i~dylatacji, pozwala niekiedy na~całkowite wyeliminowanie błędnych białych pikseli (Rys. \ref{fig:opened_1}).
+Indeksacja jednoprzebiegowa to~operacja pozwalająca na wyodrębnienie z~obrazu cech poszczególnych obiektów. Obiekty rozumiane są~jako grupy połączonych ze~sobą pikseli. Ze~względu na~wykorzystywany współczynnik kształtu obliczano prostokąt otaczający i~pole obiektów. 
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bin.jpg}
+		\caption{Rezultat binaryzacji.}
+		\label{fig:bin_1}
+	\end{subfigure}
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{median.jpg}
+		\caption{Obraz po medianie}
+		\label{fig:median_1}
+	\end{subfigure}\\
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{opened.jpg}
+		\caption{Wynik otwarcia}
+		\label{fig:opened_1}
+	\end{subfigure}
+	\caption{Przykładowe rezultaty binaryzacji, mediany i~otwarcia}
+	\label{fig:operacje}
+\end{figure}
 %TODO jest niejasne...bo jest mieszanie HW i modelu. Może proszę napisać dwa zdania o sekwencjach, bo chyba Pan zaczął od zwykłych, a potem z PCAM. Natomiast sprawę PCAM proszę "załatwić" w ten sposób, że ten opis ponież w części SW (jakiś subsectio), a tu się powołać
 
-%TODO W kolejnych podrozdziałch uzasadnienie wyboru poszczególnych komponentów. Treść z "testy".
+%TODO W kolejnych podrozdziałch uzasadnienie wyboru poszczególnych komponentów. Treść z "testy".(uzasadnienie dałem w części o modelu)
 
-
-Aby możliwe było wprowadzanie ramek obrazu do modelu, należało umożliwić akwizycję obrazów na~kartę SD. 
-Uaktywniono interfejs procesora SD0, do~projektu w~SDK dodano bibliotekę ,,xilffs'' i,~korzystając z~funkcji systemu plików opisanych w~\cite{xilffs}, napisano zapis ramek do~pliku na~karcie~SD. 
-Ze~względu na~prostotę pliku, składającego się jedynie z~nagłówka oraz wartości kolejnych składowych RGB, zdecydowano się na format ppm.\\
-%TODO Ten opis powyżej trzeba nieco rozwinąć.
+\subsection{Akwizycja ramek na kartę SD}
+Aby możliwe było wprowadzanie ramek obrazu do modelu, należało umożliwić akwizycję obrazów na~kartę~SD. W~pobranym projekcie zastosowano połączenie toru wizyjnego AXI z~pamięcią procesora. Połączenie realizuje moduł AXI Video Direct Memory Access. Informacja o~miejscu w~pamięci, gdzie zapisywane są~ramki podawana jest przy inicjalizacji połączenia na~terminal. \\
+W~celu umożliwienia komunikacji z~kartą uaktywniono interfejs procesora SD0. Następnie do~projektu w~SDK dodano bibliotekę ,,xilffs'' i,~korzystając z~funkcji systemu plików opisanych w~\cite{xilffs}, napisano zapis ramek do~pliku. 
+Ze~względu na~prostotę pliku zdecydowano~się na~format ppm. W~formacie nie występuje żadna kompresja i~jest on~nieefektywny pod~względem zapotrzebowania na pamięć. Niemniej jednak, dysponując odpowiednio dużą ilością miejsca na~karcie i~chcąc w~łatwy sposób zapisać dane, wybrano właśnie ten format. Zapis danych w~formacie ppm jest prosty, gdyż plik składa się jedynie z~nagłówka (typ pliku, rozmiary obrazka, maksymalna wartość składowych) oraz kolejnych wartości w~formie pojedynczych bajtów (jeśli maksymalna wartość jest mniejsza niż 256).  \\
+%TODO Ten opis powyżej trzeba nieco rozwinąć.(wykonane)
 
 %W~późniejszym stadium projektu, z~powodu różnic na obrazie zapisywanym na kartę i~wyświetlanym na ekranie, zdecydowano się na zmianę tej koncepcji.  %TODO chyba na kartę.
 %TODO a co to za róznice.
@@ -27,9 +64,9 @@ Ze~względu na~prostotę pliku, składającego się jedynie z~nagłówka oraz wa
 
 \section{Implementacja sprzętowo-programowa}
 \label{sec:implementacja_sprzetowo_programowa}
-Na Rys. \ref{fig:system} przedstawiono ogólny schemat implementacji systemu. Na~niebiesko zaznaczone zostały komponenety sprzętowe, na~żółto oznaczono moduły zaimplementowane w~części rekonfigurowalnej, natomiast na~zielono zaznaczono system procesorowy. Z~kamery trafia do~układu sygnał wizyjny, który następnie jest przetwarzany przez poszczególne moduły. Po~wyborze znacznika informacja o~jego pozycji i~uchybie regulacji trafia do~procesora. System procesorowy wysyła komendy zmiany sterujące do~autopilota. Zadaniem układu regulacji jest przesunięcie drona nad~lądowisko, umożliwiając wykonanie lądowania.
+Na Rys. \ref{fig:system} przedstawiono ogólny schemat implementacji systemu. Na~niebiesko zaznaczone zostały komponenety sprzętowe, na~żółto oznaczono moduły zaimplementowane w~części rekonfigurowalnej, natomiast na~zielono zaznaczono system procesorowy. Z~kamery trafia do~układu sygnał wizyjny, który następnie jest przetwarzany przez poszczególne moduły. Po~wyborze znacznika informacja o~jego pozycji i~uchybie regulacji trafia do~procesora. System procesorowy wysyła komendy sterujące do~autopilota. Zadaniem układu regulacji jest przesunięcie drona nad~lądowisko, umożliwiając wykonanie lądowania.
 W~dalszej części rozdziału omówiono poszczególne komponenty systemu.   
-%TODO Krótki wstęp np. ogólny scheamt implementacji ze wskazaniem na podział HW/SW, taki schemat sprzętu (z peryferiami). Potem będzie Pan omawiał poszczególne komponenty. 
+%TODO Krótki wstęp np. ogólny scheamt implementacji ze wskazaniem na podział HW/SW, taki schemat sprzętu (z peryferiami). Potem będzie Pan omawiał poszczególne komponenty. (wykonane)
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{system.jpg}
@@ -38,22 +75,19 @@ W~dalszej części rozdziału omówiono poszczególne komponenty systemu.
 \end{figure}  
 \subsection{Integracja kamery i płytki}
 \label{sec:integracja_uklad_kamera}
-Producent na swojej stronie internetowej zapewnia projekt demonstracyjny połączenia kamery i~płytki~\cite{projektPCAM}. Przez port szeregowy możliwa jest zmiana rozdzielczości, szybkości akwizycji ramek, współczynnika korekcji gamma, ustawień balansu bieli. Możliwe są następujące opcje dotyczące dwóch pierwszych parametrów:
+Producent na swojej stronie internetowej zapewnia projekt demonstracyjny połączenia kamery i~płytki~\cite{projektPCAM}. Przez port szeregowy możliwa jest zmiana rozdzielczości, szybkości akwizycji ramek, współczynnika korekcji gamma, ustawień balansu bieli. Możliwe są~następujące opcje dotyczące dwóch pierwszych parametrów:
 \begin{itemize}
 	\item 1280 x 720, 60 fps,
 	\item 1920 x 1080, 15 fps,
 	\item 1920 x 1080, 30 fps.
 \end{itemize}
-Testy pokazały również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Kwestię tę opisano w~sekcji \ref{sec:wyznaczenie_kata_widzenia_kamery przy_roznych_ustawieniach}. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
+Okazało się również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
 Przeprowadzanie syntezy i~implementacji projektu możliwe było przy użyciu darmowego oprogramowania Vivado oraz SDK w wersji WebPack -- używano wersji~2018.2. \\
 Pobrany projekt stanowił bazę do dalszych prac.
 \subsection{Konwersja z przestrzeni barw RGB do YCbCr}
 \label{subsec:konwersja}
-
-Piksel w~przestrzeni barw YCbCr opisują trzy składowe: Y (luminancja), Cb (chrominancja, która wyraża różnicę między luminancją, a~kolorem niebieskim) oraz Cr ( chrominancja, która wyraża różnicę między luminancją,~a~kolorem czerwonym). 
-Zaletą stosowania tej przestrzeni barw jest oddzielenie sygnału luminancji od~sygnałów chrominancji, pozwalające na~dokonywanie przetwarzania sygnału przy mniejszej zależności od~oświetlenia.
 Konwersję z przestrzeni barw RGB do YCbCr wykonano zgodnie ze wzorem \ref{eq:ycbcr}. 
-Przy implementacji wykorzystano sprzętowe mnożarki oraz sumatory.
+Przy implementacji wykorzystano sprzętowe mnożarki oraz sumatory. Na~Rys. \ref{fig:drzewo_ycbcr} przedstawiono schemat operacji arytmetycznych dla jednej ze~składowych. Aby możliwe było prowadzenie obliczeń, wszystkie stałe należało przedstawić w~postaci liczb stałoprzecinkowych. Do~reprezentacji stałoprzecinkowej użyto rejestrów o~szerokości 18~bitów.
 \begin{equation}
 \label{eq:ycbcr}
 \begin{bmatrix} Y \\ 
@@ -74,8 +108,13 @@ B
 \end{bmatrix}
 \end{equation}
 
-%TODO Może schemat ?
-
+%TODO Może schemat ?(wykonane)
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{drzewo_ycbcr.jpg}
+	\caption{Schemat wyznaczania składowej Cb. $A21=-0,168736, A22=-0,331264, A23=0,5, V2=128$.}
+	\label{fig:drzewo_ycbcr}
+\end{figure} 
 
 \subsection{Binaryzacja}
 \label{subsec:Binaryzacja}
@@ -92,13 +131,12 @@ Do~szybkiej zmiany progów wykorzystano komunikację PS-PL z~wykorzystaniem reje
 % obrazek wyznaczania kontekstu
 % obrazek drzewa sumacyjnego
 
-Mediana to operacja kontekstowa, w~której pikselowi wyjściowemu przypisuje się wartość środkową uporządkowanego zbioru wartości pikseli z~otoczenia piksela wejściowego. 
-W~przypadku działania na~obrazie binarnym operacja taka może być przeprowadzona przez obliczenie sumy wartości pikseli wewnątrz kontekstu, a~następnie porównanie jej z~połową maksymalnej wartości tej sumy. 
+W~przypadku działania na~obrazie binarnym operacja mediany może być przeprowadzona przez obliczenie sumy wartości pikseli wewnątrz kontekstu, a~następnie porównanie jej z~połową maksymalnej wartości tej sumy. 
 Ze względu na łatwość implementacji oraz zadowalające wyniki filtracji, zdecydowano się na~rozpatrywanie kontekstu w~kształcie kwadratu o~boku 5~pikseli. 
 Spowodowało to~konieczność zapamiętywania kontekstu piksela w~25 rejestrach oraz 4~linii obrazu w długich liniach opóźniających zbudowanych w~oparciu o~pamięć BRAM.
 Schemat wyznaczania kontekstu przedstawiono na rysunku \ref{fig:kontekst}. 
 Sygnały synchronizacji zostały doklejone do wartości piksela i~w~przedstawionej strukturze przesuwają się razem z~nim. 
-Sumę wyliczano w~2~etapach, dodając najpierw elementy w~wierszach, potem sumując wyniki. 
+Sumę wyliczano w~2~etapach, dodając najpierw elementy w~wierszach, potem sumując wyniki (Rys. \ref{fig:drzewo_sumacyjne}).
 %Latencja modułu wynosiła 2, należało zatem opóźnić sygnały synchronizacji o~tyle taktów zegara. 
 %TODO Modułu to więcej bo 4 linie i trochę.
 \begin{figure}[h]
@@ -107,16 +145,18 @@ Sumę wyliczano w~2~etapach, dodając najpierw elementy w~wierszach, potem sumuj
 	\caption{Schemat wyznaczania kontekstu dla mediany, erozji i dylatacji.}
 	\label{fig:kontekst}
 \end{figure}  
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{drzewo_sumacyjne.jpg}
+	\caption{Schemat wyznaczania sumy otoczenia piksela.}
+	\label{fig:drzewo_sumacyjne}
+\end{figure}  
 
 \subsection{Erozja i dylatacja}
 \label{subsec:erozja}
-
-Erozja i dylatacja to~operacje morfologiczne, w~których pikselowi wyjściowemu przypisuje się wartość odpowiednio najmniejszego i~największego piksela w~sąsiedztwie piksela wejściowego. 
-Sąsiedztwo piksela określa kształt i~rozmiar elementu strukturalnego. 
-Podobnie jak w~przypadku mediany, zdecydowano się na~kwadrat o~boku 5~pikseli. 
+Podobnie jak w~przypadku mediany, jako element strukturalny zdecydowano się na~kwadrat o~boku 5~pikseli. 
 Moduł erozji ustawia wartość piksela wyjściowego na~maksymalną wartość, gdy~w~sąsiedztwie znajdują się same białe piksele. 
-W~module dylatacji zwracana jest wartość maksymalna, gdy przynajmniej jeden piksel w~sąsiedztwie ma kolor biały. 
+W~module dylatacji zwracana jest wartość maksymalna, gdy~przynajmniej jeden piksel w~sąsiedztwie ma~wartość maksymalną.
 %Latencja modułów wynosi~1. 
 %TODO Jw. skoro kontkst to 4 linie i trochę...
 
@@ -138,8 +178,6 @@ Obliczeń pola powierzchi i~współrzędnych prostokąta otaczającego nie~wykon
 
 %TODO role tej indekscji trzeba opiać w częsci o modelu. Już nie wspomnę, że nie było o niej mowy... Musi Pan napisać po co to Pan robił.
 
-Indeksacja to operacja pozwalająca na wyodrębnienie z~obrazu poszczególnych obiektów. 
-Obiekty rozumiane są jako grupy połączonych ze sobą pikseli. 
 Zazwyczaj na wejście modułu indeksacji podawany jest obraz zbinaryzowany, natomiast na~wyjściu pojawia się obraz, na którym  wartość  pikseli odpowiada przypisanej do~danego obiektu etykiecie. 
 Rozważane jest otoczenie każdego piksela, składające się z trzech pikseli nad nim oraz jednego po~lewej stronie, tak jak zostało to przedstawione na rysunku \ref{fig:ind_sasiedztwo}. 
 Indeksacji dokonuje się bezpośrednio na~obrazie wejściowym. 
@@ -170,8 +208,8 @@ Powyższy fakt jest główną przeszkodą w~łatwym wykonaniu takiego algorytmu 
 Bez~zapamiętywania całej ramki, w~przypadku sklejania etykiet, niemożliwy jest powrót do~wcześniej przetwarzanych pikseli. 
 Pomimo tego, możliwe jest obliczenie pewnych cech obiektów, takich jak: pole, współrzędne środka ciężkości, prostokąt otaczający. 
 W~pracy \cite{COG} podano sposób, w~jaki można tego dokonać. 
-Opiera się on~na~scaleniu nie samych wartości pikseli, ale~obliczanych na~bieżąco parametrów obiektu.\\ 
-Implementacja w~języku Verilog rodzi dodatkowo trudności związane z~określeniem przypadku istnienia tej~samej lub~różnych etykiet w~otoczeniu piksela. 
+Opiera się on~na~scaleniu nie samych wartości pikseli, ale~obliczanych na~bieżąco parametrów obiektu.
+Implementacja indeksacji w~języku Verilog rodzi trudności związane z~określeniem przypadku istnienia tej~samej lub~różnych etykiet w~otoczeniu piksela. 
 %Utrudnienie stanowi brak możliwości wykorzystania funkcji eliminującej zera z~wektora, czy znajdującej minimum i~maksimum. 
 %TODO niejasne
 O~ile~wykrycie przypadku $a$ jest łatwe, to~przypadki $b$~i~$c$ wymagały rozważenia kilku możliwości. 
@@ -187,9 +225,9 @@ Ten~etap algorytmu zaimplementowano jako maszynę stanów:
 	\item Stan 1 -- Iteracja po tablicy sklejeń i~uzupełnianie rzeczywistych wartości cech obiektów.
 	\item Stan 2 -- Uporządkowanie tablic z~wyznaczonymi parametrami.
 	\item Stan 3 -- Obliczenie pola prostokąta otaczającego dla każdego znalezionego obiektu. Wykorzystywana jest mnożarka o~latencji 3.
-	\item Stan 4 -- Szukanie obiektu spełniającego warunki minimalnej wielkości pola powierzchni oraz stosunku pola prostokąta otaczającego do pola obiektu. W~przypadku znalezienia takiego kształtu, na~wyjście trafiają współrzędne jego środka ciężkości. Jeśli żądany kształt nie zostanie znaleziony, informacja o~tym również pojawi się na~wyjściu.
+	\item Stan 4 -- Szukanie obiektu spełniającego warunki minimalnej wielkości pola powierzchni oraz stosunku pola prostokąta otaczającego do pola obiektu.
 \end{itemize}
-Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_schemat}.
+Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_schemat}.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{ind_schemat.jpg}
@@ -205,10 +243,18 @@ Zarezerwowanie miejsca dla 30~obiektów nie~przekroczyło możliwości układu Z
 Badania pokazały, że~jest to wystarczająca liczba etykiet do~sprawnego działania toru wizyjnego i~ostatecznie zaimplementowano moduł w~tej wersji.\par
 %TODO 1. Zostało to zaimplementowane ?
 %TODO 2. Skoro indeksacja to po co wcześniejszy środek ciężkości (usunięty środek ciężkości)
-
-
+\subsection{Wyznaczane informacje o detekcji}
+\label{sec:informacje_o_detekcji}
+Wyznaczanymi informacjami o~detekcji, koniecznymi do~realizacji algorytmu sterowania, są:
+\begin{itemize}
+	\item wartość bezwzględna uchybów regulacji w~obu osiach, rozumiana jako odległość środka obrazu od~centrum prostokąta otaczającego,
+	\item ćwiartka układu współrzędnych, w~której znajduje się znacznik,
+	\item wiadomość o~znalezieniu znacznika.
+\end{itemize}
+Dodatkowo, w~celu śledzenia działania systemu, istnieje możliwość podglądu przetworzonego obrazu na~monitorze, podłączonym poprzez HDMI. Możliwy jest podgląd kolejnych etapów przetwarzania; wybór etapu następuje przez zmianę ustawień przełączników na~płytce.\\
 \subsection{Integracja płytki z autopilotem}
 \label{sec:integracja_plytka_autopilot}
-
-%TODO Znacznik. Potem przestrzenie barw i reszta
+W~układzie ZYBO~Z7-20 wykorzystano interfejs UART0. Wyprowadzono piny TX i~RX z~systemu procesorowego i~podłączono je do~portu Pmod~JB. Po~stronie sterownika Pixhawk użyto portu TELEM~2. Szybkość transmisji to~115200~bodów.\\
+Wysyłanie komend opiera się na~wykorzystaniu gotowych funkcji dostępnych w~sieci \cite{github_mavlink}. Przygotowują one daną wiadomość zgodnie z~wymaganiami protokołu MAVLink. Następnie wywoływane są funkcje wysyłające przygotowaną tablicę bajtów przez odpowiedni UART. W~projekcie wykorzystano stworzone przy wykonywaniu pracy \cite{mgr} funkcje opakowujące kolejne etapy przetwarzania komend.
+%TODO Znacznik. Potem przestrzenie barw i reszta(wykonane w testach)
 %-------------------------------------------------------------------------

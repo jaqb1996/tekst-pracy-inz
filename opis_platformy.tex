@@ -81,8 +81,31 @@ Konfiguracja sterownika jest możliwa przy użyciu programu Mission Planner. Jes
 	\item monitorowanie stanu sterownika (uzbrojenie silników, orientacja statku powietrznego),
 	\item planowanie, zapisywanie i~wgrywanie planów autonomicznych misji statku powietrznego,
 	\item pobieranie i~analizowanie dzienników misji.
+\end{itemize} 
+Po~instalacji oprogramowania ArduPilot sterownik umożliwia pracę w~różnych trybach. Dostępne są~23 wbudowane tryby, z~czego 5 jest rekomendowanych \cite{pixhawk_modes}. Istnieją tryby wspierające różne poziomy i~typy stabilizacji, a~zadania wykonywane przez autopilota w~każdym z~nich nieco się różnią. Poniżej przedstawiono podsumowanie najważniejszych cech rekomendowanych trybów:
+\begin{itemize}
+	\item Stablize -- pozwala operatorowi na~manualne sterowanie dronem, stabilizując jego pochylenie i~przechylenie,
+	\item Alt Hold -- kontroluje ustawienie mocy silników w~celu utrzymania wysokości
+	\item Loiter --  utrzymuje aktualną pozycję drona, jeśli operator nie wydaje żadnych poleceń,
+	\item Return-To-Launch --  dron unosi się na~domyślną wysokość 15~metrów, a~następnie powraca do~miejsca, w~którym został uzbrojony. Tryb ten wymaga sygnału GPS,
+	\item Auto --  dron realizuje zaprogramowaną wcześniej misję, poruszając się po~zdefiniowanych punktach. Wymagany jest sygnał GPS.
 \end{itemize}
-Sterownik umożliwia pracę w~różnych trybach.
-W~zależności od~aktywnego tybu, zadania wykonywane przez autopilota nieco się różnią. Z~punktu widzenia autonomicznego lotu, najbardziej interesującym trybem jest tryb GUIDED. Umożliwia on~bowiem wydawanie dronowi poleceń. Zazwyczaj komunikacja przebiega drogą radiową ze~stacją naziemną (przy użyciu programu Mission Planner), lecz wysyłanie komend przez urządzenie umieszczone na~platformie drona również jest możliwe.
-
-Kwestię połączenia autopilota i układu ZYBO Z7-20 opisano w sekcji \ref{sec:integracja_plytka_autopilot}.
+Z~punktu widzenia autonomicznego lądowania, odpowiednim trybem do~sterowania dronem jest tryb Guided. Umożliwia on~bowiem wysyłanie dronowi komend dotyczących zmiany szybkości i~lotu w~określonym kierunku. Zazwyczaj wykorzystywana jest komunikacja ze~stacją naziemną drogą radiową (przy użyciu programu Mission Planner), lecz wysyłanie komend przez urządzenie umieszczone na~platformie drona również jest możliwe.\\
+Komunikacja taka przebiega z~wykorzystaniem protokołu MAVlink (ang. \textit{Micro Air Vehicle Link}). Umożliwia on~przesyłanie danych i~komend z~wykorzystaniem prawie każdej transmisji szeregowej \cite{mavlink_basics}. W~tabeli \ref{tab:frame} przedstawiono opis ramki protokołu.
+\begin{table}[]
+	\caption{Opis ramki protokołu MAVLink}
+	\label{tab:frame}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Indeks bajtu & Zawartość                                                                         & Wartość        & Uwagi                                                                                                                            \\ \hline
+		0            & Znak początku pakietu                                                             & 0xFE           & Wskazuje na początek nowego pakietu.                                                                                             \\ \hline
+		1            & Długość danych                                                                    & n (0-255)      & Informuje o ilości przesyłanych danych.                                                                                          \\ \hline
+		2            & Sekwencja pakietu                                                                 & 0-255          & \begin{tabular}[c]{@{}l@{}}Wartość zwiększana przy każdej transmisji.\\ Umożliwia detekcję utraty pakietów.\end{tabular}         \\ \hline
+		3            & ID systemu                                                                        & 1-255          & \begin{tabular}[c]{@{}l@{}}ID systemu wysyłającego. Umożliwia odróżnienie\\ różnych sieci.\end{tabular}                          \\ \hline
+		4            & ID komponentu                                                                     & 0-255          & \begin{tabular}[c]{@{}l@{}}ID komponentu wysyłającego. Umożliwia \\ odróżnienie różnych komponentów w jednej sieci.\end{tabular} \\ \hline
+		5            & ID wiadomości                                                                     & 0-255          & \begin{tabular}[c]{@{}l@{}}Oznacza typ wiadomości i umożliwia jej\\ zdekodowanie.\end{tabular}                                   \\ \hline
+		6--n+6      & Dane                                                                              & (0-255) bajtów & Zawartość wiadomości. Zależy od jej ID.                                                                                          \\ \hline
+		n+7--n+8    & \begin{tabular}[c]{@{}l@{}}Suma kontrolna\\ (młodszy i starszy bajt)\end{tabular} & \multicolumn{2}{l|}{Umożliwia wykrycie błędów transmisji}                                                                                         \\ \hline
+	\end{tabular}
+\end{table}
+\\Kwestię połączenia autopilota i układu ZYBO~Z7-20 opisano w sekcji \ref{sec:integracja_plytka_autopilot}.

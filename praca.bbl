@@ -281,6 +281,16 @@
     \field{year}{2017}
   \endentry
 
+  \entry{pixhawk_modes}{misc}{}
+  \field{howpublished}{\url{https://ardupilot.org/copter/docs/flight-modes.html}}
+    \field{note}{Dostęp: 2020-01-18}
+  \endentry
+
+  \entry{mavlink_basics}{misc}{}
+  \field{howpublished}{\url{https://ardupilot.org/dev/docs/mavlink-basics.html}}
+    \field{note}{Dostęp: 2020-01-21}
+  \endentry
+
   \entry{xilffs}{misc}{}
     \field{howpublished}{\url{http://elm-chan.org/fsw/ff/00index_e.html}}
     \field{note}{Dostęp: 2019-11-03}
@@ -326,6 +336,21 @@
   Calculation on FPGA}
     \field{month}{01}
     \field{year}{2011}
+  \endentry
+
+  \entry{github_mavlink}{misc}{}
+  \field{howpublished}{\url{https://github.com/mavlink/c_library_v1/tree/master/common}}
+    \field{note}{Dostęp: 2020-01-22}
+  \endentry
+
+  \entry{obrazek_rgb}{misc}{}
+  \field{howpublished}{\url{http://www.algorytm.org/modele-barw/model-rgb.html}}
+    \field{note}{Dostęp: 2020-01-20}
+  \endentry
+
+  \entry{obrazek_ycbcr}{misc}{}
+    \field{howpublished}{\url{https://www.youtube.com/watch?v=3dET-EoIMM8}}
+    \field{note}{Dostęp: 2020-01-20}
   \endentry
 \enddatalist
 \endinput
