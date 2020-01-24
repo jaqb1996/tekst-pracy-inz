@@ -1,5 +1,69 @@
-[0] Config.pm:302> INFO - This is Biber 2.9
-[0] Config.pm:305> INFO - Logfile is 'praca.blg'
-[16] biber:313> INFO - === Fri Jan 17, 2020, 16:46:29
-[90] Utils.pm:185> ERROR - Cannot find control file 'praca.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
-[90] Biber.pm:114> INFO - ERRORS: 1
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: praca.aux
+The style file: biblatex.bst
+A level-1 auxiliary file: wprowadzenie.aux
+A level-1 auxiliary file: metody.aux
+A level-1 auxiliary file: opis_implementacji.aux
+A level-1 auxiliary file: testy.aux
+A level-1 auxiliary file: podsumowanie.aux
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: praca-blx.bib
+Database file #2: bibliografia.bib
+Biblatex version: 3.8
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 10 entries,
+            6268 wiz_defined-function locations,
+            1230 strings with 9782 characters,
+and the built_in function-call counts, 40890 in all, are:
+= -- 2656
+> -- 834
+< -- 261
++ -- 959
+- -- 264
+* -- 2484
+:= -- 3775
+add.period$ -- 0
+call.type$ -- 10
+change.case$ -- 162
+chr.to.int$ -- 38
+cite$ -- 18
+duplicate$ -- 4613
+empty$ -- 3977
+format.name$ -- 443
+if$ -- 8662
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 0
+newline$ -- 248
+num.names$ -- 409
+pop$ -- 3079
+preamble$ -- 1
+purify$ -- 201
+quote$ -- 0
+skip$ -- 1569
+stack$ -- 0
+substring$ -- 3833
+swap$ -- 1119
+text.length$ -- 187
+text.prefix$ -- 4
+top$ -- 1
+type$ -- 326
+warning$ -- 0
+while$ -- 488
+width$ -- 0
+write$ -- 239

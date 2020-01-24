@@ -23,3 +23,11 @@
 \contentsline {section}{\numberline {4.4}Test regulacji po\IeC {\l }o\IeC {\.z}enia drona}{21}
 \contentsline {section}{\numberline {4.5}L\IeC {\k a}dowanie na nieruchomym l\IeC {\k a}dowisku}{21}
 \contentsline {chapter}{\numberline {5}Podsumowanie i~wskazanie kierunk\IeC {\'o}w dalszych prac}{29}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}
+\babel@toc {polish}{}

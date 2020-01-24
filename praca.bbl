@@ -1,0 +1,257 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{Rings}{book}{}
+    \name{author}{1}{}{%
+      {{hash=iiSL}{%
+         prefix={i},
+         prefixi={i},
+         family={inni},
+         familyi={i\bibinitperiod},
+         given={Sven\bibnamedelima Lange},
+         giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{iSLi1}
+    \strng{fullhash}{iSLi1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{A vision based onboard approach for landing and position
+  control of an autonomous multirotor UAV in GPS-denied environments}
+    \field{langid}{polish}
+    \list{location}{1}{%
+      {Munich, Germany}%
+    }
+    \field{year}{2009}
+  \endentry
+
+  \entry{H_median}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FY}{%
+         family={Fan},
+         familyi={F\bibinitperiod},
+         given={Yang},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Haiqing},
+         familyi={H\bibinitperiod},
+         given={Shi},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HW}{%
+         family={Hong},
+         familyi={H\bibinitperiod},
+         given={Wang},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{FYHSHW1}
+    \strng{fullhash}{FYHSHW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2008 International Conference on Computer Science and
+  Software Engineering}
+    \field{number}{INSPEC Accession Number: 10426910}
+    \field{pages}{994}
+    \field{title}{A Vision-Based Algorithm for Landing Unmanned Aerial
+  Vehicles}
+    \list{location}{1}{%
+      {Hubei, China}%
+    }
+    \field{year}{2008}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{FPGA}{book}{}
+    \name{author}{1}{}{%
+      {{hash=iiAP}{%
+         prefix={i},
+         prefixi={i},
+         family={inni},
+         familyi={i\bibinitperiod},
+         given={A.\bibnamedelima Price},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{iAPi1}
+    \strng{fullhash}{iAPi1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Real time object detection for an unmanned aerial vehicle
+  using an FPGA based vision system}
+    \field{langid}{polish}
+    \list{location}{1}{%
+      {Hubei, China}%
+    }
+    \field{year}{2008}
+  \endentry
+
+  \entry{Falanga}{book}{}
+    \name{author}{1}{}{%
+      {{hash=iiDF}{%
+         prefix={i},
+         prefixi={i},
+         family={inni},
+         familyi={i\bibinitperiod},
+         given={Davide\bibnamedelima Falanga},
+         giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{iDFi1}
+    \strng{fullhash}{iDFi1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Vision-based Autonomous Quadrotor Landing on a Moving
+  Platform}
+    \field{langid}{polish}
+    \list{location}{1}{%
+      {Shanghai, China}%
+    }
+    \field{year}{2017}
+  \endentry
+
+  \entry{H}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FY}{%
+         family={Fan},
+         familyi={F\bibinitperiod},
+         given={Yang},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=HS}{%
+         family={Haiqing},
+         familyi={H\bibinitperiod},
+         given={Shi},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HW}{%
+         family={Hong},
+         familyi={H\bibinitperiod},
+         given={Wang},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{FYHSHW1}
+    \strng{fullhash}{FYHSHW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2008 International Conference on Computer Science and
+  Software Engineering}
+    \field{number}{INSPEC Accession Number: 10426910}
+    \field{pages}{995}
+    \field{title}{A Vision-Based Algorithm for Landing Unmanned Aerial
+  Vehicles}
+    \list{location}{1}{%
+      {Hubei, China}%
+    }
+    \field{year}{2008}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{Sudevan}{book}{}
+    \name{author}{1}{}{%
+      {{hash=iiVS}{%
+         prefix={i},
+         prefixi={i},
+         family={inni},
+         familyi={i\bibinitperiod},
+         given={Vidya\bibnamedelima Sudevan},
+         giveni={V\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{iVSi1}
+    \strng{fullhash}{iVSi1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Vision based autonomous landing of an Unmanned Aerial Vehicle
+  on a stationary target}
+    \field{langid}{polish}
+    \list{location}{1}{%
+      {Jeju, South Korea}%
+    }
+    \field{year}{2017}
+  \endentry
+
+  \entry{projektPCAM}{misc}{}
+  \field{howpublished}{\url{https://reference.digilentinc.com/learn/programmable-logic/tutorials/zybo-z7-pcam-5c-demo/start}}
+    \field{note}{Dostęp: 2019-11-03}
+  \endentry
+
+  \entry{xilffs}{misc}{}
+    \field{howpublished}{\url{http://elm-chan.org/fsw/ff/00index_e.html}}
+    \field{note}{Dostęp: 2019-11-03}
+  \endentry
+
+  \entry{COG}{article}{}
+    \name{author}{4}{}{%
+      {{hash=MA}{%
+         family={Malik},
+         familyi={M\bibinitperiod},
+         given={Abdul},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=TB}{%
+         family={Thörnberg},
+         familyi={T\bibinitperiod},
+         given={Benny},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=CX}{%
+         family={Cheng},
+         familyi={C\bibinitperiod},
+         given={Xin},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=LN}{%
+         family={Lawal},
+         familyi={L\bibinitperiod},
+         given={Najeem},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MA+1}
+    \strng{fullhash}{MATBCXLN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Real-time Component Labelling with Centre of Gravity
+  Calculation on FPGA}
+    \field{month}{01}
+    \field{year}{2011}
+  \endentry
+\enddatalist
+\endinput
