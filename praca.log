@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.16)  24 JAN 2020 13:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.16)  26 JAN 2020 23:23
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -1254,15 +1254,11 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 Rozdzia\l  1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
-
-Underfull \vbox (badness 2735) has occurred while \output is active []
-
- [7
+[7
 
 
 
-])
-[8]
+]) [8]
 \openout2 = `metody.aux'.
 
  (metody.tex
@@ -1434,12 +1430,7 @@ File: ind_schemat.jpg Graphic file (type jpg)
 <use ind_schemat.jpg>
 Package pdftex.def Info: ind_schemat.jpg  used on input line 233.
 (pdftex.def)             Requested size: 455.24411pt x 221.05942pt.
- [27 <./ind_schemat.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 254--255
-
- []
-
-) [28]
+ [27 <./ind_schemat.jpg>]) [28]
 \openout2 = `testy.aux'.
 
  (testy.tex
@@ -1533,6 +1524,11 @@ acznik.jpg>]
 
 ]
 Rozdzia\l  6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--11
+
+ []
+
 ) [35] [36
 
 
@@ -1543,10 +1539,10 @@ Package logreq Info: Writing requests to 'praca.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28983 strings out of 492450
- 542676 string characters out of 3132100
- 921217 words of memory out of 3000000
- 32948 multiletter control sequences out of 15000+200000
+ 28982 strings out of 492450
+ 542634 string characters out of 3132100
+ 920217 words of memory out of 3000000
+ 32947 multiletter control sequences out of 15000+200000
  611290 words of font info for 108 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,71p,1459b,2714s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1561,7 +1557,7 @@ vro8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/ProgramF
 iles/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type
 1/urw/times/utmr8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/urw/times/utmri8a.pf
 b>
-Output written on praca.pdf (38 pages, 2110974 bytes).
+Output written on praca.pdf (38 pages, 2111776 bytes).
 PDF statistics:
  204 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

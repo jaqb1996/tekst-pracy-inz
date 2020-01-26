@@ -239,19 +239,18 @@ Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_s
 Główną trudnością w~implementacji opisanego algorytmu w~układzie FPGA jest stosunkowo duże zapotrzebowanie na~zasoby sprzętowe. 
 Należy zarezerwować miejsce na~cechy każdego potencjalnego obiektu. 
 Ogranicza to~liczbę możliwych etykiet. 
-Zarezerwowanie miejsca dla 30~obiektów nie~przekroczyło możliwości układu ZYBO. 
-Badania pokazały, że~jest to wystarczająca liczba etykiet do~sprawnego działania toru wizyjnego i~ostatecznie zaimplementowano moduł w~tej wersji.\par
+Zasoby części rekonfigurowalnej układu ZYBO~Z7-20 pozwoliły na~zarezerwowanie miejsca dla~30~etykiet. Przy pewnej orientacji znacznika nie jest to~niestety wystarczająca liczba etykiet.
 %TODO 1. Zostało to zaimplementowane ?
 %TODO 2. Skoro indeksacja to po co wcześniejszy środek ciężkości (usunięty środek ciężkości)
-\subsection{Wyznaczane informacje o detekcji}
-\label{sec:informacje_o_detekcji}
+\subsection{Algorytm sterowania}
+\label{sec:algorytm_sterowania}
 Wyznaczanymi informacjami o~detekcji, koniecznymi do~realizacji algorytmu sterowania, są:
 \begin{itemize}
-	\item wartość bezwzględna uchybów regulacji w~obu osiach, rozumiana jako odległość środka obrazu od~centrum prostokąta otaczającego,
-	\item ćwiartka układu współrzędnych, w~której znajduje się znacznik,
+	\item uchyb regulacji w~obu osiach, rozumiany jako odległość środka obrazu od~centrum prostokąta otaczającego,
 	\item wiadomość o~znalezieniu znacznika.
 \end{itemize}
-Dodatkowo, w~celu śledzenia działania systemu, istnieje możliwość podglądu przetworzonego obrazu na~monitorze, podłączonym poprzez HDMI. Możliwy jest podgląd kolejnych etapów przetwarzania; wybór etapu następuje przez zmianę ustawień przełączników na~płytce.\\
+Dodatkowo, w~celu śledzenia działania systemu, istnieje możliwość podglądu przetworzonego obrazu na~monitorze, podłączonym poprzez port HDMI. Możliwy jest podgląd kolejnych etapów przetwarzania; wybór etapu następuje przez zmianę ustawień przełączników na~płytce.\\
+Algorytm sterowania bazuje na~dyskretnym regulatorze PID, zrealizowanym w~systemie procesorowym układu. Regulacji podlegają składowa x i~y wektora położenia drona względem znacznika. Jeśli znacznik zostanie utracony z~pola widzenia kamery na~czas 1~sekundy, dron przechodzi w~tryb unoszenia się nad ziemią.  
 \subsection{Integracja płytki z autopilotem}
 \label{sec:integracja_plytka_autopilot}
 W~układzie ZYBO~Z7-20 wykorzystano interfejs UART0. Wyprowadzono piny TX i~RX z~systemu procesorowego i~podłączono je do~portu Pmod~JB. Po~stronie sterownika Pixhawk użyto portu TELEM~2. Szybkość transmisji to~115200~bodów.\\

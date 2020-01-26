@@ -10,22 +10,29 @@ Ważnym kierunkiem rozwoju bezzałogowych statków powietrznych jest ich autonom
 \section{Cele pracy}
 \label{sec:celePracy}
 
-%TODO Parafraza tego co wkleiłem /ale trzeba to przeredagować !!!/:
+\iffalse
 W ramach pracy należy stworzyć sprzętowo-programowy podsystem wizyjny, który będzie komponentem systemu autonomicznego lądowanie drona. W pierwszym kroku należy przeprowadzić analizę literatury naukowej związanej z tematem - głównie dotyczącej detekcji i śledzenia oznaczonego lądowiska. 
-W
-drugim etapie należy wykonać model programowy algorytmu (Matlab, Python, C++, OpenCV), który pozwala na wykrycie i śledzenie lądowiska. Dodatkowo należy wybrać sposób jego oznaczenia. Zakłada się, że dron będzie wyposażony w kamerę o osi optycznej skierowanej prostopadle do podłoża, a lądowisko w dalszych etapach projektu będzie ruchome (umieszczone na pojeździe) - należy to uwzględnić przy rejestracji sekwencji testowych. 
+W drugim etapie należy wykonać model programowy algorytmu (Matlab, Python, C++, OpenCV), który pozwala na wykrycie i śledzenie lądowiska. Dodatkowo należy wybrać sposób jego oznaczenia. Zakłada się, że dron będzie wyposażony w kamerę o osi optycznej skierowanej prostopadle do podłoża, a lądowisko w dalszych etapach projektu będzie ruchome (umieszczone na pojeździe) - należy to uwzględnić przy rejestracji sekwencji testowych. 
 
 Ponadto należy sprawdzić, czy tylko na podstawie systemu wizyjnego możliwe jest określenie wysokości drona nad lądowiskiem - z dokładnością wystarczającą do przeprowadzenia procedury lądowania.
 
 W trzecim etapie należy wspomniany system podzielić na część sprzętową i programową oraz zaimplementować w układzie Zynq SoC na wybranej karcie ewaluacyjnej. Wejściem powinien być obraz z kamery PCAM, a wyjściem sterowanie dla drona - położenie względem lądowiska oraz wysokość.
 Ostatnim etapem będzie próba integracji wykonanego podsystemu ze sterownikiem drona i wykonanie lądowania w sposób autonomiczny. W przypadku niesatysfakcjonującego pomiaru wysokości metodą wizyjną, możliwe jest użycie specjalistycznego czujnika laserowego. Kluczowym zagadnieniem będzie takie sterowanie dronem, aby lądowanie odbyło się bezpiecznie i w wyznaczonym miejscu, w szczególności w przypadku lądowiska zamontowanego na ruchomym pojeździe.
+\fi
 
+%TODO Parafraza tego co wkleiłem /ale trzeba to przeredagować !!!/:
 
+Celem pracy było stworzenie sprzętowo-programowego systemu wizyjnego, będącego komponentem systemu autonomicznego lądowania drona. Pierwszym krokiem prac było przeprowadzenie analizy literatury naukowej - głównie dotyczącej detekcji i~śledzenia oznaczonego lądowiska. \\
+W~drugim etapie należało wykonać model programowy algorytmu, który pozwala na~wykrycie i~podążanie w~kierunku lądowiska. Wybór jego oznaczenia był również częścią prac. Założeniem było wyposażenie drona w~kamerę o~osi optycznej skierowanej prostopadle do~podłoża i~wykonanie lądowania na~statycznej platformie. Należało również ocenić możliwość wykonania lądowania na~ruchomym celu.\\
+Ponadto należało przygotować komponenty ułatwiające bezpieczne wykonanie misji - laserowy czujnik wysokości oraz bezprzewodową komunikację ze~stacją naziemną. \\
+W~trzecim etapie należało wspomniany system podzielić na część sprzętową i~programową oraz zaimplementować w~układzie Zynq~SoC na~karcie ZYBO~Z7-20. Wejściem powinieć być obraz z~kamery PCAM, a~wyjściem sterowanie dla~drona - regulacja położenia względem lądowiska oraz wysokości.\\
+Ostatnim etapem prac była próba integracji wykonanego podsystemu ze~sterownikiem drona i~wykonania lądowania w~sposób autonomiczny. Testy należało przeprowadzić przy zachowaniu zasad bezpieczeństwa - kluczowe było upewnienie się co~do~niezawodności działania systemu.
 
 
 %---------------------------------------------------------------------------
 
 \section{Zawartość pracy}
 \label{sec:zawartoscPracy}
-
 %TODO widomo
+W~rozdziale drugim znajduje się przegląd prac naukowych dotyczących problematyki autonomicznego lądowania drona. Rozdział trzeci opisuje sprzęt wykorzystany podczas realizacji projektu. Część trzecia przedstawia opis modelu programowego systemu wizyjnego wraz z~uzasadnieniem wyboru poszczególnych modułów. Następnie skoncentrowano się na~opisie implementacji całego systemu, począwszy od~odbioru sygnału wizyjnego, a~skończywszy na~wysyłaniu sygnałów sterujących dronem. Rozdział czwarty poświęcono testom: wyboru znacznika~znajdującego się na~lądowisku oraz regulacji położenia drona. W~ostatnim rozdziale znajduje się podsumowanie prac oraz przedstawienie możliwości rozwoju projektu.
+

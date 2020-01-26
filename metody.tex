@@ -84,9 +84,9 @@ Zaletą takiego znacznika jest możliwość dołożenia kolejnych, większych pi
 % Implementacja toru wizyjnego w systemie potokowym na~platformie sprzętowej rodzi dodatkowe trudności. Bez dołączenia dodatkowej pamięci RAM niemożliwe są działania na~całej ramce obrazu. Jest to uciążliwe przy wykonywaniu operacji kontekstowych, wymagających znajomości otoczenia piksela. Problem rozwiązano w \cite{FPGA}, gdzie przedstawiono koncepcję realizacji takich operacji przy użyciu tablicy 3x3 i~bufora.\par 
 %TODO czego dotyczyła dokładnie ta pracy, bo wydaje się zbędna (na tym etapie)
 
-W procesie autonomicznego lądowania drona, na~podstawie wyznaczonej odległości od celu, do UAV wysyłane są sygnały sterujące. 
-W~pracy \cite{Sudevan} wykorzystano trzy regulatory PID, do kontroli prędkości drona. %TODO dlaczego trzy (wykonane)
-Dzięki nim równocześnie minimalizowana jest każda z~trzech składowych wektora położenia. 
+W procesie autonomicznego lądowania drona, na~podstawie wyznaczonej odległości od celu, do~bezzałogowego statku powietrznego wysyłane są sygnały sterujące. 
+W~pracy \cite{Sudevan} wykorzystano trzy regulatory PID, do~kontroli prędkości drona. 
+Dzięki nim równocześnie minimalizowana jest każda z~trzech składowych wektora położenia. %TODO dlaczego trzy (wykonane) 
 W~pracy \cite{Rings} zwrócono uwagę na błędy spowodowane pochyleniem i~przechyleniem drona. 
 Przed wysłaniem sygnału do regulatora wykonywana jest korekta uchybu na~podstawie pomiaru kąta pochylenia i~przechylenia. Krok ten był potrzebny z~uwagi na~sztywne umieszczenie kamery na~ramie drona. \par %TODO jakieś szczegóły (w pracy nie ma niestety wzorów)
 
