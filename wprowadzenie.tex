@@ -3,29 +3,66 @@
 
 %Ogolny opis znaczenia dronow, gdzie może się przydać takie lądowanie oraz akapit o FPGA, czy też ogólnie embedded - dlaczego to jest ważne.
 %https://spectrum.ieee.org/aerospace/aviation/us-commercial-drone-deliveries-will-finally-be-a-thing-in-2020
-Ostatnie lata pokazały wszechstronność i~przydatność dronów w~wielu dziadzinach przemysłu. Według raportu Skyward z~2018 roku, 1~na~10 przebadanych firm w~Stanach~Zjednoczonych używała bezzałogowych statków powietrznych. Aż~88~procent z~nich odczuła pozytywne strony rozpoczęcia korzystania z~nich w~przeciągu roku lub krócej. Do~najczęściej wymienianych zalet dronów należy zdobywanie większej ilości informacji, bardziej efektywna praca oraz oszczędzanie czasu. Udział dronów w~rynku będzie się stale powiększał, gdyż 3~na~4 przedsiębiorców planuje zwiększać wydatki przeznaczane na~operacje wykonywane przez drony \cite{skyward}. O~planach częstszego stosowania dronów może również świadczyć fakt wprowadzania regulacji prawnych - konieczności wyposażania dronów w~nadajnik numeru identyfikacyjnego \cite{drone_article}. Odpowiednia regulacja zwiększy bezpieczeństwo lotów i~może otworzyć drogę do~masowego wykorzystania dronów.\par
-Ważnym kierunkiem rozwoju bezzałogowych statków powietrznych jest ich autonomizacja, czyli przystosowanie do~lotów bez nadzoru człowieka. Oznacza to~wyposażenie dronów w~systemy monitorowania otoczenia i~implementację algorytmów sterowania działających w~oparciu o~zebrane informacje. Kluczową fazą autonomicznego lotu drona jest lądowanie. Bliskość ziemi wymaga dokładnego sterowania ruchem statku powietrznego. W~przypadku, gdy dostarczane dane pochodzą z~systemu wizyjnego, decydujące jest szybkie przetwarzanie obrazów. Podejście sekwencyjne, oparte o~mikrokontrolery i~procesory sygnałowe, często okazuje się~nieskuteczne. Przekroczone zostają możliwości obliczeniowe takich układów, uniemożliwiając dodawanie kolejnych funkcjonalności związanych z~autonomizacją. Układy FPGA (ang. \textit{Field Programmagle Gate Arrays}) są~preferowaną platformą obliczeniową do~realizacji zadań przetwarzania strumienia wideo. Oferują możliwość zrównoleglenia obliczeń oraz niewielkie opóźnienie przetwarzania. 
+
+%TODO2 W sumie OK, choć proszę jeszcze raz przeczytać i dopisać kilka aplikacji.
+
+W~ostatnich latach zaprezentowano szereg przykładów, które pokazują wszechstronność i~przydatność dronów w~wielu dziadzinach przemysłu. 
+Według raportu Skyward z~2018 roku, 1~na~10 przebadanych firm w~Stanach~Zjednoczonych używała bezzałogowych statków powietrznych. 
+Aż~88~procent z~nich odczuła pozytywne strony rozpoczęcia korzystania z~nich w~przeciągu roku lub krócej. 
+Do~najczęściej wymienianych zalet dronów należy zdobywanie większej ilości informacji, bardziej efektywna praca oraz oszczędność czasu. 
+Udział dronów w~rynku będzie się stale powiększał, gdyż 3~na~4 przedsiębiorców planuje zwiększać wydatki przeznaczane na~operacje wykonywane przez drony \cite{skyward}. 
+O~wzroście zainteresowania dronami może również pośrednio świadczyć fakt wprowadzania nowych regulacji prawnych -- konieczności wyposażania dronów w~nadajnik numeru identyfikacyjnego \cite{drone_article}. 
+Zwiększa to bezpieczeństwo lotów i~może otworzyć drogę do~masowego wykorzystania tej technologii.\par
+
+Ważnym kierunkiem rozwoju bezzałogowych statków powietrznych jest ich autonomizacja, czyli przystosowanie do~lotów bez nadzoru człowieka. 
+Wymaga to~wyposażenia dronów w~systemy monitorowania otoczenia oraz odpowiednie algorytmy sterowania.
+Kluczową fazą autonomicznego lotu drona jest lądowanie. 
+Bliskość ziemi wymaga dokładnego i~szybkiego sterowania ruchem statku powietrznego.
+W~wielu przypadkach podstawowym czujnikiem jest system wizyjny.
+Szybkie i~efektywne energetycznie przetwarzanie strumienia obrazów stanowi duże wyzwanie.
+Jedną z~możliwych do zastosowania platform obliczeniowych, która spełnia wspomniane wymagania, są reprogramowalne układy heterogeniczne np. Zynq SoC (ang. \textit{System on Chip}).
+
 %---------------------------------------------------------------------------
 
 \section{Cele pracy}
 \label{sec:celePracy}
 
-%TODO Parafraza tego co wkleiłem /ale trzeba to przeredagować !!!/:
+\iffalse
 W ramach pracy należy stworzyć sprzętowo-programowy podsystem wizyjny, który będzie komponentem systemu autonomicznego lądowanie drona. W pierwszym kroku należy przeprowadzić analizę literatury naukowej związanej z tematem - głównie dotyczącej detekcji i śledzenia oznaczonego lądowiska. 
-W
-drugim etapie należy wykonać model programowy algorytmu (Matlab, Python, C++, OpenCV), który pozwala na wykrycie i śledzenie lądowiska. Dodatkowo należy wybrać sposób jego oznaczenia. Zakłada się, że dron będzie wyposażony w kamerę o osi optycznej skierowanej prostopadle do podłoża, a lądowisko w dalszych etapach projektu będzie ruchome (umieszczone na pojeździe) - należy to uwzględnić przy rejestracji sekwencji testowych. 
+W drugim etapie należy wykonać model programowy algorytmu (Matlab, Python, C++, OpenCV), który pozwala na wykrycie i śledzenie lądowiska. Dodatkowo należy wybrać sposób jego oznaczenia. Zakłada się, że dron będzie wyposażony w kamerę o osi optycznej skierowanej prostopadle do podłoża, a lądowisko w dalszych etapach projektu będzie ruchome (umieszczone na pojeździe) - należy to uwzględnić przy rejestracji sekwencji testowych. 
 
 Ponadto należy sprawdzić, czy tylko na podstawie systemu wizyjnego możliwe jest określenie wysokości drona nad lądowiskiem - z dokładnością wystarczającą do przeprowadzenia procedury lądowania.
 
 W trzecim etapie należy wspomniany system podzielić na część sprzętową i programową oraz zaimplementować w układzie Zynq SoC na wybranej karcie ewaluacyjnej. Wejściem powinien być obraz z kamery PCAM, a wyjściem sterowanie dla drona - położenie względem lądowiska oraz wysokość.
 Ostatnim etapem będzie próba integracji wykonanego podsystemu ze sterownikiem drona i wykonanie lądowania w sposób autonomiczny. W przypadku niesatysfakcjonującego pomiaru wysokości metodą wizyjną, możliwe jest użycie specjalistycznego czujnika laserowego. Kluczowym zagadnieniem będzie takie sterowanie dronem, aby lądowanie odbyło się bezpiecznie i w wyznaczonym miejscu, w szczególności w przypadku lądowiska zamontowanego na ruchomym pojeździe.
+\fi
 
+%TODO Parafraza tego co wkleiłem /ale trzeba to przeredagować !!!/:
 
+Celem pracy było stworzenie sprzętowo-programowego systemu wizyjnego, będącego komponentem systemu autonomicznego lądowania drona. 
+Pierwszym krokiem prac było przeprowadzenie analizy literatury naukowej -- głównie dotyczącej detekcji i~śledzenia oznaczonego lądowiska. 
+W~drugim etapie należało wykonać model programowy algorytmu, który pozwala na~wykrycie i~podążanie w~kierunku  lądowiska. 
+Wybór jego oznaczenia miejsca do lądowania był również częścią prac. 
+Założeniem było wyposażenie drona w~kamerę o~osi optycznej skierowanej prostopadle do~podłoża i~wykonanie lądowania na~statycznej platformie. 
+Należało również ocenić możliwość wykonania lądowania na~ruchomym celu.
+Ponadto należało przygotować komponenty ułatwiające bezpieczne wykonanie misji -- laserowy czujnik wysokości oraz bezprzewodową komunikację ze~stacją naziemną. 
+W~trzecim etapie należało wspomniany system podzielić na część sprzętową i~programową oraz zaimplementować w~układzie Zynq~SoC na~karcie ZYBO~Z7-20. 
+Wejściem powinien być obraz z~kamery PCAM oraz informacja z~wysokościomierza, a~wyjściem sterowanie dla~drona -- regulacja położenia względem lądowiska oraz wysokości.
+Ostatnim etapem prac była próba integracji wykonanego podsystemu ze~sterownikiem drona i~wykonania lądowania w~sposób autonomiczny. 
+Testy należało przeprowadzić przy zachowaniu zasad bezpieczeństwa -- kluczowe było upewnienie się co~do~niezawodności działania systemu.
 
+%TODO2 Na przyszłość. Używanie \\ jest bez sensu.
 
 %---------------------------------------------------------------------------
 
 \section{Zawartość pracy}
 \label{sec:zawartoscPracy}
+%TODO2 Na przyszłość - no po to są label i ref, aby używać.
+%TODO2 Poprawić opis po zmianach struktury
 
-%TODO widomo
+W~rozdziale drugim zamieszczono przegląd prac naukowych dotyczących problematyki autonomicznego lądowania drona. 
+Rozdział trzeci opisuje sprzęt wykorzystany podczas realizacji projektu. 
+Czwarta część pracy przedstawia opis stworzonego systemu: modelu programowego systemu wizyjnego wraz z~uzasadnieniem wyboru poszczególnych modułów oraz implementacji sprzętowo-programowej całego systemu, począwszy od~odbioru sygnału wizyjnego, a~skończywszy na~wysyłaniu sygnałów sterujących dronem. 
+Rozdział piąty poświęcono testom: wyboru znacznika~znajdującego się na~lądowisku, komunikacji z~autopilotem oraz ręcznego sterowania na~podstawie informacji z~systemu. 
+W~ostatnim rozdziale zamieszczono podsumowanie prac oraz przedstawiono możliwości rozwoju projektu.
+
