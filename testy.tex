@@ -167,12 +167,13 @@ Korzystając ze wzoru \eqref{eq:kat} otrzymano przybliżone wyniki, przedstawion
 
 %TODO Jakieś wnioski...
 \fi
-
-\section{Test regulacji położenia drona}
-\label{sec:test_regulacji_polozenia_drona}
---- Test będzie polegał na zadawaniu prędkości w x i y proporcjonalnej do liczby pikseli dzielącej środek obrazu od aktualnego położenia znacznika. 
-Celem będzie doprowadzenie do sytuacji stabilnego unoszenia drona nad znacznikiem. 
-Rejestrowanie uchybu w x i y i ich zapis na kartę SD pozwoli na sporządzenie wykresów tych wartości w czasie.
-
+\section{Test reakcji autopilota na zadawane komendy}
+\label{sec:test_autopilota}
+Test polegał na~wysyłaniu do~autopilota komend z~układu ZYBO~Z7-20. Podczas eksperymentu śmigła drona były zdjęte. Przebywając w~budynku, możliwe było wysłanie komendy uzbrojenia silników w~trybie Stabilize. Jak opisano w~sekcji \ref{sec:autopilot}, nie jest to jednak tryb pozwalający na~wysyłanie komend ruchu. Aby możliwe było kierowanie dronem, należało przeprowadzić eksperyment na~zewnątrz, w~celu utrzymania dostatecznie silnego sygnału GPS. Po~uaktywnieniu trybu Guided wysłano kolejno komendy uzbrojenia silników, startu i~lotu z~określoną prędkością. Silniki reagowały na~wysyłane rozkazy.\\
+Po~eksperymencie można było wysnuć wniosek o~poprawnej konfiguracji komunikacji pomiędzy układem ZYBO, a~sterownikiem Pixhawk.
+\section{Test sterowania}
+\label{sec:test_sterowania}
+Test ten polegał na ręcznym wykonywaniu komend pochodzących z systemu procesorowego. Zaplanowano 3 fazy lotu: wznoszenie na określoną wysokość, kierowanie drona w~stronę znacznika, lądowanie. Z~powodu niedokładności ręcznego sterowania dronem zrezygnowano z~zadawania prędkości wynikającej z~regulacji PID. Ograniczono się do wysyłania komend: ,,w górę'', ,,w lewo'', ,,do przodu'' itp. Postarano się, aby podłoże miało kolor niebieski, kontrastujący z~czerwoną barwą znacznika. Zdjęcie z~eksperymentu przedstawiono na~Rys. (TODO).\\
+Test wykazał prawidłowe działanie laserowego czujnika odległości. Poprawnie podawane były również komendy dotyczące zmiany pozycji drona. Na~uwagę zasługuje jednak dość mały kąt widzenia kamery PCAM~5C, zwłaszcza w~osi pionowej. Start musiał odbywać się dosyć blisko znacznika, aby po~uniesieniu się na~wysokość nieco poniżej metra wykryte zostało lądowisko.
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------

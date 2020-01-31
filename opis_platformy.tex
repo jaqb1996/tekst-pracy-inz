@@ -109,3 +109,13 @@ Komunikacja taka przebiega z~wykorzystaniem protokołu MAVLink (ang. \textit{Mic
 	\end{tabular}
 \end{table}
 \\Kwestię połączenia autopilota i układu ZYBO~Z7-20 opisano w sekcji \ref{sec:integracja_plytka_autopilot}.
+\section{Laserowy czujnik wysokości}
+\label{sec:laser}
+W~projekcie do~pomiaru wysokości wykorzystano urządzenie Garmin Lidar Lite v3. Jego główne parametry~to:
+\begin{itemize}
+	\item Napięcie zasilania -- 5 V,
+	\item Zasięg pomiaru -- 40 m,
+	\item Dokładność -- 2,5 cm (pomiar do 5 m), 
+	\item Wykorzystywana długość fali -- 905 nm,
+	\item Interfejsy -- I2C, PWM z~zewnętrznym wyzwalaniem pomiaru.
+\end{itemize}

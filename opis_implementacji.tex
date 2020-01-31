@@ -82,8 +82,12 @@ Producent na swojej stronie internetowej zapewnia projekt demonstracyjny połąc
 	\item 1920 x 1080, 30 fps.
 \end{itemize}
 Okazało się również, że dla rozdzielczości 1280 x 720 większy jest kąt widzenia kamery. Ze~względu na~powyższy fakt oraz przyspieszenie obliczeń, zdecydowano się na~najmniejszą dostępną rozdzielczość.\\
-Przeprowadzanie syntezy i~implementacji projektu możliwe było przy użyciu darmowego oprogramowania Vivado oraz SDK w wersji WebPack -- używano wersji~2018.2. \\
+Przeprowadzanie syntezy i~implementacji projektu możliwe było przy użyciu darmowego oprogramowania Vivado oraz SDK w~wersji WebPack -- używano wersji~2018.2. \\
 Pobrany projekt stanowił bazę do dalszych prac.
+\subsection{Podłączenie laserowego czujnika wysokości}
+\label{subsec:podlaczenie_lasera}
+Zdecydowano się na~wykorzystanie wyjścia PWM. W~tym trybie czujnik ustawia stan wysoki na~wyjściu przez czas proporcjonalny do~zmierzonej odległości. Stan wysoki trwa 10~\si{\micro\second} na~każdy zmierzony centymetr. Pin wyzwalania zwarto na~stałe do~masy, powodując ciągłe wykonywanie pomiaru. Wyjście PWM podłączono do~trzeciego pinu portu Pmod~JB układu ZYBO. Okazało się, że~możliwe jest działanie modułu przy zasilaniu bezpośrednio z~płytki, podającej 3,3~V.\\
+Moduł odczytujący wysokość zaimplementowany został jako maszyna stanów. Stan pierwszy to~oczekiwanie na~pojawienie się stanu wysokiego. Po~wykryciu zbocza narastającego następuje zerowanie rejestrów oraz przejście do~stanu drugiego. W~tym stanie liczony jest czas trwania stanu wysokiego. Wywoływanie procesu z~częstotliwością 1~MHz, czyli co~1~\si{\micro\second} pozwala na~łatwą konwersję zmierzonego czasu na~odległość. Odczytana wysokość jest następnie przesyłana do~procesora z~użyciem rejestrów~AXI.
 \subsection{Konwersja z przestrzeni barw RGB do YCbCr}
 \label{subsec:konwersja}
 Konwersję z przestrzeni barw RGB do YCbCr wykonano zgodnie ze wzorem \ref{eq:ycbcr}. 
@@ -231,7 +235,7 @@ Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_s
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{ind_schemat.jpg}
-	\caption{Schemat procesu przetwarzania informacji po~każdej ramce obrazu z przykładowymi danymi. Tablica sklejeń daje informację o~konieczności sklejenia etyket 1, 2, 3. Ponieważ przykład dotyczy lewego boku prostokąta, spośród liczb 15, 10, 20 (odpowiadającym etykietom 1, 2, 3) wybierana jest najmniejsza. Ostatni krok przetwarzania to~usunięcie środkowych zer z~wektora.}
+	\caption{Schemat procesu przetwarzania informacji po~każdej ramce obrazu przy zastosowaniu indeksacji z~przykładowymi danymi. Tablica sklejeń daje informację o~konieczności sklejenia etyket 1, 2, 3. Ponieważ przykład dotyczy lewego boku prostokąta, spośród liczb 15, 10, 20 (odpowiadającym etykietom 1, 2, 3) wybierana jest najmniejsza. Ostatni krok przetwarzania to~usunięcie środkowych zer z~wektora.}
 	\label{fig:ind_schemat}
 \end{figure}
 %TODO Schemat niejasny.(dodany opis)
@@ -239,18 +243,61 @@ Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_s
 Główną trudnością w~implementacji opisanego algorytmu w~układzie FPGA jest stosunkowo duże zapotrzebowanie na~zasoby sprzętowe. 
 Należy zarezerwować miejsce na~cechy każdego potencjalnego obiektu. 
 Ogranicza to~liczbę możliwych etykiet. 
-Zasoby części rekonfigurowalnej układu ZYBO~Z7-20 pozwoliły na~zarezerwowanie miejsca dla~30~etykiet. Przy pewnej orientacji znacznika nie jest to~niestety wystarczająca liczba etykiet.
+Zasoby części rekonfigurowalnej układu ZYBO~Z7-20 pozwoliły na~zarezerwowanie miejsca dla~30~etykiet. Przy pewnej orientacji znacznika nie jest to~niestety wystarczająca liczba etykiet. \\
+Aby możliwa była sprawna detekcja miejsca lądowania niezależnie od~orientacji markera, należało zmienić nieco koncepcję systemu. Innym podejściem było obliczanie środka ciężkości wszystkich białych pikseli. Zabiera to~możliwość klasyfikacji obiektów ze~względu na~kształt (pozostaje klasyfikacja po~kolorze) i~tym samym czyni system podatnym na~zakłócenia. Pojawienie się innych grup pikseli o~tym samym kolorze spowoduje przesunięcie środka ciężkości. Jednak w~warunkach testowych możliwe jest wypełnienie powierzchni kolorem silnie kontrastującym z~barwą znacznika. Z~tego powodu zaimplementowano moduł wyznaczający środek ciężkości i~podczas testów korzystano z~tego rozwiązania.
 %TODO 1. Zostało to zaimplementowane ?
-%TODO 2. Skoro indeksacja to po co wcześniejszy środek ciężkości (usunięty środek ciężkości)
+%TODO 2. Skoro indeksacja to po co wcześniejszy środek ciężkości
+\subsection{Środek ciężkości}
+\label{subsec:srodek_ciezosci}
+
+Do wyznaczania środka ciężkości pikseli należących do~obiektu wykorzystano wzory \eqref{eq:m00}, \eqref{eq:m10} i~\eqref{eq:m01}.
+
+\begin{equation}
+\label{eq:m00}
+m_{00}=\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} x_{ij}
+\end{equation}
+\begin{equation}
+\label{eq:m10}
+m_{10}=\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} i*x_{ij}
+\end{equation}
+\begin{equation}
+\label{eq:m01}
+m_{01}=\sum_{i=0}^{N-1}\sum_{j=0}^{M-1} j*x_{ij}
+\end{equation}
+gdzie:
+\begin{eqwhere}[2cm]
+	\item[$N$] szerokość obrazu w pikselach,
+	\item[$M$] wysokość obrazu w pikselach,
+	\item[$x_{ij}$] wartość piksela o~współrzędnych $i$, $j$ obrazu zbinaryzowanego.
+\end{eqwhere}
+Na ich podstawie obliczono środek ciężkości przy zastosowaniu wzorów \eqref{eq:xsc} i~\eqref{eq:ysc}.
+\begin{equation}
+\label{eq:xsc}
+X_{sc}=\frac{m_{10}}{m_{00}}
+\end{equation}
+\begin{equation}
+\label{eq:ysc}
+Y_{sc}=\frac{m_{01}}{m_{00}}
+\end{equation}
+gdzie:
+\begin{eqwhere}[2cm]
+	\item[$X_{sc}$] współrzędna pozioma środka ciężkości,
+	\item[$Y_{sc}$] współrzędna pionowa środka ciężkości.
+\end{eqwhere}
+
+W~module na podstawie sygnałów synchronizacji oraz wymiarów obrazka wyznaczono współrzędne aktualnie przetwarzanego piksela. 
+Jeśli jest to piksel należący do obiektu, następuje zwiększenie wartości odpowiednich rejestrów zgodnie ze wzorami
+\ref{eq:m00}, \ref{eq:m10} i~\ref{eq:m01}. 
+Po przejściu przez całą ramkę obrazu wykonywane jest dzielenie na podstawie wzorów \ref{eq:xsc} i~\ref{eq:ysc}.\\
 \subsection{Algorytm sterowania}
 \label{sec:algorytm_sterowania}
 Wyznaczanymi informacjami o~detekcji, koniecznymi do~realizacji algorytmu sterowania, są:
 \begin{itemize}
-	\item uchyb regulacji w~obu osiach, rozumiany jako odległość środka obrazu od~centrum prostokąta otaczającego,
-	\item wiadomość o~znalezieniu znacznika.
+	\item uchyb regulacji w~obu osiach, rozumiany jako odległość środka obrazu od~środka wykrytego obiektu (centrum prostokąta otaczającego lub środka ciężkości),
+	\item wiadomość o~znalezieniu znacznika (w~przypadku stosowania indeksacji).
 \end{itemize}
 Dodatkowo, w~celu śledzenia działania systemu, istnieje możliwość podglądu przetworzonego obrazu na~monitorze, podłączonym poprzez port HDMI. Możliwy jest podgląd kolejnych etapów przetwarzania; wybór etapu następuje przez zmianę ustawień przełączników na~płytce.\\
-Algorytm sterowania bazuje na~dyskretnym regulatorze PID, zrealizowanym w~systemie procesorowym układu. Regulacji podlegają składowa x i~y wektora położenia drona względem znacznika. Jeśli znacznik zostanie utracony z~pola widzenia kamery na~czas 1~sekundy, dron przechodzi w~tryb unoszenia się nad ziemią.  
+Algorytm sterowania bazuje na~dyskretnym regulatorze PID, zrealizowanym w~systemie procesorowym układu. Regulacji podlegają składowa x i~y wektora położenia drona względem znacznika. Jeśli znacznik zostanie utracony z~pola widzenia kamery na~czas 1~sekundy, dron przechodzi w~tryb unoszenia się nad ziemią.
 \subsection{Integracja płytki z autopilotem}
 \label{sec:integracja_plytka_autopilot}
 W~układzie ZYBO~Z7-20 wykorzystano interfejs UART0. Wyprowadzono piny TX i~RX z~systemu procesorowego i~podłączono je do~portu Pmod~JB. Po~stronie sterownika Pixhawk użyto portu TELEM~2. Szybkość transmisji to~115200~bodów.\\
