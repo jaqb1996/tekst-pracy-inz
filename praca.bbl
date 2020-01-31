@@ -17,70 +17,94 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
-  \entry{Rings}{book}{}
-    \name{author}{1}{}{%
-      {{hash=iiSL}{%
-         prefix={i},
-         prefixi={i},
-         family={inni},
-         familyi={i\bibinitperiod},
-         given={Sven\bibnamedelima Lange},
-         giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod},
+  \entry{skyward}{misc}{}
+  \field{howpublished}{\url{http://go.skyward.io/rs/902-SIU-382/images/2018StateofDrones.pdf}}
+    \field{note}{Dostęp: 2020-01-18}
+  \endentry
+
+  \entry{drone_article}{misc}{}
+  \field{howpublished}{\url{https://spectrum.ieee.org/aerospace/aviation/us-commercial-drone-deliveries-will-finally-be-a-thing-in-2020}}
+    \field{note}{Dostęp: 2020-01-18}
+  \endentry
+
+  \entry{Rings}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=LS}{%
+         family={{Lange}},
+         familyi={L\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SN}{%
+         family={{Sunderhauf}},
+         familyi={S\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=PP}{%
+         family={{Protzel}},
+         familyi={P\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{iSLi1}
-    \strng{fullhash}{iSLi1}
+    \strng{namehash}{LSSNPP1}
+    \strng{fullhash}{LSSNPP1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{2009 International Conference on Advanced Robotics}
+    \field{issn}{null}
+    \field{pages}{1\bibrangedash 6}
     \field{title}{A vision based onboard approach for landing and position
   control of an autonomous multirotor UAV in GPS-denied environments}
-    \field{langid}{polish}
-    \list{location}{1}{%
-      {Munich, Germany}%
-    }
     \field{year}{2009}
+    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{H_median}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=FY}{%
-         family={Fan},
+         family={{Fan}},
          familyi={F\bibinitperiod},
-         given={Yang},
+         given={Y.},
          giveni={Y\bibinitperiod},
       }}%
       {{hash=HS}{%
-         family={Haiqing},
+         family={{Haiqing}},
          familyi={H\bibinitperiod},
-         given={Shi},
+         given={S.},
          giveni={S\bibinitperiod},
       }}%
       {{hash=HW}{%
-         family={Hong},
+         family={{Hong}},
          familyi={H\bibinitperiod},
-         given={Wang},
+         given={W.},
          giveni={W\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
+    \keyw{aircraft control;computer vision;control engineering
+  computing;helicopters;object detection;pose estimation;remotely operated
+  vehicles;Zernike polynomials;unmanned aerial vehicle;vision-based
+  algorithm;autonomous landing;Zernike moment;target detection;image
+  recognition;pose estimation;OpenGL-developed testbed;simulated flight video
+  sequence;Unmanned aerial vehicles;Cameras;Image
+  recognition;Helicopters;Computer science;Laboratories;Object
+  detection;Testing;Data mining;Image converters;UAV;Autonomous
+  landing;computer vision;Zernike moments}
     \strng{namehash}{FYHSHW1}
     \strng{fullhash}{FYHSHW1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{booktitle}{2008 International Conference on Computer Science and
   Software Engineering}
-    \field{number}{INSPEC Accession Number: 10426910}
-    \field{pages}{994}
+    \verb{doi}
+    \verb 10.1109/CSSE.2008.309
+    \endverb
+    \field{issn}{null}
+    \field{pages}{993\bibrangedash 996}
     \field{title}{A Vision-Based Algorithm for Landing Unmanned Aerial
   Vehicles}
-    \list{location}{1}{%
-      {Hubei, China}%
-    }
+    \field{volume}{1}
     \field{year}{2008}
     \warn{\item Invalid format of field 'month'}
   \endentry
@@ -163,8 +187,8 @@
     \list{publisher}{1}{%
       {IEEE}%
     }
-    \strng{namehash}{FYHSHW1}
-    \strng{fullhash}{FYHSHW1}
+    \strng{namehash}{FYHSHW2}
+    \strng{fullhash}{FYHSHW2}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{booktitle}{2008 International Conference on Computer Science and
@@ -180,40 +204,100 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{Sudevan}{book}{}
-    \name{author}{1}{}{%
-      {{hash=iiVS}{%
-         prefix={i},
-         prefixi={i},
-         family={inni},
-         familyi={i\bibinitperiod},
-         given={Vidya\bibnamedelima Sudevan},
-         giveni={V\bibinitperiod\bibinitdelim S\bibinitperiod},
+  \entry{Sudevan}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=SV}{%
+         family={{Sudevan}},
+         familyi={S\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={{Shukla}},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KH}{%
+         family={{Karki}},
+         familyi={K\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{iVSi1}
-    \strng{fullhash}{iVSi1}
+    \keyw{autonomous aerial vehicles;cameras;control system synthesis;feature
+  extraction;helicopters;image matching;mobile robots;object detection;position
+  control;robot vision;three-term control;velocity control;FLANN;SURF;desired
+  velocity signals;speeded up robust features
+  method;Proportional-Integral-Derivative controller;target position;captured
+  images;template image;Fast Approximate Nearest Neighbor Search Library based
+  descriptor matcher;keypoint descriptors;AR Drone;onboard camera;visual
+  data;landing part;searching;quadrotor UAV;independent landing;stationary
+  target;unmanned aerial vehicle;vision based autonomous
+  landing;Drones;Cameras;Feature
+  extraction;Sensors;Libraries;Navigation;Autonomous Landing;UAV;SURF;Feature
+  detection and matching;PID Controller}
+    \strng{namehash}{SVSAKH1}
+    \strng{fullhash}{SVSAKH1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{2017 17th International Conference on Control, Automation
+  and Systems (ICCAS)}
+    \verb{doi}
+    \verb 10.23919/ICCAS.2017.8204466
+    \endverb
+    \field{issn}{null}
+    \field{pages}{362\bibrangedash 367}
     \field{title}{Vision based autonomous landing of an Unmanned Aerial Vehicle
   on a stationary target}
-    \field{langid}{polish}
-    \list{location}{1}{%
-      {Jeju, South Korea}%
+    \field{year}{2017}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{zynq}{misc}{}
+  \field{howpublished}{\url{https://reference.digilentinc.com/reference/programmable-logic/zybo-z7/reference-manual}}
+    \field{note}{Dostęp: 2020-01-18}
+  \endentry
+
+  \entry{mgr}{thesis}{}
+    \name{author}{1}{}{%
+      {{hash=MM}{%
+         family={Mach},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
     }
+    \strng{namehash}{MM1}
+    \strng{fullhash}{MM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Wbudowany system wizyjny do sledzenia obiektów dla potrzeb
+  nawigacji bezzałogowego statku powietrznego (UAV)}
+    \list{institution}{1}{%
+      {AGH}%
+    }
+    \field{type}{Praca magisterska}
     \field{year}{2017}
   \endentry
 
-  \entry{projektPCAM}{misc}{}
-  \field{howpublished}{\url{https://reference.digilentinc.com/learn/programmable-logic/tutorials/zybo-z7-pcam-5c-demo/start}}
-    \field{note}{Dostęp: 2019-11-03}
+  \entry{pixhawk_modes}{misc}{}
+  \field{howpublished}{\url{https://ardupilot.org/copter/docs/flight-modes.html}}
+    \field{note}{Dostęp: 2020-01-18}
+  \endentry
+
+  \entry{mavlink_basics}{misc}{}
+  \field{howpublished}{\url{https://ardupilot.org/dev/docs/mavlink-basics.html}}
+    \field{note}{Dostęp: 2020-01-21}
   \endentry
 
   \entry{xilffs}{misc}{}
     \field{howpublished}{\url{http://elm-chan.org/fsw/ff/00index_e.html}}
+    \field{note}{Dostęp: 2019-11-03}
+  \endentry
+
+  \entry{projektPCAM}{misc}{}
+  \field{howpublished}{\url{https://reference.digilentinc.com/learn/programmable-logic/tutorials/zybo-z7-pcam-5c-demo/start}}
     \field{note}{Dostęp: 2019-11-03}
   \endentry
 
@@ -252,6 +336,21 @@
   Calculation on FPGA}
     \field{month}{01}
     \field{year}{2011}
+  \endentry
+
+  \entry{github_mavlink}{misc}{}
+  \field{howpublished}{\url{https://github.com/mavlink/c_library_v1/tree/master/common}}
+    \field{note}{Dostęp: 2020-01-22}
+  \endentry
+
+  \entry{obrazek_rgb}{misc}{}
+  \field{howpublished}{\url{http://www.algorytm.org/modele-barw/model-rgb.html}}
+    \field{note}{Dostęp: 2020-01-20}
+  \endentry
+
+  \entry{obrazek_ycbcr}{misc}{}
+    \field{howpublished}{\url{https://www.youtube.com/watch?v=3dET-EoIMM8}}
+    \field{note}{Dostęp: 2020-01-20}
   \endentry
 \enddatalist
 \endinput
