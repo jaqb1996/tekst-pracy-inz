@@ -20,6 +20,7 @@ Część PS, oprócz dwurdzeniowego procesora ARM, zawiera wiele komponentów, m
 	\item inne kontrolery peryferiów z~wejściami/wyjściami multipleksowanymi do~54~dedykowanych pinów MIO (ang. Multiplexed Input Output),
 	\item piny EMIO (ang. Extended MIO) pozwalające na podłączenie komponentów poprzez część PL.
 \end{itemize}
+<<<<<<< HEAD
 
 Kontrolery peryferiów są podłączone do~części PS poprzez magistralę AMBA w~trybie \textit{slave}. 
 W~ten sposób uzyskują dostęp do~rejestów odczytu/zapisu, adresowalnych w~pamięci procesora. 
@@ -28,6 +29,16 @@ Daje to~możliwość szybkiej komunikacji między układem FPGA, a~procesorem.
 Ponadto, moduły zaimplementowane w~części PL mogą wywoływać przerwania w~procesorze i~otrzymywać dostęp DMA (ang. \textit{Direct Memory Access}) do~pamięci DDR3.
 %TODO2 proszę doczytać, bo slave to są te General Purpose, a pozostałe są master. Tzn. nie musi Pan tego rozkmniać, ale trzeba dopisać, że master też.
 
+=======
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{plytka_kamera.jpg}
+	\caption{Układ ZYBO~Z7-20 wraz z~kamerą PCAM~5C.}
+	\label{fig:plytka_kamera}
+\end{figure}
+Kontrolery peryferiów są podłączone do~części PS poprzez magistralę AMBA w~trybie \textit{slave}. W~ten sposób uzyskują dostęp do~rejestów odczytu/zapisu, adresowalnych w~pamięci procesora. Również część rekonfigurowalna jest połączona z~magistralą AMBA poprzez porty AXI jako \textit{slave}. Daje to~możliwość szybkiej komunikacji między układem FPGA, a~procesorem. Ponadto, moduły zaimplementowane w~części PL mogą wywoływać przerwania w~procesorze i~otrzymywać dostęp DMA (ang. \textit{Direct Memory Access}) do~pamięci DDR3.\par
+%TODO potem to zdanie, nieco przeredagowane.
+>>>>>>> 65f53b1db22d3a9ab1904ccaf9af33bb2165b4c7
 %Do dyspozycji projektanta pozostawało 53 200 tablic LUT (ang. \textit{Look-up Table}), 106 400 przerzutników \textit{flip-flop} oraz 630 KB pamięci blokowej RAM.
 Poniżej przedstawiono komponenty części rekonfigurowalnej:
 \begin{itemize}
@@ -58,11 +69,15 @@ Do pozostałych części układu ZYBO Z7-20 należą między innymi:
 
 \section{Moduł rejestrujący obraz}
 \label{sec:pcam}
+<<<<<<< HEAD
 
 W~projekcie wykorzystano kolorową kamerę Digilent~PCAM~5C. 
 Jest to~moduł przeznaczony do~użycia z~dedykowanymi płytkami rozwojowymi firmy Digilent. 
 Jednym z~kompatybilnych układów jest ZYBO Z7-20. 
 Podstawowe parametry modułu przedstawiono poniżej:
+=======
+W~projekcie wykorzystano kolorową kamerę Digilent~PCAM~5C. Jest to~moduł przeznaczony do~użycia z~dedykowanymi płytkami rozwojowymi. Jednym z~kompatybilnych układów jest ZYBO Z7-20. Na~Rys.~\ref{fig:plytka_kamera} przedstawiono kamerę podłączoną do~układu. Właściwości modułu przedstawiono poniżej:
+>>>>>>> 65f53b1db22d3a9ab1904ccaf9af33bb2165b4c7
 \begin{itemize}
 	\item Rozdzielczość: 5 megapikseli,
 	\item Matryca: OV5640,
@@ -146,9 +161,19 @@ W~tabeli \ref{tab:frame} przedstawiono opis ramki protokołu.
 		n+7--n+8    & \begin{tabular}[c]{@{}l@{}}Suma kontrolna\\ (młodszy i starszy bajt)\end{tabular} & \multicolumn{2}{l|}{Umożliwia wykrycie błędów transmisji}                                                                                         \\ \hline
 	\end{tabular}
 \end{table}
+<<<<<<< HEAD
 
 Kwestię połączenia autopilota i układu ZYBO~Z7-20 opisano w~podrozdziale \ref{sec:integracja_plytka_autopilot}.
 
+=======
+\\Kwestię połączenia autopilota i układu ZYBO~Z7-20 opisano w sekcji \ref{sec:integracja_plytka_autopilot}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{lidar.jpg}
+	\caption{Laserowy czujnik odległości Garmin Lidar Lite v3 \cite{lidar}}
+	\label{fig:lidar}
+\end{figure}
+>>>>>>> 65f53b1db22d3a9ab1904ccaf9af33bb2165b4c7
 \section{Laserowy czujnik wysokości}
 \label{sec:laser}
 W~projekcie do~pomiaru wysokości wykorzystano urządzenie Garmin Lidar Lite v3. 
@@ -160,7 +185,11 @@ Jego główne parametry~to:
 	\item Wykorzystywana długość fali -- 905 nm,
 	\item Interfejsy -- I2C, PWM z~zewnętrznym wyzwalaniem pomiaru.
 \end{itemize}
+<<<<<<< HEAD
 
 %TODO2 Zdjęcie.
 
 %TODO2 Proszę jeszcze opisać to radio (i zdjęcie) - nie zaszkodzi, że tam będzie. Nawet jeśli nie działa.
+=======
+Na~Rys.~\ref{fig:lidar} przedstawiono moduł wraz z~dołączonymi przewodami.
+>>>>>>> 65f53b1db22d3a9ab1904ccaf9af33bb2165b4c7

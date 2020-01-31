@@ -1,5 +1,6 @@
 \chapter{Podsumowanie}
 \label{cha:Podsumowanie i kierunki dalszych prac}
+<<<<<<< HEAD
 
 W~pracy przedstawiono sprzętowo-programową realizację systemu wspomagającego autonomiczne lądowanie drona.
 System zrealizowano w~układzie Zynq SoC na karcie ZYBO Z7-20. 
@@ -26,7 +27,23 @@ Użycie kamery o~większym kącie widzenia pozwoliłoby jednak na~detekcję ląd
 Innym kierunkiem dalszych pracach może być próba wykonania lądowania na~poruszającej się platformie. 
 Analiza literatury naukowej dostarczyła informacji co~do~niezbędnych działań, jakie musi wykonywać taki system. 
 Są~to: śledzenie lądowiska, predykcja ruchu lądowiska, generacja trajektorii pozwalających dotrzeć do~celu, wybór jednej z~dopuszczalnych oraz realizacja odpowiedniego sterowania.
+=======
+W~zrealizowanym projekcie przedstawiono sprzętowo-programową realizację systemu wspomagającego autonomiczne lądowanie drona. System zrealizowano w~układzie ZYBO Z7-20, którego część rekonfigurowalna pozwoliła na~szybkie przetwarzanie obrazu, natomiast system procesorowy umożliwił sprawną realizację algorytmu sterowania i~wysyłanie komend do~sterownika drona. Implementacja systemu wizyjnego w~części rekonfigurowalnej przyspieszyła przetwarzanie obrazu, jednak utrudniła wdrażanie niektórych modułów z~powodu braku zasobów.\par
+Z~tego względu zaimplementowano dwie wersje systemu wizyjnego: z~indeksacją jednoprzebiegową i identyfikacją znacznika na podstawie koloru i~współczynnika kształtu, oraz z~wyznaczaniem środka ciężkości i~identyfikacją markera przy użyciu jego barwy. Identyfikację na~podstawie koloru przy niewielkiej zależności od~oświetlenia umożliwiła binaryzacja w~przestrzeni barw YCbCr, w~oparciu o~składowe Cb i~Cr. Zaprojektowano również taki znacznik, aby ułatwić jego wykrycie. Zaimplementowanie modułów mediany i~otwarcia pozwoliło na~filtrację obrazu.\\
+Wprowadzenie do~układu sygnału z~Lidaru umożliwiało zbieranie dokładnej informacji o~wysokości.\par
+Zaimplementowano regulację PID, której celem jest ustawienie drona nad znacznikiem. Eksperymenty pokazały możliwość wykonania lotu testowego składającego się ze~startu, regulacji położenia i~lądowania w~wyznaczonym miejscu.
+Przeprowadzone testy dowiodły również możliwości wysyłania do~autopilota komend, między innymi dotyczących zmiany kierunku i~szybkości lotu. 
+W~tej sytuacji celem powinno być wykonanie lotu testowego (start - regulacja położenia - lądowanie) przy sterowaniu silnikami z~autopilota. Etapem pośrednim powinno być przeprowadzenie testu pozwalającego ustalić, jaką najmniejszą prędkość akceptuje autopilot, jaka największa prędkość powoduje ruch drona bez wyraźnego przechylenia i~pochylenia, oraz z~jaką częstotliwością mogą być wysyłane komendy. Te~informacje pozwoliłyby na~dobór nastaw regulatora. W~przypadku niemożliwości realizacji komend z~odpowiednią częstotliwością rozważyć można inną koncepcję: na~podstawie wysokości i~aktualnej pozycji znacznika na~obrazie można byłoby wyznaczać przesunięcie, które doprowadziłoby dron ponad znacznik.\par
+Powyższe działania możliwe są~przy zastosowaniu komponentów użytych w~projekcie. Użycie kamery o~większym kącie widzenia pozwoliłoby jednak na~detekcję lądowiska z~większej odległości.\par
+Innym kierunkiem w~dalszych pracach może być próba wykonania lądowania na~poruszającej się platformie. Analiza literatury naukowej dostarczyła informacji co~do~niezbędnych działań, jakie musi wykonywać taki system. Są~to: predykcja ruchu lądowiska, generacja trajektorii pozwalających dotrzeć do~celu i~wybór jednej z~dopuszczalnych.
+>>>>>>> 65f53b1db22d3a9ab1904ccaf9af33bb2165b4c7
 
 %TODO + Dodatek A. Spis zawartości CD, która będzie dla mnie (nie dziekanatu).
-
+\appendix
+\chapter{Spis zawartości płyty CD}
+Na dołączonej do~pracy płycie CD znajdują się następujące foldery:
+\begin{itemize}
+	\item Matlab -- zawiera pliki modeli programowych, testów, obróbki obrazów oraz zdjęcia niezbędne do ich uruchomienia,
+	\item Vivado -- zawiera projekt główny oraz testowy, wykorzystywany do~komunikacji z~autopilotem.
+\end{itemize}
 %---------------------------------------------------------------------------
