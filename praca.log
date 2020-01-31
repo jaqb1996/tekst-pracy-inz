@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.16)  31 JAN 2020 09:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.16)  31 JAN 2020 19:14
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -1182,6 +1182,16 @@ Package biblatex Warning: BibTeX reported the following issues
 
 
 Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'FPGA':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Falanga':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
 (biblatex)                with 'H':
 (biblatex)                - Invalid format of field 'month'.
 
@@ -1313,58 +1323,71 @@ Underfull \vbox (badness 5316) has occurred while \output is active []
 
  (opis_platformy.tex
 Rozdzia\l  3.
+<plytka_kamera.jpg, id=54, 231.11343pt x 172.39406pt>
+File: plytka_kamera.jpg Graphic file (type jpg)
+<use plytka_kamera.jpg>
+Package pdftex.def Info: plytka_kamera.jpg  used on input line 20.
+(pdftex.def)             Requested size: 227.62206pt x 169.79204pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [13
 
 
 
 ]
-<zynq.png, id=58, 394.47375pt x 435.12563pt>
+<zynq.png, id=59, 394.47375pt x 435.12563pt>
 File: zynq.png Graphic file (type png)
 <use zynq.png>
-Package pdftex.def Info: zynq.png  used on input line 40.
+Package pdftex.def Info: zynq.png  used on input line 46.
 (pdftex.def)             Requested size: 455.24411pt x 502.16331pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14]
-Underfull \vbox (badness 1629) has occurred while \output is active []
+[14 <./plytka_kamera.jpg>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15 <./zynq.png>]
+ [15 <./zynq.png>] [16]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 95.
+               Default added (so using `tbp') on input line 101.
 
 
-Overfull \hbox (37.38252pt too wide) in paragraph at lines 98--110
+Overfull \hbox (37.38252pt too wide) in paragraph at lines 104--116
 [][] 
  []
 
-[16]) [17]
+<lidar.jpg, id=69, 144.54pt x 144.54pt>
+File: lidar.jpg Graphic file (type jpg)
+<use lidar.jpg>
+Package pdftex.def Info: lidar.jpg  used on input line 120.
+(pdftex.def)             Requested size: 182.09486pt x 182.10368pt.
+[17 <./lidar.jpg>]) [18]
 \openout2 = `opis_implementacji.aux'.
 
- (opis_implementacji.tex [18
-
-
-
-]
+ (opis_implementacji.tex
 Rozdzia\l  4.
-<bin.jpg, id=74, 1927.2pt x 1084.05pt>
+<bin.jpg, id=76, 1927.2pt x 1084.05pt>
 File: bin.jpg Graphic file (type jpg)
 <use bin.jpg>
 Package pdftex.def Info: bin.jpg  used on input line 31.
 (pdftex.def)             Requested size: 318.66948pt x 179.24098pt.
-<median.jpg, id=75, 1927.2pt x 1084.05pt>
+<median.jpg, id=77, 1927.2pt x 1084.05pt>
 File: median.jpg Graphic file (type jpg)
 <use median.jpg>
 Package pdftex.def Info: median.jpg  used on input line 37.
 (pdftex.def)             Requested size: 318.66948pt x 179.24098pt.
-<opened.jpg, id=76, 1927.2pt x 1084.05pt>
+<opened.jpg, id=78, 1927.2pt x 1084.05pt>
 File: opened.jpg Graphic file (type jpg)
 <use opened.jpg>
 Package pdftex.def Info: opened.jpg  used on input line 43.
 (pdftex.def)             Requested size: 318.66948pt x 179.24098pt.
-[19]
+[19
+
+
+
+]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 54.
 
@@ -1372,7 +1395,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--59
 
  []
 
-<system.jpg, id=81, 1038.12843pt x 584.93532pt>
+<system.jpg, id=83, 1038.12843pt x 584.93532pt>
 File: system.jpg Graphic file (type jpg)
 <use system.jpg>
 Package pdftex.def Info: system.jpg  used on input line 72.
@@ -1384,7 +1407,7 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 8
 (C:\ProgramFiles\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [22 <./system.jpg>]
-<drzewo_ycbcr.jpg, id=91, 404.26031pt x 319.94531pt>
+<drzewo_ycbcr.jpg, id=93, 404.26031pt x 319.94531pt>
 File: drzewo_ycbcr.jpg Graphic file (type jpg)
 <use drzewo_ycbcr.jpg>
 Package pdftex.def Info: drzewo_ycbcr.jpg  used on input line 118.
@@ -1400,12 +1423,12 @@ Cb. $\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 21 = \OMS/cmsy/m/n/10  \OT1/cmr/m/n/10 0
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<kontekst.jpg, id=92, 799.48688pt x 353.06906pt>
+<kontekst.jpg, id=94, 799.48688pt x 353.06906pt>
 File: kontekst.jpg Graphic file (type jpg)
 <use kontekst.jpg>
 Package pdftex.def Info: kontekst.jpg  used on input line 148.
 (pdftex.def)             Requested size: 455.24411pt x 201.04672pt.
-<drzewo_sumacyjne.jpg, id=93, 593.96906pt x 252.945pt>
+<drzewo_sumacyjne.jpg, id=95, 593.96906pt x 252.945pt>
 File: drzewo_sumacyjne.jpg Graphic file (type jpg)
 <use drzewo_sumacyjne.jpg>
 Package pdftex.def Info: drzewo_sumacyjne.jpg  used on input line 154.
@@ -1418,7 +1441,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [24 <./drzewo_ycbcr.jpg> <./kontekst.jpg>] [25 <./drzewo_sumacyjne.jpg>]
-<ind_sasiedztwo.jpg, id=107, 439.6425pt x 196.48407pt>
+<ind_sasiedztwo.jpg, id=109, 439.6425pt x 196.48407pt>
 File: ind_sasiedztwo.jpg Graphic file (type jpg)
 <use ind_sasiedztwo.jpg>
 Package pdftex.def Info: ind_sasiedztwo.jpg  used on input line 196.
@@ -1434,7 +1457,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--224
  []
 
 [26 <./ind_sasiedztwo.jpg>]
-<ind_schemat.jpg, id=111, 599.99156pt x 291.33844pt>
+<ind_schemat.jpg, id=113, 599.99156pt x 291.33844pt>
 File: ind_schemat.jpg Graphic file (type jpg)
 <use ind_schemat.jpg>
 Package pdftex.def Info: ind_schemat.jpg  used on input line 237.
@@ -1462,58 +1485,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--16
 
  []
 
-<szescian_rgb.jpg, id=127, 178.41656pt x 168.63pt>
+<szescian_rgb.jpg, id=129, 178.41656pt x 168.63pt>
 File: szescian_rgb.jpg Graphic file (type jpg)
 <use szescian_rgb.jpg>
 Package pdftex.def Info: szescian_rgb.jpg  used on input line 33.
 (pdftex.def)             Requested size: 91.04742pt x 86.05418pt.
-<szescian_ycbcr.jpg, id=128, 200.24812pt x 150.5625pt>
+<szescian_ycbcr.jpg, id=130, 200.24812pt x 150.5625pt>
 File: szescian_ycbcr.jpg Graphic file (type jpg)
 <use szescian_ycbcr.jpg>
 Package pdftex.def Info: szescian_ycbcr.jpg  used on input line 39.
 (pdftex.def)             Requested size: 91.04742pt x 68.4578pt.
-<rgb_ciemny.jpg, id=129, 1927.2pt x 1084.05pt>
+<rgb_ciemny.jpg, id=131, 1927.2pt x 1084.05pt>
 File: rgb_ciemny.jpg Graphic file (type jpg)
 <use rgb_ciemny.jpg>
 Package pdftex.def Info: rgb_ciemny.jpg  used on input line 52.
 (pdftex.def)             Requested size: 178.45218pt x 100.3723pt.
-<bw_hist1.jpg, id=130, 1606.0pt x 785.93625pt>
+<bw_hist1.jpg, id=132, 1606.0pt x 785.93625pt>
 File: bw_hist1.jpg Graphic file (type jpg)
 <use bw_hist1.jpg>
 Package pdftex.def Info: bw_hist1.jpg  used on input line 58.
 (pdftex.def)             Requested size: 245.37685pt x 120.07996pt.
-<rgb_sredni.jpg, id=131, 1927.2pt x 1084.05pt>
+<rgb_sredni.jpg, id=133, 1927.2pt x 1084.05pt>
 File: rgb_sredni.jpg Graphic file (type jpg)
 <use rgb_sredni.jpg>
 Package pdftex.def Info: rgb_sredni.jpg  used on input line 64.
 (pdftex.def)             Requested size: 178.45218pt x 100.3723pt.
-<bw_hist2.jpg, id=132, 1606.0pt x 785.93625pt>
+<bw_hist2.jpg, id=134, 1606.0pt x 785.93625pt>
 File: bw_hist2.jpg Graphic file (type jpg)
 <use bw_hist2.jpg>
 Package pdftex.def Info: bw_hist2.jpg  used on input line 70.
 (pdftex.def)             Requested size: 245.37685pt x 120.07996pt.
-<rgb_jasny.jpg, id=133, 1927.2pt x 1084.05pt>
+<rgb_jasny.jpg, id=135, 1927.2pt x 1084.05pt>
 File: rgb_jasny.jpg Graphic file (type jpg)
 <use rgb_jasny.jpg>
 Package pdftex.def Info: rgb_jasny.jpg  used on input line 76.
 (pdftex.def)             Requested size: 178.45218pt x 100.3723pt.
-<bw_hist3.jpg, id=134, 1606.0pt x 785.93625pt>
+<bw_hist3.jpg, id=136, 1606.0pt x 785.93625pt>
 File: bw_hist3.jpg Graphic file (type jpg)
 <use bw_hist3.jpg>
 Package pdftex.def Info: bw_hist3.jpg  used on input line 82.
 (pdftex.def)             Requested size: 245.37685pt x 120.07996pt.
 [31]
-<ycbcr_hist1.jpg, id=139, 1606.0pt x 785.93625pt>
+<ycbcr_hist1.jpg, id=141, 1606.0pt x 785.93625pt>
 File: ycbcr_hist1.jpg Graphic file (type jpg)
 <use ycbcr_hist1.jpg>
 Package pdftex.def Info: ycbcr_hist1.jpg  used on input line 97.
 (pdftex.def)             Requested size: 409.71692pt x 200.50102pt.
-<ycbcr_hist2.jpg, id=140, 1606.0pt x 785.93625pt>
+<ycbcr_hist2.jpg, id=142, 1606.0pt x 785.93625pt>
 File: ycbcr_hist2.jpg Graphic file (type jpg)
 <use ycbcr_hist2.jpg>
 Package pdftex.def Info: ycbcr_hist2.jpg  used on input line 103.
 (pdftex.def)             Requested size: 409.71692pt x 200.50102pt.
-<ycbcr_hist3.jpg, id=141, 1606.0pt x 785.93625pt>
+<ycbcr_hist3.jpg, id=143, 1606.0pt x 785.93625pt>
 File: ycbcr_hist3.jpg Graphic file (type jpg)
 <use ycbcr_hist3.jpg>
 Package pdftex.def Info: ycbcr_hist3.jpg  used on input line 109.
@@ -1522,7 +1545,7 @@ Package pdftex.def Info: ycbcr_hist3.jpg  used on input line 109.
 
 LaTeX Warning: Float too large for page by 15.67282pt on input line 115.
 
-<znacznik.jpg, id=142, 298.86656pt x 417.81094pt>
+<znacznik.jpg, id=144, 298.86656pt x 417.81094pt>
 File: znacznik.jpg Graphic file (type jpg)
 <use znacznik.jpg>
 Package pdftex.def Info: znacznik.jpg  used on input line 119.
@@ -1532,37 +1555,42 @@ Underfull \vbox (badness 1789) has occurred while \output is active []
 
  [32 <./szescian_rgb.jpg> <./szescian_ycbcr.jpg>] [33 <./rgb_ciemny.jpg> <./bw_
 hist1.jpg> <./rgb_sredni.jpg> <./bw_hist2.jpg> <./rgb_jasny.jpg> <./bw_hist3.jp
-g>] [34 <./ycbcr_hist1.jpg> <./ycbcr_hist2.jpg> <./ycbcr_hist3.jpg>]) [35 <./zn
-acznik.jpg>] [36]
+g>] [34 <./ycbcr_hist1.jpg> <./ycbcr_hist2.jpg> <./ycbcr_hist3.jpg>]
+<eksperyment.jpg, id=154, 3276.24pt x 1842.885pt>
+File: eksperyment.jpg Graphic file (type jpg)
+<use eksperyment.jpg>
+Package pdftex.def Info: eksperyment.jpg  used on input line 179.
+(pdftex.def)             Requested size: 455.24411pt x 256.06186pt.
+) [35 <./znacznik.jpg>] [36 <./eksperyment.jpg>]
 \openout2 = `podsumowanie.aux'.
 
  (podsumowanie.tex
 Rozdzia\l  6.
-)
-Underfull \vbox (badness 3471) has occurred while \output is active []
-
- [37
+[37
 
 
+
+] [38
 
 ]
-[38] [39
+Dodatek A.
+) [39] [40
 
 
-] [40] (praca.aux (wprowadzenie.aux) (metody.aux) (opis_platformy.aux)
-(opis_implementacji.aux) (testy.aux) (podsumowanie.aux))
+] [41] [42] (praca.aux (wprowadzenie.aux) (metody.aux)
+(opis_platformy.aux) (opis_implementacji.aux) (testy.aux) (podsumowanie.aux))
 Package logreq Info: Writing requests to 'praca.run.xml'.
 \openout1 = `praca.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29019 strings out of 492450
- 544108 string characters out of 3132100
- 921217 words of memory out of 3000000
- 32980 multiletter control sequences out of 15000+200000
+ 29042 strings out of 492450
+ 545408 string characters out of 3132100
+ 920217 words of memory out of 3000000
+ 33000 multiletter control sequences out of 15000+200000
  615520 words of font info for 113 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,71p,1459b,2716s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,15n,71p,1459b,1989s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/ProgramFiles/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/ProgramFiles/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmex10.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmmi10.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/public/amsfonts
@@ -1575,9 +1603,9 @@ C:/ProgramFiles/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/ProgramFiles/Mi
 KTeX/fonts/type1/urw/times/utmb8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/urw/t
 imes/utmr8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Pr
 ogramFiles/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on praca.pdf (40 pages, 2162070 bytes).
+Output written on praca.pdf (42 pages, 4682217 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
+ 227 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 

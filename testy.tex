@@ -173,7 +173,13 @@ Test polegał na~wysyłaniu do~autopilota komend z~układu ZYBO~Z7-20. Podczas e
 Po~eksperymencie można było wysnuć wniosek o~poprawnej konfiguracji komunikacji pomiędzy układem ZYBO, a~sterownikiem Pixhawk.
 \section{Test sterowania}
 \label{sec:test_sterowania}
-Test ten polegał na ręcznym wykonywaniu komend pochodzących z systemu procesorowego. Zaplanowano 3 fazy lotu: wznoszenie na określoną wysokość, kierowanie drona w~stronę znacznika, lądowanie. Z~powodu niedokładności ręcznego sterowania dronem zrezygnowano z~zadawania prędkości wynikającej z~regulacji PID. Ograniczono się do wysyłania komend: ,,w górę'', ,,w lewo'', ,,do przodu'' itp. Postarano się, aby podłoże miało kolor niebieski, kontrastujący z~czerwoną barwą znacznika. Zdjęcie z~eksperymentu przedstawiono na~Rys. (TODO).\\
-Test wykazał prawidłowe działanie laserowego czujnika odległości. Poprawnie podawane były również komendy dotyczące zmiany pozycji drona. Na~uwagę zasługuje jednak dość mały kąt widzenia kamery PCAM~5C, zwłaszcza w~osi pionowej. Start musiał odbywać się dosyć blisko znacznika, aby po~uniesieniu się na~wysokość nieco poniżej metra wykryte zostało lądowisko.
+Test ten polegał na ręcznym wykonywaniu komend pochodzących z systemu procesorowego. Zaplanowano 3 fazy lotu: wznoszenie na określoną wysokość, kierowanie drona w~stronę znacznika, lądowanie. Z~powodu niedokładności ręcznego sterowania dronem zrezygnowano z~zadawania prędkości wynikającej z~regulacji PID. Ograniczono się do wysyłania komend: ,,w górę'', ,,w lewo'', ,,do przodu'' itp. Postarano się, aby podłoże miało kolor niebieski, kontrastujący z~czerwoną barwą znacznika. Zdjęcie z~eksperymentu przedstawiono na~Rys. \ref{fig:eksperyment}.\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{eksperyment.jpg}
+	\caption{Zdjęcie z~eksperymentu. Układ ZYBO~Z7-20 zamontowano z~przodu platformy. Poniżej umieszczono kamerę i~Lidar. Na~górze znajduje się płytka prototypowa do~łatwego łączenia komponentów.}
+	\label{fig:eksperyment}
+\end{figure}
+Test wykazał prawidłowe działanie laserowego czujnika odległości. Poprawnie podawane były również komendy dotyczące zmiany pozycji drona. Na~uwagę zasługuje jednak dość mały kąt widzenia kamery PCAM~5C, zwłaszcza w~osi pionowej. Dokładniej zbadano tę kwestię i~uzyskano wynik $38^o$ dla osi pionowej oraz $76^o$ dla poziomej. Oznacza to, że~z~wysokości 1~m dron był w~stanie wykryć obiekty w~odległości 34~cm z~przodu i~z~tyłu, oraz 78~cm po~bokach.
 %---------------------------------------------------------------------------
 %---------------------------------------------------------------------------

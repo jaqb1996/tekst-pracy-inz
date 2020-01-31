@@ -109,97 +109,158 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{FPGA}{book}{}
-    \name{author}{1}{}{%
-      {{hash=iiAP}{%
-         prefix={i},
-         prefixi={i},
-         family={inni},
-         familyi={i\bibinitperiod},
-         given={A.\bibnamedelima Price},
-         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+  \entry{FPGA}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=PA}{%
+         family={{Price}},
+         familyi={P\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=PJ}{%
+         family={{Pyke}},
+         familyi={P\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=AD}{%
+         family={{Ashiri}},
+         familyi={A\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=CT}{%
+         family={{Cornall}},
+         familyi={C\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{iAPi1}
-    \strng{fullhash}{iAPi1}
+    \keyw{aircraft control;computer vision;field programmable gate
+  arrays;object detection;remotely operated vehicles;tracking;real time object
+  detection;unmanned aerial vehicles;FPGA;vision system;modern
+  reconnaissance;object identification;object tracking;decision making;low-cost
+  UAV;Real time systems;Object detection;Unmanned aerial vehicles;Field
+  programmable gate arrays;Machine vision;Reconnaissance;Costs;Relays;Radio
+  link;Humans}
+    \strng{namehash}{PA+1}
+    \strng{fullhash}{PAPJADCT1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings 2006 IEEE International Conference on
+  Robotics and Automation, 2006. ICRA 2006.}
+    \verb{doi}
+    \verb 10.1109/ROBOT.2006.1642134
+    \endverb
+    \field{issn}{1050-4729}
+    \field{pages}{2854\bibrangedash 2859}
     \field{title}{Real time object detection for an unmanned aerial vehicle
   using an FPGA based vision system}
-    \field{langid}{polish}
-    \list{location}{1}{%
-      {Hubei, China}%
-    }
-    \field{year}{2008}
+    \field{year}{2006}
+    \warn{\item Invalid format of field 'month'}
   \endentry
 
-  \entry{Falanga}{book}{}
-    \name{author}{1}{}{%
-      {{hash=iiDF}{%
-         prefix={i},
-         prefixi={i},
-         family={inni},
-         familyi={i\bibinitperiod},
-         given={Davide\bibnamedelima Falanga},
-         giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+  \entry{Falanga}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=FD}{%
+         family={{Falanga}},
+         familyi={F\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=ZA}{%
+         family={{Zanchettin}},
+         familyi={Z\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={{Simovic}},
+         familyi={S\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DJ}{%
+         family={{Delmerico}},
+         familyi={D\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={{Scaramuzza}},
+         familyi={S\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{iDFi1}
-    \strng{fullhash}{iDFi1}
+    \keyw{computer vision;helicopters;mobile robots;motion estimation;path
+  planning;robot vision;sensor fusion;moving landing target;moving
+  target;autonomous quadrotor landing;moving platform;multisensor fusion;motion
+  estimation;computer vision algorithms;motion-capture systems;fully-autonomous
+  quadrotor system;fully-autonomous navigation;onboard sensing;lightweight
+  consumer hardware;Trajectory;Robot sensing systems;State
+  estimation;Cameras;Planning}
+    \strng{namehash}{FD+1}
+    \strng{fullhash}{FDZASADJSD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Vision-based Autonomous Quadrotor Landing on a Moving
-  Platform}
-    \field{langid}{polish}
-    \list{location}{1}{%
-      {Shanghai, China}%
-    }
+    \field{booktitle}{2017 IEEE International Symposium on Safety, Security and
+  Rescue Robotics (SSRR)}
+    \verb{doi}
+    \verb 10.1109/SSRR.2017.8088164
+    \endverb
+    \field{issn}{2475-8426}
+    \field{pages}{200\bibrangedash 207}
+    \field{title}{Vision-based autonomous quadrotor landing on a moving
+  platform}
     \field{year}{2017}
+    \warn{\item Invalid format of field 'month'}
   \endentry
 
   \entry{H}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=FY}{%
-         family={Fan},
+         family={{Fan}},
          familyi={F\bibinitperiod},
-         given={Yang},
+         given={Y.},
          giveni={Y\bibinitperiod},
       }}%
       {{hash=HS}{%
-         family={Haiqing},
+         family={{Haiqing}},
          familyi={H\bibinitperiod},
-         given={Shi},
+         given={S.},
          giveni={S\bibinitperiod},
       }}%
       {{hash=HW}{%
-         family={Hong},
+         family={{Hong}},
          familyi={H\bibinitperiod},
-         given={Wang},
+         given={W.},
          giveni={W\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{FYHSHW2}
-    \strng{fullhash}{FYHSHW2}
+    \keyw{aircraft control;computer vision;control engineering
+  computing;helicopters;object detection;pose estimation;remotely operated
+  vehicles;Zernike polynomials;unmanned aerial vehicle;vision-based
+  algorithm;autonomous landing;Zernike moment;target detection;image
+  recognition;pose estimation;OpenGL-developed testbed;simulated flight video
+  sequence;Unmanned aerial vehicles;Cameras;Image
+  recognition;Helicopters;Computer science;Laboratories;Object
+  detection;Testing;Data mining;Image converters;UAV;Autonomous
+  landing;computer vision;Zernike moments}
+    \strng{namehash}{FYHSHW1}
+    \strng{fullhash}{FYHSHW1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{booktitle}{2008 International Conference on Computer Science and
   Software Engineering}
-    \field{number}{INSPEC Accession Number: 10426910}
-    \field{pages}{995}
+    \verb{doi}
+    \verb 10.1109/CSSE.2008.309
+    \endverb
+    \field{issn}{null}
+    \field{pages}{993\bibrangedash 996}
     \field{title}{A Vision-Based Algorithm for Landing Unmanned Aerial
   Vehicles}
-    \list{location}{1}{%
-      {Hubei, China}%
-    }
+    \field{volume}{1}
     \field{year}{2008}
     \warn{\item Invalid format of field 'month'}
   \endentry
@@ -289,6 +350,11 @@
   \entry{mavlink_basics}{misc}{}
   \field{howpublished}{\url{https://ardupilot.org/dev/docs/mavlink-basics.html}}
     \field{note}{Dostęp: 2020-01-21}
+  \endentry
+
+  \entry{lidar}{misc}{}
+    \field{howpublished}{\url{https://www.sparkfun.com}}
+    \field{note}{Dostęp: 2020-01-31}
   \endentry
 
   \entry{xilffs}{misc}{}
