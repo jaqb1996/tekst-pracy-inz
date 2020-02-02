@@ -6,15 +6,22 @@
 
 %TODO2 W sumie OK, choć proszę jeszcze raz przeczytać i dopisać kilka aplikacji.
 
-W~ostatnich latach zaprezentowano szereg przykładów, które pokazują wszechstronność i~przydatność dronów w~wielu dziadzinach przemysłu. 
+W~ostatnich latach zaprezentowano szereg przykładów, które pokazują wszechstronność i~przydatność dronów w~wielu dziedzinach przemysłu. 
 Według raportu Skyward z~2018 roku, 1~na~10 przebadanych firm w~Stanach~Zjednoczonych używała bezzałogowych statków powietrznych. 
 Aż~88~procent z~nich odczuła pozytywne strony rozpoczęcia korzystania z~nich w~przeciągu roku lub krócej. 
 Do~najczęściej wymienianych zalet dronów należy zdobywanie większej ilości informacji, bardziej efektywna praca oraz oszczędność czasu. 
 Udział dronów w~rynku będzie się stale powiększał, gdyż 3~na~4 przedsiębiorców planuje zwiększać wydatki przeznaczane na~operacje wykonywane przez drony \cite{skyward}. 
 O~wzroście zainteresowania dronami może również pośrednio świadczyć fakt wprowadzania nowych regulacji prawnych -- konieczności wyposażania dronów w~nadajnik numeru identyfikacyjnego \cite{drone_article}. 
-Zwiększa to bezpieczeństwo lotów i~może otworzyć drogę do~masowego wykorzystania tej technologii.\par
-
-Ważnym kierunkiem rozwoju bezzałogowych statków powietrznych jest ich autonomizacja, czyli przystosowanie do~lotów bez nadzoru człowieka. 
+Zwiększa to bezpieczeństwo lotów i~może otworzyć drogę do~masowego wykorzystania tej technologii w~branżach takich jak:
+\begin{itemize}
+	\item film i fotografia lotnicza -- możliwość wykonywania ujęć z~powietrza,
+	\item wirtualna rzeczywistość -- tworzenie skanów 3D przestrzeni,
+	\item geodezja -- rejestrowanie danych dla tworzenia modeli terenu,
+	\item rolnictwo -- stosowanie środków ochrony roślin,
+	\item ochrona osób i~mienia -- prowadzenie nadzoru z~powietrza,
+	\item ochrona środowiska -- monitorowanie zanieczyszczeń.
+\end{itemize}
+\par Ważnym kierunkiem rozwoju bezzałogowych statków powietrznych jest ich autonomizacja, czyli przystosowanie do~lotów bez nadzoru człowieka. 
 Wymaga to~wyposażenia dronów w~systemy monitorowania otoczenia oraz odpowiednie algorytmy sterowania.
 Kluczową fazą autonomicznego lotu drona jest lądowanie. 
 Bliskość ziemi wymaga dokładnego i~szybkiego sterowania ruchem statku powietrznego.
@@ -39,25 +46,17 @@ Ostatnim etapem będzie próba integracji wykonanego podsystemu ze sterownikiem 
 
 %TODO Parafraza tego co wkleiłem /ale trzeba to przeredagować !!!/:
 
-<<<<<<< HEAD
 Celem pracy było stworzenie sprzętowo-programowego systemu wizyjnego, będącego komponentem systemu autonomicznego lądowania drona. 
 Pierwszym krokiem prac było przeprowadzenie analizy literatury naukowej -- głównie dotyczącej detekcji i~śledzenia oznaczonego lądowiska. 
 W~drugim etapie należało wykonać model programowy algorytmu, który pozwala na~wykrycie i~podążanie w~kierunku  lądowiska. 
-Wybór jego oznaczenia miejsca do lądowania był również częścią prac. 
+Wybór oznaczenia miejsca do lądowania był również częścią prac. 
 Założeniem było wyposażenie drona w~kamerę o~osi optycznej skierowanej prostopadle do~podłoża i~wykonanie lądowania na~statycznej platformie. 
 Należało również ocenić możliwość wykonania lądowania na~ruchomym celu.
-Ponadto należało przygotować komponenty ułatwiające bezpieczne wykonanie misji -- laserowy czujnik wysokości oraz bezprzewodową komunikację ze~stacją naziemną. 
+Ponadto należało przygotować komponenty ułatwiające bezpieczne wykonanie misji -- laserowy czujnik wysokości Garmin~Lidar~v3 oraz bezprzewodową komunikację ze~stacją naziemną. 
 W~trzecim etapie należało wspomniany system podzielić na część sprzętową i~programową oraz zaimplementować w~układzie Zynq~SoC na~karcie ZYBO~Z7-20. 
 Wejściem powinien być obraz z~kamery PCAM oraz informacja z~wysokościomierza, a~wyjściem sterowanie dla~drona -- regulacja położenia względem lądowiska oraz wysokości.
 Ostatnim etapem prac była próba integracji wykonanego podsystemu ze~sterownikiem drona i~wykonania lądowania w~sposób autonomiczny. 
 Testy należało przeprowadzić przy zachowaniu zasad bezpieczeństwa -- kluczowe było upewnienie się co~do~niezawodności działania systemu.
-=======
-Celem pracy było stworzenie sprzętowo-programowego systemu wizyjnego, będącego komponentem systemu autonomicznego lądowania drona. Pierwszym krokiem prac było przeprowadzenie analizy literatury naukowej - głównie dotyczącej detekcji i~śledzenia oznaczonego lądowiska. \\
-W~drugim etapie należało wykonać model programowy algorytmu, który pozwala na~wykrycie i~podążanie w~kierunku lądowiska. Wybór jego oznaczenia był również częścią prac. Założeniem było wyposażenie drona w~kamerę o~osi optycznej skierowanej prostopadle do~podłoża i~wykonanie lądowania na~statycznej platformie. Należało również ocenić możliwość wykonania lądowania na~ruchomym celu.\\
-Ponadto należało zintegrować z~układem komponent odpowiedzialny za~pomiar wysokości - Garmin Lidar Lite v3. \\
-W~trzecim etapie należało wspomniany system podzielić na część sprzętową i~programową oraz zaimplementować w~układzie Zynq~SoC na~karcie ZYBO~Z7-20. Wejściem powinieć być obraz z~kamery PCAM oraz informacja z~wysokościomierza, a~wyjściem sterowanie dla~drona - regulacja położenia względem lądowiska oraz wysokości.\\
-Ostatnim etapem prac była próba integracji wykonanego podsystemu ze~sterownikiem drona i~wykonania lądowania w~sposób autonomiczny. Testy należało przeprowadzić przy zachowaniu zasad bezpieczeństwa - kluczowe było upewnienie się co~do~niezawodności działania systemu.
->>>>>>> 65f53b1db22d3a9ab1904ccaf9af33bb2165b4c7
 
 %TODO2 Na przyszłość. Używanie \\ jest bez sensu.
 
@@ -66,11 +65,11 @@ Ostatnim etapem prac była próba integracji wykonanego podsystemu ze~sterowniki
 \section{Zawartość pracy}
 \label{sec:zawartoscPracy}
 %TODO2 Na przyszłość - no po to są label i ref, aby używać.
-%TODO2 Poprawić opis po zmianach struktury
+%TODO2 Poprawić opis po zmianach struktury (wykonane)
 
-W~rozdziale drugim zamieszczono przegląd prac naukowych dotyczących problematyki autonomicznego lądowania drona. 
-Rozdział trzeci opisuje sprzęt wykorzystany podczas realizacji projektu. 
-Czwarta część pracy przedstawia opis stworzonego systemu: modelu programowego systemu wizyjnego wraz z~uzasadnieniem wyboru poszczególnych modułów oraz implementacji sprzętowo-programowej całego systemu, począwszy od~odbioru sygnału wizyjnego, a~skończywszy na~wysyłaniu sygnałów sterujących dronem. 
-Rozdział piąty poświęcono testom: wyboru znacznika~znajdującego się na~lądowisku, komunikacji z~autopilotem oraz ręcznego sterowania na~podstawie informacji z~systemu. 
+W~rozdziale \ref{cha:metody} zamieszczono przegląd prac naukowych dotyczących problematyki autonomicznego lądowania drona. 
+Rozdział \ref{cha:sprzet} opisuje sprzęt wykorzystany podczas realizacji projektu. 
+\ref{cha:implementacja_modelu} część pracy przedstawia opis modelu programowego wraz z~uzasadnieniem wyboru poszczególnych modułów, dyskusję na~temat wyboru wyglądu znacznika, a~także analizę kąta widzenia kamery. 
+Rozdział \ref{cha:implementacja_systemu} poświęcono implementacji sprzętowo-programowej całego systemu, począwszy od~odbioru sygnału wizyjnego, a~skończywszy na~wysyłaniu sygnałów sterujących dronem. Część ta~obejmuje również ewaluację komunikacji z~autopilotem oraz test ręcznego sterowania na~podstawie informacji z~systemu. 
 W~ostatnim rozdziale zamieszczono podsumowanie prac oraz przedstawiono możliwości rozwoju projektu.
 

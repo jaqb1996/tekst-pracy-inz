@@ -1,38 +1,38 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {polish}{}
-\contentsline {chapter}{\numberline {1}Wprowadzenie}{7}
-\contentsline {section}{\numberline {1.1}Cele pracy}{7}
-\contentsline {section}{\numberline {1.2}Zawarto\IeC {\'s}\IeC {\'c} pracy}{8}
-\contentsline {chapter}{\numberline {2}Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego l\IeC {\k a}dowania drona}{9}
-\contentsline {chapter}{\numberline {3}Sprz\IeC {\k e}t wykorzystany w projekcie}{13}
-\contentsline {section}{\numberline {3.1}Platforma obliczeniowa}{13}
-\contentsline {section}{\numberline {3.2}Modu\IeC {\l } rejestruj\IeC {\k a}cy obraz}{15}
-\contentsline {section}{\numberline {3.3}Platforma statku powietrznego}{16}
-\contentsline {section}{\numberline {3.4}Sterownik drona}{16}
-\contentsline {section}{\numberline {3.5}Laserowy czujnik wysoko\IeC {\'s}ci}{18}
-\contentsline {chapter}{\numberline {4}Implementacja i ewaluacja modelu programowego}{21}
-\contentsline {section}{\numberline {4.1}????}{21}
-\contentsline {section}{\numberline {4.2}Wyb\IeC {\'o}r znacznika}{22}
-\contentsline {subsection}{\numberline {4.2.1}Kszta\IeC {\l }t}{22}
-\contentsline {subsection}{\numberline {4.2.2}Kolor}{24}
-\contentsline {section}{\numberline {4.3}Analiza k\IeC {\k a}ta widzenia kamery przy r\IeC {\'o}\IeC {\.z}nych ustawieniach rozdzielczo\IeC {\'s}ci}{26}
-\contentsline {section}{\numberline {4.4}Podsumowanie}{26}
-\contentsline {chapter}{\numberline {5}Implementacja i~ewaluacja systemu sprz\IeC {\k e}towo-programowego}{31}
-\contentsline {section}{\numberline {5.1}Akwizycja obrazu}{32}
-\contentsline {subsection}{\numberline {5.1.1}Zapis ramek na kart\IeC {\k e} SD}{32}
-\contentsline {section}{\numberline {5.2}Pod\IeC {\l }\IeC {\k a}czenie laserowego czujnika wysoko\IeC {\'s}ci}{32}
-\contentsline {section}{\numberline {5.3}Konwersja z przestrzeni barw RGB do YCbCr}{33}
-\contentsline {section}{\numberline {5.4}Binaryzacja}{34}
-\contentsline {section}{\numberline {5.5}Mediana}{34}
-\contentsline {subsection}{\numberline {5.5.1}Otwarcie}{34}
-\contentsline {subsection}{\numberline {5.5.2}Indeksacja}{35}
-\contentsline {subsection}{\numberline {5.5.3}Wyznaczanie \IeC {\'s}rodka ci\IeC {\k e}\IeC {\.z}ko\IeC {\'s}ci}{37}
-\contentsline {subsection}{\numberline {5.5.4}Wyznaczanie prostok\IeC {\k a}ta otaczaj\IeC {\k a}cego i~pola powierzchni}{38}
-\contentsline {section}{\numberline {5.6}Algorytm sterowania}{39}
-\contentsline {section}{\numberline {5.7}Integracja p\IeC {\l }ytki z autopilotem}{39}
-\contentsline {section}{\numberline {5.8}Ewaluacja}{39}
-\contentsline {subsection}{\numberline {5.8.1}Test reakcji autopilota na zadawane komendy}{39}
-\contentsline {subsection}{\numberline {5.8.2}Test sterowania}{40}
-\contentsline {subsection}{\numberline {5.8.3}Podsumowanie}{40}
-\contentsline {chapter}{\numberline {6}Podsumowanie}{43}
-\contentsline {chapter}{\numberline {A}Spis zawarto\IeC {\'s}ci p\IeC {\l }yty CD}{45}
+\contentsline {chapter}{\numberline {1}Wprowadzenie}{7}%
+\contentsline {section}{\numberline {1.1}Cele pracy}{8}%
+\contentsline {section}{\numberline {1.2}Zawartość pracy}{8}%
+\contentsline {chapter}{\numberline {2}Metody przetwarzania obrazu i sposoby sterowania w procesie autonomicznego lądowania drona}{9}%
+\contentsline {chapter}{\numberline {3}Sprzęt wykorzystany w projekcie}{13}%
+\contentsline {section}{\numberline {3.1}Platforma obliczeniowa}{13}%
+\contentsline {section}{\numberline {3.2}Moduł rejestrujący obraz}{15}%
+\contentsline {section}{\numberline {3.3}Platforma statku powietrznego}{15}%
+\contentsline {section}{\numberline {3.4}Sterownik drona}{16}%
+\contentsline {section}{\numberline {3.5}Laserowy czujnik wysokości}{17}%
+\contentsline {chapter}{\numberline {4}Implementacja i ewaluacja modelu programowego}{19}%
+\contentsline {section}{\numberline {4.1}Opis zastosowanych operacji przetwarzania wizyjnego}{19}%
+\contentsline {section}{\numberline {4.2}Wybór znacznika}{20}%
+\contentsline {subsection}{\numberline {4.2.1}Kształt}{21}%
+\contentsline {subsection}{\numberline {4.2.2}Kolor}{21}%
+\contentsline {section}{\numberline {4.3}Analiza kąta widzenia kamery przy różnych ustawieniach rozdzielczości}{24}%
+\contentsline {section}{\numberline {4.4}Podsumowanie}{26}%
+\contentsline {chapter}{\numberline {5}Implementacja i ewaluacja systemu sprzętowo-programowego}{27}%
+\contentsline {section}{\numberline {5.1}Akwizycja obrazu}{28}%
+\contentsline {subsection}{\numberline {5.1.1}Zapis ramek na kartę SD}{28}%
+\contentsline {section}{\numberline {5.2}Podłączenie laserowego czujnika wysokości}{28}%
+\contentsline {section}{\numberline {5.3}Konwersja z przestrzeni barw RGB do YCbCr}{29}%
+\contentsline {section}{\numberline {5.4}Binaryzacja}{29}%
+\contentsline {section}{\numberline {5.5}Mediana}{29}%
+\contentsline {subsection}{\numberline {5.5.1}Otwarcie}{30}%
+\contentsline {subsection}{\numberline {5.5.2}Indeksacja}{31}%
+\contentsline {subsection}{\numberline {5.5.3}Wyznaczanie środka ciężkości}{33}%
+\contentsline {subsection}{\numberline {5.5.4}Wyznaczanie prostokąta otaczającego i~pola powierzchni}{34}%
+\contentsline {section}{\numberline {5.6}Algorytm sterowania}{35}%
+\contentsline {section}{\numberline {5.7}Integracja płytki z autopilotem}{35}%
+\contentsline {section}{\numberline {5.8}Ewaluacja}{35}%
+\contentsline {subsection}{\numberline {5.8.1}Test sterowania}{36}%
+\contentsline {subsection}{\numberline {5.8.2}Test reakcji autopilota na zadawane komendy}{36}%
+\contentsline {section}{\numberline {5.9}Podsumowanie}{37}%
+\contentsline {chapter}{\numberline {6}Podsumowanie}{39}%
+\contentsline {chapter}{\numberline {A}Spis zawartości płyty CD}{41}%
