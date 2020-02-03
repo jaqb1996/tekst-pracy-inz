@@ -19,7 +19,7 @@ Przeprowadzone testy dowiodły również możliwości wysyłania do~sterowanika 
 Kolejnym celem powinno być wykonanie lotu testowego (start -- regulacja położenia -- lądowanie) przy sterowaniu na~podstawie wizyjnego sprzężenia zwrotnego. 
 Etapem pośrednim powinno być przeprowadzenie testu pozwalającego ustalić, jaką najmniejszą prędkość akceptuje autopilot, jaka największa prędkość powoduje ruch drona bez wyraźnego przechylenia i~pochylenia oraz z~jaką częstotliwością mogą być wysyłane komendy. 
 Te~informacje pozwoliłyby na~dobór nastaw regulatora. 
-W~przypadku niemożliwości realizacji komend z~odpowiednią częstotliwością rozważyć można inną koncepcję: na~podstawie wysokości i~aktualnej pozycji znacznika na~obrazie można byłoby wyznaczać od~razu przesunięcie (zamiast prędkości), które doprowadziłoby dron ponad znacznik. Zadawanie przesunięcia również jest wspierane przez oprogramowanie ArduPilot. Takie podejście wymagałoby przeprowadzenia testów odległości od~znacznika w~terenie, w~zależności od~odległości na~obrazie. %TODO2 Nie bardzo to rozumiem... (doprecyzowane)
+W~przypadku niemożliwości realizacji komend z~odpowiednią częstotliwością rozważyć można inną koncepcję: na~podstawie wysokości i~aktualnej pozycji znacznika na~obrazie można byłoby wyznaczać od~razu przesunięcie (zamiast prędkości), które doprowadziłoby dron ponad znacznik. Zadawanie przesunięcia również jest wspierane przez oprogramowanie ArduPilot. Takie podejście wymagałoby przeprowadzenia testów odległości od~znacznika w~terenie, w~zależności od~tej odległości na~obrazie. %TODO2 Nie bardzo to rozumiem... (doprecyzowane)
 
 Powyższe działania możliwe są~przy zastosowaniu komponentów użytych w~projekcie. 
 Użycie kamery o~większym kącie widzenia pozwoliłoby jednak na~detekcję lądowiska z~większej odległości.
@@ -34,6 +34,6 @@ Na dołączonej do~pracy płycie CD znajdują się następujące foldery:
 \begin{itemize}
 	\item Matlab -- zawiera pliki modeli programowych, testów, obróbki obrazów oraz zdjęcia niezbędne do ich uruchomienia,
 	\item Vivado -- zawiera projekt główny oraz testowy, wykorzystywany do~komunikacji z~autopilotem,
-	\item Tex -- pliki teskstowe \LaTeX wraz z~rysunkami pojawiającymi się w tekście.
+	\item Tex -- zawiera pliki tekstowe \LaTeX wraz z~rysunkami pojawiającymi się w~tekście.
 \end{itemize}
 %---------------------------------------------------------------------------

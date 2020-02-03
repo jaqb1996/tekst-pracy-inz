@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.16)  2 FEB 2020 21:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.16)  3 FEB 2020 14:02
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -1583,16 +1583,37 @@ Package pdftex.def Info: ind_schemat.jpg  used on input line 208.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[32] [33 <./ind_schemat.jpg>] [34]
-<eksperyment.jpg, id=161, 3276.24pt x 1842.885pt>
+<ind_poprawna.jpg, id=150, 3276.24pt x 1842.885pt>
+File: ind_poprawna.jpg Graphic file (type jpg)
+<use ind_poprawna.jpg>
+Package pdftex.def Info: ind_poprawna.jpg  used on input line 223.
+(pdftex.def)             Requested size: 204.85846pt x 115.20815pt.
+<ind_niepoprawna.jpg, id=151, 3276.24pt x 1842.885pt>
+File: ind_niepoprawna.jpg Graphic file (type jpg)
+<use ind_niepoprawna.jpg>
+Package pdftex.def Info: ind_niepoprawna.jpg  used on input line 229.
+(pdftex.def)             Requested size: 204.85846pt x 115.20815pt.
+[32]
+Underfull \vbox (badness 6125) has occurred while \output is active []
+
+ [33 <./ind_schemat.jpg> <./ind_poprawna.jpg> <./ind_niepoprawna.jpg>] [34]
+Underfull \vbox (badness 1137) has occurred while \output is active []
+
+ [35]
+<eksperyment.jpg, id=166, 3276.24pt x 1842.885pt>
 File: eksperyment.jpg Graphic file (type jpg)
 <use eksperyment.jpg>
-Package pdftex.def Info: eksperyment.jpg  used on input line 336.
+Package pdftex.def Info: eksperyment.jpg  used on input line 352.
 (pdftex.def)             Requested size: 455.24411pt x 256.06186pt.
- [35]
-Underfull \vbox (badness 6188) has occurred while \output is active []
 
- [36 <./eksperyment.jpg>]) [37]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+)
+Underfull \vbox (badness 2662) has occurred while \output is active []
+
+ [36]
+[37 <./eksperyment.jpg>]
 \openout2 = `podsumowanie.aux'.
 
  (podsumowanie.tex [38
@@ -1620,10 +1641,10 @@ Package logreq Info: Writing requests to 'praca.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29103 strings out of 492450
- 546484 string characters out of 3132100
+ 29119 strings out of 492450
+ 546822 string characters out of 3132100
  920217 words of memory out of 3000000
- 33053 multiletter control sequences out of 15000+200000
+ 33067 multiletter control sequences out of 15000+200000
  616598 words of font info for 114 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,71p,1459b,1949s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1639,9 +1660,9 @@ C:/ProgramFiles/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/ProgramFiles/Mi
 KTeX/fonts/type1/urw/times/utmb8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/urw/t
 imes/utmr8a.pfb><C:/ProgramFiles/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Pr
 ogramFiles/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on praca.pdf (44 pages, 13121634 bytes).
+Output written on praca.pdf (44 pages, 17688728 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
+ 243 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -215,15 +215,31 @@ Główną trudnością w~implementacji opisanego algorytmu w~układzie FPGA jest
 Należy zarezerwować miejsce na~cechy każdego potencjalnego obiektu. 
 Ogranicza to~liczbę możliwych etykiet. 
 Zasoby części rekonfigurowalnej układu dostępnego na karcie ZYBO~Z7-20 pozwoliły na~zarezerwowanie miejsca dla~30~etykiet. 
-Przy pewnej określonej orientacji znacznika nie jest to~niestety wystarczająca liczba etykiet. %TODO2 może przykład (zdjęcie) i komentarz 
-
+Przy pewnej określonej orientacji znacznika nie jest to~niestety wystarczająca liczba etykiet (Rys. \ref{fig:rezultaty_ind}). %TODO2 może przykład (zdjęcie) i komentarz 
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ind_poprawna.jpg}
+		\caption{Poprawne wykrycie znacznika}
+		\label{fig:ind_poprawna}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ind_niepoprawna.jpg}
+		\caption{Obcięcie części znacznika ze~względu na brak etykiet}
+		\label{fig:ind_niepoprawna}
+	\end{subfigure}\\
+	\caption{Rezultaty indeksacji w~zależności od~orientacji znacznika}
+	\label{fig:rezultaty_ind}
+\end{figure}
 Aby możliwa była sprawna detekcja miejsca lądowania niezależnie od~orientacji markera, należało zmienić nieco koncepcję systemu. 
 Innym podejściem było obliczanie środka ciężkości wszystkich białych pikseli. 
 Eliminuje to~możliwość klasyfikacji obiektów ze~względu na~kształt (pozostaje klasyfikacja po~kolorze) i~tym samym czyni system podatnym na~zakłócenia. 
 Pojawienie się w~kadrze innych grup pikseli o~tym samym kolorze spowoduje przesunięcie środka ciężkości.
 Jednak w~warunkach testowych możliwe jest wypełnienie powierzchni kolorem silnie kontrastującym z~barwą znacznika. 
-Z~tego powodu moduł wyznaczający środek ciężkości \ref{subsec:srodek_ciezosci} był wykorzystywany podczas testowania rozwiązania.
-Wyznaczanie pola figury i~prostokąta otaczającego \ref{subsec:prostokat_otaczajacy} umożliwiało odrzucanie pewnych detekcji i~wysyłanie sygnału o~braku znalezienia znacznika. 
+Z~tego powodu moduł wyznaczający środek ciężkości (podrozdział \ref{subsec:srodek_ciezosci}) był wykorzystywany podczas testowania rozwiązania.
+Wyznaczanie pola figury i~prostokąta otaczającego (podrozdział \ref{subsec:prostokat_otaczajacy}) umożliwiało odrzucanie pewnych detekcji i~wysyłanie sygnału o~braku znalezienia znacznika. 
 %TODO2 do tego akapitu powyżej proszę dopisać zdanie polu i prostokącie otaczającym oraz odwołać się do tych podrozdziałów poniżej. (wykonane)
 
 \subsection{Wyznaczanie środka ciężkości}
