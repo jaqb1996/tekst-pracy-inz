@@ -166,10 +166,16 @@ backend=bibtex
 %Abstrakt
 \begin{abstractpage}
 	\begin{abstract}{polish}
-		W projekcie zaprezentowano programowo-sprzętowy system wizyjny wspomagający autonomiczne lądowanie drona. System opiera się na przetwarzaniu sygnału z kamery oraz laserowego czujnika wysokości w celu wysyłania sygnałów sterujących do drona. Obliczenia podzielone zostały pomiędzy logikę reprogramowalną, a system procesorowy. Wykonane testy potwierdziły możliwość wykonania lądowania na statycznej platformie przy użyciu stworzonego systemu.
-		\bigskip
+		W~projekcie zaprezentowano sprzętowo-programowy system wizyjny wspomagający autonomiczne lądowanie drona. 
+		System składa się z kamery, laserowego czujnika wysokości oraz heterogenicznego układu obliczeniowego Zynq SoC.
+		Na podstawie wyznaczonego położenia lądowiska oraz aktualnej wysokości generowane jest sterowanie, które następnie przekazywane jest do kontrolera drona.
+		Obliczenia podzielone zostały pomiędzy logikę reprogramowalną i~system procesorowy układu Zynq. 
+		Wykonane testy potwierdziły możliwość przeprowadzenia lądowania na statycznym lądowisku.
 		
-		\textbf{Słowa kluczowe: } autonomiczne lądowanie drona, system wizyjny, Zynq SoC, lidar, Pixhawk
+		\bigskip
+		\textbf{Słowa kluczowe:}   autonomiczne lądowanie drona, system wizyjny, Zynq SoC, lidar, Pixhawk
+		
+		
 	\end{abstract}
 	\bigskip
 	\bigskip
@@ -183,10 +189,14 @@ backend=bibtex
 	\bigskip
 	\bigskip
 	\begin{abstract}{english}
-
+		The project presents a hardware-software vision system supporting the autonomous landing of a~drone.
+		It consists of a~camera, a~laser based altitude sensor and a~heterogeneous Zynq SoC computing platform.
+		Based on the determined landing position and current altitude, control signals are generated, which are then transmitted to the drone controller.
+		The calculations were divided between the reprogrammable logic and the processor system of the Zynq device.
+		The conducted tests confirmed the possibility of landing on a~static landing pad.
 		\bigskip
 		
-		\textbf{Keywords:} 
+		\textbf{Keywords:} autonomous drone landing, vision system, Zynq SoC, lidar, Pixhawk
 	\end{abstract}
 \end{abstractpage}
 
