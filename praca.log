@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.11)  15 JAN 2020 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.11)  4 FEB 2020 09:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1024,6 +1024,9 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip112
 \dth@everypar=\toks32
 )
+(/usr/share/texlive/texmf-dist/tex/latex/was/gensymb.sty
+Package: gensymb 2003/07/02 v1.0 (WaS)
+)
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2017/12/19 v3.10 programmable bibliographies (PK/JW/AB)
 
@@ -1377,7 +1380,7 @@ File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 
 Package biblatex Warning: Conflicting options.
 (biblatex)                'urldate=iso' requires 'seconds=true'.
-(biblatex)                Setting 'seconds=true' on input line 149.
+(biblatex)                Setting 'seconds=true' on input line 161.
 
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -1387,25 +1390,25 @@ Package csquotes Info: Redefining alias 'default' -> 'polish'.
 LaTeX Warning: Unused global option(s):
     [11pt].
 
-(./praca.aux (./wprowadzenie.aux) (./metody.aux) (./opis_implementacji.aux)
-(./testy.aux) (./podsumowanie.aux))
+(./praca.aux (./wprowadzenie.aux) (./metody.aux) (./opis_platformy.aux)
+(./implementacja_modelu.aux) (./implementacja_systemu.aux) (./podsumowanie.aux)
+)
 \openout1 = `praca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
-LaTeX Font Info:    ... okay on input line 149.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 149.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 161.
+LaTeX Font Info:    ... okay on input line 161.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 161.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1560,6 +1563,18 @@ Dictionary: translator-basic-dictionary, Language: English
 (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
+LaTeX Info: Redefining \celsius on input line 161.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 161
+.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 161.
+Package gensymb Info: Using \Omega for \ohm on input line 161.
+
+Package gensymb Warning: Not defining \micro.
+
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -1570,17 +1585,47 @@ Package biblatex Info: Data encoding 'utf8' specified.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'praca.bbl' found.
+(./praca.bbl
 
-(./praca.bbl)
-Package biblatex Info: Reference section=0 on input line 149.
-Package biblatex Info: Reference segment=0 on input line 149.
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Rings':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'H_median':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'FPGA':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Falanga':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'H':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'Sudevan':
+(biblatex)                - Invalid format of field 'month'.
+
+)
+Package biblatex Info: Reference section=0 on input line 161.
+Package biblatex Info: Reference segment=0 on input line 161.
 \c@lstlisting=\count436
 \c__siunitx_mathsf_int=\count437
-LaTeX Font Info:    Try loading font information for U+msa on input line 149.
+LaTeX Font Info:    Try loading font information for U+msa on input line 161.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 149.
+LaTeX Font Info:    Try loading font information for U+msb on input line 161.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1589,23 +1634,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <agh.jpg, id=1, 146.4672pt x 284.7438pt>
 File: agh.jpg Graphic file (type jpg)
 <use agh.jpg>
-Package pdftex.def Info: agh.jpg  used on input line 151.
+Package pdftex.def Info: agh.jpg  used on input line 163.
 (pdftex.def)             Requested size: 87.88098pt x 170.8476pt.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 151.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 163.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 151.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 163.
 LaTeX Font Info:    Font shape `T1/phv/bx/sc' in size <12> not available
-(Font)              Font shape `T1/phv/b/sc' tried instead on input line 151.
+(Font)              Font shape `T1/phv/b/sc' tried instead on input line 163.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 151.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 163.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 151.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 163.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 151.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 163.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./agh.jpg>] [2
@@ -1616,194 +1661,77 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 164.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 168.
+ [5
+
+
+] [6
+
+]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 164.
- (./praca.toc)
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 205.
+ (./praca.toc
+[7])
 \tf@toc=\write5
 \openout5 = `praca.toc'.
 
-
-[5
-
-]
+ [8]
 \openout2 = `wprowadzenie.aux'.
 
- (./wprowadzenie.tex [6
-
-
-
-]
+ (./wprowadzenie.tex
 Rozdzia\l  1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
-) [7]
+[9
+
+
+
+]) [10]
 \openout2 = `metody.aux'.
 
- (./metody.tex [8
-
-
-
-]
+ (./metody.tex
 Rozdzia\l  2.
-
-LaTeX Warning: Citation 'Rings' on page 9 undefined on input line 4.
-
-
-LaTeX Warning: Citation 'H_median' on page 9 undefined on input line 15.
-
-
-LaTeX Warning: Citation 'FPGA' on page 9 undefined on input line 15.
-
-
-LaTeX Warning: Citation 'Falanga' on page 9 undefined on input line 16.
-
-
-LaTeX Warning: Citation 'H' on page 9 undefined on input line 17.
-
-
-LaTeX Warning: Citation 'Rings' on page 9 undefined on input line 18.
-
-[9]
-
-LaTeX Warning: Citation 'FPGA' on page 10 undefined on input line 19.
-
-
-LaTeX Warning: Citation 'Sudevan' on page 10 undefined on input line 20.
-
-
-LaTeX Warning: Citation 'Rings' on page 10 undefined on input line 20.
-
-
-LaTeX Warning: Citation 'Falanga' on page 10 undefined on input line 21.
-
-) [10]
-\openout2 = `opis_implementacji.aux'.
-
- (./opis_implementacji.tex
-Rozdzia\l  3.
-
-LaTeX Warning: Citation 'projektPCAM' on page 11 undefined on input line 6.
-
-
-Underfull \hbox (badness 2245) in paragraph at lines 5--8
-\T1/ptm/m/n/10.95 Producent na swo-jej stro-nie in-ter-ne-to-wej za-pew-nia pro
--jekt de-mon-stra-cyjny po-ª¡-cze-nia ka-mery
- []
-
-
-LaTeX Warning: Citation 'xilffs' on page 11 undefined on input line 17.
-
 [11
 
 
 
 ]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 21.
-<kontekst.jpg, id=45, 799.48688pt x 353.06906pt>
-File: kontekst.jpg Graphic file (type jpg)
-<use kontekst.jpg>
-Package pdftex.def Info: kontekst.jpg  used on input line 55.
-(pdftex.def)             Requested size: 455.24411pt x 201.04672pt.
+<znacznik_falanga.jpg, id=45, 127.22531pt x 124.21407pt>
+File: znacznik_falanga.jpg Graphic file (type jpg)
+<use znacznik_falanga.jpg>
+Package pdftex.def Info: znacznik_falanga.jpg  used on input line 44.
+(pdftex.def)             Requested size: 136.57462pt x 133.34744pt.
+<znacznik_H.jpg, id=46, 235.88126pt x 262.9825pt>
+File: znacznik_H.jpg Graphic file (type jpg)
+<use znacznik_H.jpg>
+Package pdftex.def Info: znacznik_H.jpg  used on input line 50.
+(pdftex.def)             Requested size: 122.9163pt x 137.04059pt.
+<znacznik_rings.jpg, id=47, 161.85469pt x 161.10187pt>
+File: znacznik_rings.jpg Graphic file (type jpg)
+<use znacznik_rings.jpg>
+Package pdftex.def Info: znacznik_rings.jpg  used on input line 56.
+(pdftex.def)             Requested size: 136.57462pt x 135.94656pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 56.
- [12] [13 <./kontekst.jpg>]
-<ind_sasiedztwo.jpg, id=60, 439.6425pt x 196.48407pt>
-File: ind_sasiedztwo.jpg Graphic file (type jpg)
-<use ind_sasiedztwo.jpg>
-Package pdftex.def Info: ind_sasiedztwo.jpg  used on input line 110.
-(pdftex.def)             Requested size: 455.24411pt x 203.46315pt.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 60.
+<pozycja_H_a.jpg, id=48, 252.19218pt x 247.67531pt>
+File: pozycja_H_a.jpg Graphic file (type jpg)
+<use pozycja_H_a.jpg>
+Package pdftex.def Info: pozycja_H_a.jpg  used on input line 80.
+(pdftex.def)             Requested size: 182.09486pt x 178.83627pt.
+<pozycja_H_b.jpg, id=49, 307.90031pt x 304.88907pt>
+File: pozycja_H_b.jpg Graphic file (type jpg)
+<use pozycja_H_b.jpg>
+Package pdftex.def Info: pozycja_H_b.jpg  used on input line 86.
+(pdftex.def)             Requested size: 182.09486pt x 180.31564pt.
 
+Underfull \vbox (badness 8113) has occurred while \output is active []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Citation 'COG' on page 14 undefined on input line 115.
-
-[14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15 <./ind_sasiedztwo.jpg>]
-<ind_schemat.jpg, id=67, 599.99156pt x 291.33844pt>
-File: ind_schemat.jpg Graphic file (type jpg)
-<use ind_schemat.jpg>
-Package pdftex.def Info: ind_schemat.jpg  used on input line 127.
-(pdftex.def)             Requested size: 455.24411pt x 221.05942pt.
-) [16 <./ind_schemat.jpg>] [17]
-\openout2 = `testy.aux'.
-
- (./testy.tex [18
-
-
-
-]
-Rozdzia\l  4.
-<osw1.jpg, id=77, 1927.2pt x 1084.05pt>
-File: osw1.jpg Graphic file (type jpg)
-<use osw1.jpg>
-Package pdftex.def Info: osw1.jpg  used on input line 9.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<hist1.jpg, id=78, 1606.0pt x 785.93625pt>
-File: hist1.jpg Graphic file (type jpg)
-<use hist1.jpg>
-Package pdftex.def Info: hist1.jpg  used on input line 15.
-(pdftex.def)             Requested size: 455.24411pt x 222.78291pt.
-<bin1.jpg, id=79, 1136.245pt x 637.38126pt>
-File: bin1.jpg Graphic file (type jpg)
-<use bin1.jpg>
-Package pdftex.def Info: bin1.jpg  used on input line 21.
-(pdftex.def)             Requested size: 455.24411pt x 255.37592pt.
-<osw2.jpg, id=80, 1927.2pt x 1084.05pt>
-File: osw2.jpg Graphic file (type jpg)
-<use osw2.jpg>
-Package pdftex.def Info: osw2.jpg  used on input line 27.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<hist2.jpg, id=81, 1606.0pt x 785.93625pt>
-File: hist2.jpg Graphic file (type jpg)
-<use hist2.jpg>
-Package pdftex.def Info: hist2.jpg  used on input line 33.
-(pdftex.def)             Requested size: 455.24411pt x 222.78291pt.
-<bin2.jpg, id=82, 1136.245pt x 637.38126pt>
-File: bin2.jpg Graphic file (type jpg)
-<use bin2.jpg>
-Package pdftex.def Info: bin2.jpg  used on input line 39.
-(pdftex.def)             Requested size: 455.24411pt x 255.37592pt.
-<osw3.jpg, id=83, 1927.2pt x 1084.05pt>
-File: osw3.jpg Graphic file (type jpg)
-<use osw3.jpg>
-Package pdftex.def Info: osw3.jpg  used on input line 45.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<hist3.jpg, id=84, 1606.0pt x 785.93625pt>
-File: hist3.jpg Graphic file (type jpg)
-<use hist3.jpg>
-Package pdftex.def Info: hist3.jpg  used on input line 51.
-(pdftex.def)             Requested size: 455.24411pt x 222.78291pt.
-<bin3.jpg, id=85, 1136.245pt x 637.38126pt>
-File: bin3.jpg Graphic file (type jpg)
-<use bin3.jpg>
-Package pdftex.def Info: bin3.jpg  used on input line 57.
-(pdftex.def)             Requested size: 455.24411pt x 255.37592pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+ [12 <./znacznik_falanga.jpg> <./znacznik_H.jpg> <./znacznik_rings.jpg>]
+<trajektorie.jpg, id=54, 398.99063pt x 137.7647pt>
+File: trajektorie.jpg Graphic file (type jpg)
+<use trajektorie.jpg>
+Package pdftex.def Info: trajektorie.jpg  used on input line 125.
+(pdftex.def)             Requested size: 455.24411pt x 157.1942pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1811,111 +1739,348 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19 <./osw1.jpg>]
+ [13 <./pozycja_H_a.jpg> <./pozycja_H_b.jpg>]) [14 <./trajektorie.jpg>]
+\openout2 = `opis_platformy.aux'.
+
+
+(./opis_platformy.tex
+Rozdzia\l  3.
+
+LaTeX Warning: Reference `fig:ig:plytka_kamera' on page 15 undefined on input l
+ine 8.
+
+<plytka_kamera.jpg, id=62, 231.11343pt x 172.39406pt>
+File: plytka_kamera.jpg Graphic file (type jpg)
+<use plytka_kamera.jpg>
+Package pdftex.def Info: plytka_kamera.jpg  used on input line 12.
+(pdftex.def)             Requested size: 227.62206pt x 169.79204pt.
+<zynq.png, id=63, 394.47375pt x 435.12563pt>
+File: zynq.png Graphic file (type png)
+<use zynq.png>
+Package pdftex.def Info: zynq.png  used on input line 19.
+(pdftex.def)             Requested size: 364.19667pt x 401.728pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15
+
+
+
+ <./plytka_kamera.jpg>] [16 <./zynq.png>] [17]
+<zdjecie_pixhawk.jpg, id=73, 195.73125pt x 289.83281pt>
+File: zdjecie_pixhawk.jpg Graphic file (type jpg)
+<use zdjecie_pixhawk.jpg>
+Package pdftex.def Info: zdjecie_pixhawk.jpg  used on input line 101.
+(pdftex.def)             Requested size: 136.57462pt x 202.24474pt.
+ [18 <./zdjecie_pixhawk.jpg>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 75.
+               Default added (so using `tbp') on input line 141.
 
 
-Overfull \hbox (38.50569pt too wide) in paragraph at lines 79--86
- [][] 
+Overfull \hbox (37.38252pt too wide) in paragraph at lines 144--156
+[][] 
  []
 
-<1080p.jpg, id=90, 3510.11375pt x 1974.37625pt>
-File: 1080p.jpg Graphic file (type jpg)
-<use 1080p.jpg>
-Package pdftex.def Info: 1080p.jpg  used on input line 89.
-(pdftex.def)             Requested size: 455.24411pt x 256.04526pt.
-<720p.jpg, id=91, 4024.03375pt x 2263.45625pt>
-File: 720p.jpg Graphic file (type jpg)
-<use 720p.jpg>
-Package pdftex.def Info: 720p.jpg  used on input line 95.
-(pdftex.def)             Requested size: 455.24411pt x 256.06114pt.
+<lidar.jpg, id=77, 144.54pt x 144.54pt>
+File: lidar.jpg Graphic file (type jpg)
+<use lidar.jpg>
+Package pdftex.def Info: lidar.jpg  used on input line 161.
+(pdftex.def)             Requested size: 182.09486pt x 182.10368pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+) [19] [20 <./lidar.jpg>]
+\openout2 = `implementacja_modelu.aux'.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<h.jpg, id=92, 1927.2pt x 1084.05pt>
-File: h.jpg Graphic file (type jpg)
-<use h.jpg>
-Package pdftex.def Info: h.jpg  used on input line 105.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<bin.jpg, id=93, 1927.2pt x 1084.05pt>
-File: bin.jpg Graphic file (type jpg)
-<use bin.jpg>
-Package pdftex.def Info: bin.jpg  used on input line 111.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<median.jpg, id=94, 1927.2pt x 1084.05pt>
-File: median.jpg Graphic file (type jpg)
-<use median.jpg>
-Package pdftex.def Info: median.jpg  used on input line 117.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<opened.jpg, id=95, 1927.2pt x 1084.05pt>
-File: opened.jpg Graphic file (type jpg)
-<use opened.jpg>
-Package pdftex.def Info: opened.jpg  used on input line 123.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-<closed.jpg, id=96, 1927.2pt x 1084.05pt>
-File: closed.jpg Graphic file (type jpg)
-<use closed.jpg>
-Package pdftex.def Info: closed.jpg  used on input line 129.
-(pdftex.def)             Requested size: 455.24411pt x 256.07509pt.
-[20 <./hist1.jpg>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [21 <./bin1.jpg>] [22 <./osw2.jpg>] [23 <./hist2.jpg> <./bin2.jpg>] [24 <./os
-w3.jpg> <./hist3.jpg>] [25 <./bin3.jpg> <./1080p.jpg>] [26 <./720p.jpg> <./h.jp
-g>] [27 <./bin.jpg> <./median.jpg>] [28 <./opened.jpg> <./closed.jpg>]
-\openout2 = `podsumowanie.aux'.
-
-
-(./podsumowanie.tex
-Rozdzia\l  5.
-) [29
+ (./implementacja_modelu.tex
+Rozdzia\l  4.
+[21
 
 
 
 ]
+<h.jpg, id=88, 1927.2pt x 1084.05pt>
+File: h.jpg Graphic file (type jpg)
+<use h.jpg>
+Package pdftex.def Info: h.jpg  used on input line 53.
+(pdftex.def)             Requested size: 182.09486pt x 102.42342pt.
+<bin.jpg, id=89, 1927.2pt x 1084.05pt>
+File: bin.jpg Graphic file (type jpg)
+<use bin.jpg>
+Package pdftex.def Info: bin.jpg  used on input line 59.
+(pdftex.def)             Requested size: 182.09486pt x 102.42342pt.
+<median.jpg, id=90, 1927.2pt x 1084.05pt>
+File: median.jpg Graphic file (type jpg)
+<use median.jpg>
+Package pdftex.def Info: median.jpg  used on input line 65.
+(pdftex.def)             Requested size: 182.09486pt x 102.42342pt.
+<opened.jpg, id=91, 1927.2pt x 1084.05pt>
+File: opened.jpg Graphic file (type jpg)
+<use opened.jpg>
+Package pdftex.def Info: opened.jpg  used on input line 71.
+(pdftex.def)             Requested size: 182.09486pt x 102.42342pt.
 
-LaTeX Warning: Empty bibliography on input line 186.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(./praca.aux (./wprowadzenie.aux) (./metody.aux) (./opis_implementacji.aux)
-(./testy.aux) (./podsumowanie.aux))
+ [22 <./h.jpg> <./bin.jpg> <./median.jpg> <./opened.jpg>]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 87.
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--95
+
+ []
+
+<szescian_rgb.jpg, id=95, 178.41656pt x 168.63pt>
+File: szescian_rgb.jpg Graphic file (type jpg)
+<use szescian_rgb.jpg>
+Package pdftex.def Info: szescian_rgb.jpg  used on input line 118.
+(pdftex.def)             Requested size: 91.04742pt x 86.05418pt.
+
+Underfull \hbox (badness 1960) in paragraph at lines 119--119
+[]\T1/ptm/m/n/10 (a) |Przed-sta-wie-nie prze-strzeni barw RGB
+ []
+
+<szescian_ycbcr.jpg, id=96, 200.24812pt x 150.5625pt>
+File: szescian_ycbcr.jpg Graphic file (type jpg)
+<use szescian_ycbcr.jpg>
+Package pdftex.def Info: szescian_ycbcr.jpg  used on input line 124.
+(pdftex.def)             Requested size: 91.04742pt x 68.4578pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<rgb_ciemny.jpg, id=97, 1927.2pt x 1084.05pt>
+File: rgb_ciemny.jpg Graphic file (type jpg)
+<use rgb_ciemny.jpg>
+Package pdftex.def Info: rgb_ciemny.jpg  used on input line 146.
+(pdftex.def)             Requested size: 178.45218pt x 100.3723pt.
+<bw_hist1.jpg, id=98, 1606.0pt x 785.93625pt>
+File: bw_hist1.jpg Graphic file (type jpg)
+<use bw_hist1.jpg>
+Package pdftex.def Info: bw_hist1.jpg  used on input line 152.
+(pdftex.def)             Requested size: 245.37685pt x 120.07996pt.
+<rgb_sredni.jpg, id=99, 1927.2pt x 1084.05pt>
+File: rgb_sredni.jpg Graphic file (type jpg)
+<use rgb_sredni.jpg>
+Package pdftex.def Info: rgb_sredni.jpg  used on input line 158.
+(pdftex.def)             Requested size: 178.45218pt x 100.3723pt.
+<bw_hist2.jpg, id=100, 1606.0pt x 785.93625pt>
+File: bw_hist2.jpg Graphic file (type jpg)
+<use bw_hist2.jpg>
+Package pdftex.def Info: bw_hist2.jpg  used on input line 164.
+(pdftex.def)             Requested size: 245.37685pt x 120.07996pt.
+<rgb_jasny.jpg, id=101, 1927.2pt x 1084.05pt>
+File: rgb_jasny.jpg Graphic file (type jpg)
+<use rgb_jasny.jpg>
+Package pdftex.def Info: rgb_jasny.jpg  used on input line 170.
+(pdftex.def)             Requested size: 178.45218pt x 100.3723pt.
+<bw_hist3.jpg, id=102, 1606.0pt x 785.93625pt>
+File: bw_hist3.jpg Graphic file (type jpg)
+<use bw_hist3.jpg>
+Package pdftex.def Info: bw_hist3.jpg  used on input line 176.
+(pdftex.def)             Requested size: 245.37685pt x 120.07996pt.
+[23]
+<ycbcr_ciemny.jpg, id=108, 1927.2pt x 1084.05pt>
+File: ycbcr_ciemny.jpg Graphic file (type jpg)
+<use ycbcr_ciemny.jpg>
+Package pdftex.def Info: ycbcr_ciemny.jpg  used on input line 201.
+(pdftex.def)             Requested size: 184.37135pt x 103.69708pt.
+<ycbcr_hist1.jpg, id=109, 1606.0pt x 785.93625pt>
+File: ycbcr_hist1.jpg Graphic file (type jpg)
+<use ycbcr_hist1.jpg>
+Package pdftex.def Info: ycbcr_hist1.jpg  used on input line 207.
+(pdftex.def)             Requested size: 184.37135pt x 90.21886pt.
+<ycbcr_sredni.jpg, id=110, 1927.2pt x 1084.05pt>
+File: ycbcr_sredni.jpg Graphic file (type jpg)
+<use ycbcr_sredni.jpg>
+Package pdftex.def Info: ycbcr_sredni.jpg  used on input line 213.
+(pdftex.def)             Requested size: 184.37135pt x 103.69708pt.
+<ycbcr_hist2.jpg, id=111, 1606.0pt x 785.93625pt>
+File: ycbcr_hist2.jpg Graphic file (type jpg)
+<use ycbcr_hist2.jpg>
+Package pdftex.def Info: ycbcr_hist2.jpg  used on input line 219.
+(pdftex.def)             Requested size: 184.37135pt x 90.21886pt.
+<ycbcr_jasny.jpg, id=112, 1927.2pt x 1084.05pt>
+File: ycbcr_jasny.jpg Graphic file (type jpg)
+<use ycbcr_jasny.jpg>
+Package pdftex.def Info: ycbcr_jasny.jpg  used on input line 225.
+(pdftex.def)             Requested size: 184.37135pt x 103.69708pt.
+<ycbcr_hist3.jpg, id=113, 1606.0pt x 785.93625pt>
+File: ycbcr_hist3.jpg Graphic file (type jpg)
+<use ycbcr_hist3.jpg>
+Package pdftex.def Info: ycbcr_hist3.jpg  used on input line 231.
+(pdftex.def)             Requested size: 184.37135pt x 90.21886pt.
+<znacznik.jpg, id=114, 298.86656pt x 417.81094pt>
+File: znacznik.jpg Graphic file (type jpg)
+<use znacznik.jpg>
+Package pdftex.def Info: znacznik.jpg  used on input line 245.
+(pdftex.def)             Requested size: 136.57462pt x 190.93306pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [24 <./szescian_rgb.jpg> <./szescian_ycbcr.jpg>] [25 <./rgb_ciemny.jpg> <./bw_
+hist1.jpg> <./rgb_sredni.jpg> <./bw_hist2.jpg> <./rgb_jasny.jpg> <./bw_hist3.jp
+g>]
+[26 <./ycbcr_ciemny.jpg> <./ycbcr_hist1.jpg> <./ycbcr_sredni.jpg> <./ycbcr_hist
+2.jpg> <./ycbcr_jasny.jpg> <./ycbcr_hist3.jpg>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 272.
+
+<720p.jpg, id=125, 4024.03375pt x 2263.45625pt>
+File: 720p.jpg Graphic file (type jpg)
+<use 720p.jpg>
+Package pdftex.def Info: 720p.jpg  used on input line 288.
+(pdftex.def)             Requested size: 286.80058pt x 161.2902pt.
+<1080p.jpg, id=126, 3510.11375pt x 1974.37625pt>
+File: 1080p.jpg Graphic file (type jpg)
+<use 1080p.jpg>
+Package pdftex.def Info: 1080p.jpg  used on input line 294.
+(pdftex.def)             Requested size: 286.80058pt x 161.29736pt.
+[27 <./znacznik.jpg>] [28 <./720p.jpg> <./1080p.jpg>]) [29]
+\openout2 = `implementacja_systemu.aux'.
+
+
+(./implementacja_systemu.tex [30
+
+
+
+]
+Rozdzia\l  5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--1
+|\T1/ptm/b/n/17.28 5. Im-ple-men-ta-cja i ewa-lu-acja sys-temu sprz¦towo-
+ []
+
+<system.jpg, id=140, 1038.12843pt x 584.93532pt>
+File: system.jpg Graphic file (type jpg)
+<use system.jpg>
+Package pdftex.def Info: system.jpg  used on input line 14.
+(pdftex.def)             Requested size: 455.24411pt x 256.50656pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31 <./system.jpg>]
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 58.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \vbox (badness 4886) has occurred while \output is active []
+
+ [32]
+<drzewo_ycbcr.jpg, id=148, 404.26031pt x 319.94531pt>
+File: drzewo_ycbcr.jpg Graphic file (type jpg)
+<use drzewo_ycbcr.jpg>
+Package pdftex.def Info: drzewo_ycbcr.jpg  used on input line 101.
+(pdftex.def)             Requested size: 318.66948pt x 252.20723pt.
+
+Underfull \hbox (badness 1424) in paragraph at lines 102--102
+[]\T1/ptm/b/n/10 Rys. 5.2. |\T1/ptm/m/n/10 Sche-mat wy-zna-cza-nia skªa-do-wej 
+Cb. $\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 21 = \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10
+ 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 168736\OML/cmm/m/it/10 ; A\OT1/cmr/m/n/10 
+22 =
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33]
+<kontekst.jpg, id=154, 799.48688pt x 353.06906pt>
+File: kontekst.jpg Graphic file (type jpg)
+<use kontekst.jpg>
+Package pdftex.def Info: kontekst.jpg  used on input line 128.
+(pdftex.def)             Requested size: 364.19667pt x 160.83522pt.
+<drzewo_sumacyjne.jpg, id=155, 593.96906pt x 252.945pt>
+File: drzewo_sumacyjne.jpg Graphic file (type jpg)
+<use drzewo_sumacyjne.jpg>
+Package pdftex.def Info: drzewo_sumacyjne.jpg  used on input line 136.
+(pdftex.def)             Requested size: 455.24411pt x 193.87668pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34 <./drzewo_ycbcr.jpg> <./kontekst.jpg>]
+<ind_sasiedztwo.jpg, id=159, 439.6425pt x 196.48407pt>
+File: ind_sasiedztwo.jpg Graphic file (type jpg)
+<use ind_sasiedztwo.jpg>
+Package pdftex.def Info: ind_sasiedztwo.jpg  used on input line 164.
+(pdftex.def)             Requested size: 227.62206pt x 101.72557pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[35 <./drzewo_sumacyjne.jpg>] [36 <./ind_sasiedztwo.jpg>]
+<ind_schemat.jpg, id=166, 599.99156pt x 291.33844pt>
+File: ind_schemat.jpg Graphic file (type jpg)
+<use ind_schemat.jpg>
+Package pdftex.def Info: ind_schemat.jpg  used on input line 205.
+(pdftex.def)             Requested size: 455.24411pt x 221.05942pt.
+<ind_poprawna.jpg, id=167, 3276.24pt x 1842.885pt>
+File: ind_poprawna.jpg Graphic file (type jpg)
+<use ind_poprawna.jpg>
+Package pdftex.def Info: ind_poprawna.jpg  used on input line 220.
+(pdftex.def)             Requested size: 204.85846pt x 115.20815pt.
+<ind_niepoprawna.jpg, id=168, 3276.24pt x 1842.885pt>
+File: ind_niepoprawna.jpg Graphic file (type jpg)
+<use ind_niepoprawna.jpg>
+Package pdftex.def Info: ind_niepoprawna.jpg  used on input line 226.
+(pdftex.def)             Requested size: 204.85846pt x 115.20815pt.
+ [37 <./ind_schemat.jpg>] [38 <./ind_poprawna.jpg> <./ind_niepoprawna.jpg>] [39
+]
+<eksperyment.jpg, id=180, 3276.24pt x 1842.885pt>
+File: eksperyment.jpg Graphic file (type jpg)
+<use eksperyment.jpg>
+Package pdftex.def Info: eksperyment.jpg  used on input line 351.
+(pdftex.def)             Requested size: 455.24411pt x 256.06186pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+)
+Underfull \vbox (badness 1939) has occurred while \output is active []
+
+ [40]
+[41 <./eksperyment.jpg>]
+\openout2 = `podsumowanie.aux'.
+
+ (./podsumowanie.tex [42
+
+
+
+]
+Rozdzia\l  6.
+) [43] [44] [45
+
+
+] [46]
+Dodatek A.
+[47
+
+] (./praca.aux (./wprowadzenie.aux) (./metody.aux) (./opis_platformy.aux)
+(./implementacja_modelu.aux) (./implementacja_systemu.aux) (./podsumowanie.aux)
+)
 
 LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run BibTeX on the file(s):
-(biblatex)                praca
-(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'praca.run.xml'.
 \openout1 = `praca.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26595 strings out of 492982
- 495285 string characters out of 6134895
- 752061 words of memory out of 5000000
- 29770 multiletter control sequences out of 15000+600000
- 602670 words of font info for 91 fonts, out of 8000000 for 9000
+ 26926 strings out of 492982
+ 504517 string characters out of 6134895
+ 750052 words of memory out of 5000000
+ 30061 multiletter control sequences out of 15000+600000
+ 611810 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,15n,46p,10383b,1968s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,15n,50p,10383b,3246s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1929,10 +2094,10 @@ e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on praca.pdf (29 pages, 9312645 bytes).
+Output written on praca.pdf (47 pages, 17665898 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
+ 255 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 206 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -16,6 +16,7 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{gensymb}
 
 % --- < bibliografia > ---
 
@@ -87,7 +88,18 @@ backend=bibtex
 \AtBeginDocument{
 	\renewcommand{\tablename}{Tabela}
 	\renewcommand{\figurename}{Rys.}
+	\renewcommand{\textfraction}{0.0}
+	\renewcommand{\topfraction}{1}
 }
+
+% Abstrakt
+\newenvironment{abstractpage}
+{\cleardoublepage\vspace*{\fill}\thispagestyle{empty}}
+{\vfill\cleardoublepage}
+\renewenvironment{abstract}[1]
+{\bigskip\selectlanguage{#1}%
+	\begin{center}\bfseries\abstractname\end{center}}
+{\par\bigskip}
 
 % ------------------------
 % --- < tabele > ---
@@ -118,7 +130,7 @@ backend=bibtex
 \shorttitlePL{Sprzętowo-programowy system wizyjny wspomagający autonomiczne lądowanie drona.} % skrócona wersja tytułu jeśli jest bardzo długi
 \shorttitleEN{Hardware-software vision system supporting the autonomous landing of a drone.}
 
-\thesistype{Projekt dyplomowy inżynierski}
+\thesistype{Projekt dyplomowy}
 %\thesistype{Master of Science Thesis}
 
 \supervisor{dr inż. Tomasz Kryjak}
@@ -127,15 +139,15 @@ backend=bibtex
 \degreeprogramme{Automatyka i Robotyka}
 %\degreeprogramme{Computer Science}
 
-\date{2019}
+\date{2020}
 
-\department{Katedra Automatyki i Inżynierii Biomedycznej}
+\department{}
 %\department{Department of Applied Computer Science}
 
 \faculty{Wydział Elektrotechniki, Automatyki,\protect\\[-1mm] Informatyki i Inżynierii Biomedycznej}
 %\faculty{Faculty of Electrical Engineering, Automatics, Computer Science and Biomedical Engineering}
 
-\acknowledgements{Serdecznie dziękuję \dots}
+\acknowledgements{Serdecznie dziękuję mojemu promotorowi \\Panu Dr. inż. Tomaszowi Kryjakowi oraz innym pracownikom Katedry Automatyki i Robotyki \\za wsparcie merytoryczne i okazaną pomoc.}
 
 
 \setlength{\cftsecnumwidth}{10mm}
@@ -149,6 +161,35 @@ backend=bibtex
 \begin{document}
 
 \titlepages
+
+
+%Abstrakt
+\begin{abstractpage}
+	\begin{abstract}{polish}
+		
+		\bigskip
+		
+		\textbf{Słowa kluczowe:} 
+	\end{abstract}
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\bigskip
+	\begin{abstract}{english}
+
+		\bigskip
+		
+		\textbf{Keywords:} 
+	\end{abstract}
+\end{abstractpage}
+
 
 % Ponowne zdefiniowanie stylu `plain`, aby usunąć numer strony z pierwszej strony spisu treści i poszczególnych rozdziałów.
 \fancypagestyle{plain}
@@ -166,8 +207,9 @@ backend=bibtex
 
 \include{wprowadzenie}
 \include{metody}
-\include{opis_implementacji}
-\include{testy}
+\include{opis_platformy}
+\include{implementacja_modelu}
+\include{implementacja_systemu}
 \include{podsumowanie}
 %\include{rozdzial3}
 %\include{rozdzial1}
@@ -184,5 +226,15 @@ backend=bibtex
 % itd.
 
 \printbibliography
+
+%TODO + Dodatek A. Spis zawartości CD, która będzie dla mnie (nie dziekanatu).
+\appendix
+\chapter{Spis zawartości płyty CD}
+Na dołączonej do~pracy płycie CD znajdują się następujące foldery:
+\begin{itemize}
+	\item Matlab -- zawiera pliki modeli programowych, testów, obróbki obrazów oraz zdjęcia niezbędne do ich uruchomienia,
+	\item Vivado -- zawiera projekt główny oraz testowy, wykorzystywany do~komunikacji z~autopilotem,
+	\item Tex -- zawiera pliki tekstowe \LaTeX wraz z~rysunkami pojawiającymi się w~tekście.
+\end{itemize}
 
 \end{document}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \chapter{Opis implementacji}
 \label{cha:Opis implementacji}
 \section{Zastosowana platforma sprzętowa}
@@ -133,3 +134,283 @@ Schemat przetwarzania danych po~każdej ramce pokazano na rysunku \ref{fig:ind_s
 \label{sec:komunikacja_pixhawk} 
 --- Tutaj chciałbym opisać protokół Mavlink używany do komunikacji ze sterownikiem. Obecnie została nawiązana komunikacja i udało się wysłać komendę uzbrojenia drona w trybie STABILIZE. W najbliższym czasie planuję przeprowadzić test wysyłania komend ruchu w trybie GUIDED, który wymaga połączenia GPS.
 %-------------------------------------------------------------------------
+=======
+\chapter{Implementacja i ewaluacja modelu programowego}
+\label{cha:opis_implementacji}
+
+%TODO2 Modyfikacja opisu
+W~rozdziale szczegóły związane z~implementacją systemu. 
+Ważną rolę w~tworzeniu kolejnych modułów odegrał model programowy, czyli program napisany w~dowolnym języku programowania i~wykonywany na~komputerze~PC, którego działanie oddaje funkcjonalność modułu tworzonego w~sprzęcie.
+Porównanie wyników działania modelu programowego i~symulacji modułu daje informację o~poprawności implementacji. 
+Model programowy, wraz z~uzasadnieniem użycia poszczególnych modułów, przedstawiono na~początku rozdziału.
+Następnie opisano wszystkie wykonane komponenty, od~przesłania obrazu przez kamerę, do~wysyłania komend do~autopilota.
+
+\section{????}
+\label{sec:implementacja_modelu_programowego}
+Model programowy został napisany w pakiecie Matlab przy wykorzystaniu funkcji dostępnych w~bibliotece \textit{Image Processing Toolbox}. 
+Pozwoliło to~na~szybkie prototypownie systemu wizyjnego, składającego się~z:
+\begin{itemize}
+	\item konwersji z~przestrzeni RGB do YCbCr,
+	\item binaryzacji ze~stałymi progami,
+	\item mediany,
+	\item otwarcia,
+	\item indeksacji jednoprzebiegowej wyznaczającej pole powierzchni i~prostokąt otaczający obiektów.
+\end{itemize}
+
+Piksel w~przestrzeni barw YCbCr opisują trzy składowe: Y (luminancja), Cb (chrominancja, która wyraża różnicę między luminancją, a~kolorem niebieskim) oraz Cr (chrominancja, która wyraża różnicę między luminancją,~a~kolorem czerwonym). 
+Zaletą stosowania tej przestrzeni barw jest oddzielenie sygnału luminancji od~sygnałów chrominancji, co pozwala na realizację przetwarzania sygnału przy mniejszej zależności od~oświetlenia.
+Zastosowanie binaryzacji pozwala na~oddzielenie znacznika od~tła. 
+Na~wyjściu modułu znajdują się tylko dwa rodzaje pikseli: należące i~nienależące do~obiektu (rys. \ref{fig:bin_1}).
+
+Na~obrazie często znajdują się jednak inne niewielkie obszary (zakłócenia), które zostały błędnie wykryte. Pozostawienie ich na~wejściu modułu indeksacji zwiększyłoby niepotrzebnie liczbę nadawanych etykiet, która w~rozwiązaniach sprzętowych jest zwykle ograniczona (podrozdział \ref{subsec:indeksacja}).
+Częściowym rozwiązaniem problemu jest zastosowanie mediany. 
+Jest to~operacja kontekstowa, w~której pikselowi wyjściowemu przypisuje się wartość środkową uporządkowanego zbioru wartości pikseli z~otoczenia piksela wejściowego. 
+Wykorzystanie mediany powoduje znaczne zmniejszenie błędnych obszarów, jednakże niekiedy na~obrazie obecne są~nadal małe grupy białych pikseli nienależących do~obiektu (rys. \ref{fig:median_1}).
+
+Z~tego powodu zdecydowano się na~wykorzystanie operacji morfologicznych. 
+Erozja i~dylatacja to~operacje, w~których pikselowi wyjściowemu przypisuje się wartość odpowiednio najmniejszego i~największego piksela w~sąsiedztwie piksela wejściowego. 
+Sąsiedztwo piksela określa kształt i~rozmiar elementu strukturalnego.  
+Zastosowanie morfologicznego otwarcia, składającego się z~erozji i~dylatacji, pozwala niekiedy na~całkowite wyeliminowanie błędnych białych pikseli (rys. \ref{fig:opened_1}).
+
+Indeksacja jednoprzebiegowa to~operacja pozwalająca na wyodrębnienie z~obrazu cech poszczególnych obiektów. Obiekty rozumiane są~jako grupy połączonych ze~sobą pikseli. 
+Ze~względu na~wykorzystywany w~dalszej analizie współczynnik kształtu, obliczano prostokąt otaczający i~pole obiektów. 
+%TODO2 Dalej nie ma informacji dlaczego to jest potrzebne. W sensie, że zakłada Pan obecnośc więcej niż jednego obiektu !
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{bin.jpg}
+		\caption{Rezultat binaryzacji.}
+		\label{fig:bin_1}
+	\end{subfigure}
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{median.jpg}
+		\caption{Obraz po medianie}
+		\label{fig:median_1}
+	\end{subfigure}\\
+	\begin{subfigure}{0.7\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{opened.jpg}
+		\caption{Wynik otwarcia}
+		\label{fig:opened_1}
+	\end{subfigure}
+	\caption{Przykładowe rezultaty binaryzacji, mediany i~otwarcia}
+	\label{fig:operacje}
+\end{figure}
+
+%TODO2 Przydałby się obraz wejściowy. I nie ma potrzeby dawać tego takiego dużego. 4 obrazy w układzie 2x2 wystarczą.
+
+
+\section{Wybór znacznika} 
+\label{sec:wybor_znacznika}
+
+Autonomiczne lądowanie drona w~oparciu o~system wizyjny wymaga wyposażenia lądowiska w~marker. 
+Jego wygląd musi umożliwiać łatwą detekcję miejsca lądowania. 
+Z~powodu wykonywania operacji na~zewnątrz, znacznik powinien również ułatwiać znalezienie go~w~zmiennych warunkach (zachmurzenie, cień).
+
+\subsection{Kształt}
+\label{subsec:ksztalt} 
+Detekcja kształtów może być realizowana na~różne sposoby. 
+Najprostszym jest progowanie współczynników kształtu, do~bardziej zaawansowanych należy wyspecjalizowana deskrypcja cech (SIFT, SURF, HOG) i~użycie klasyfikatorów (kNN, SVM, sieci neuronowe). %TODO2 skróty trzeba rozwinąć
+W~implementowanej pierwszej wersji systemu zdecydowano się na~klasyfikację przy użyciu współczynnika kształtu.
+
+Cechami obiektu łatwymi do~wyliczenia w~systemie potokowym są~pole figury i~najmniejszy prostokąt, w~którym figura się mieści (prostokąt otaczający). 
+Postanowiono zatem wykorzystać współczynnik kształtu przedstawiony we~wzorze \ref{eq:wspolczynnik}.\\
+\begin{equation} \label{eq:wspolczynnik}
+W=\frac{P_p}{P_o}
+\end{equation}
+Gdzie:
+\begin{eqwhere}[2cm]
+	\item[$W$] współczynnik kształtu,
+	\item[$P_p$] pole prostokąta otaczającego,
+	\item[$P_o$] pole obiektu.
+\end{eqwhere}
+Aby~taki współczynnik umożliwiał detekcję należało dobrać odpowiedni kształt znacznika. 
+Zdecydowano się na~krzyż, gdyż przy każdej jego orientacji pole prostokąta jest znacznie większe od~pola obiektu.
+
+\subsection{Kolor}
+\label{subsec:kolor}
+
+Kolor znacznika powinien umożliwiać jego łatwą segmentację. 
+Z~tego powodu pożądane jest silne skontrastowanie figury i~tła. 
+Najbardziej naturalnym rozwiązaniem jest rozważenie kontrastu w~przestrzeni barw RGB, gdyż taki sygnał jest dostarczany przez kamerę.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.5\textwidth]{szescian_rgb.jpg}
+		\caption{Przedstawienie przestrzeni barw RGB w~postaci sześcianu \cite{obrazek_rgb}}
+		\label{fig:szescian_rgb}
+	\end{subfigure}%
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.5\textwidth]{szescian_ycbcr.jpg}
+		\caption{Przekroje sześcianu przestrzeni YCbCr \cite{obrazek_ycbcr}}
+		\label{fig:szescian_ycbcr}
+	\end{subfigure}%
+	\caption{Modele przestrzeni RGB i YCbCr}
+	\label{fig:modele_przestrzeni}
+\end{figure}
+
+W~przestrzeni RGB każdy piksel opisywany jest przez trzy składowe: czerwoną, zieloną i~niebieską. 
+Możliwe jest przedstawienie tego systemu w~formie sześcianu (rys. \ref{fig:szescian_rgb}). 
+Można wyznaczyć przekątną łączącą punkty, dla których wszystkie współrzędne są~identyczne. 
+Rozciąga się ona od~koloru czarnego w~początku układu współrzędnych, do~białego dla~maksymalnych wartości składowych, przechodząc przez różne stopnie szarości. 
+Wykorzystanie dużej odległości między kolorami i~użycie czarno-białego znacznika wydaje się zatem najprostszym pomysłem.
+
+W~pierwszym kroku do testów przygotowano czarny znacznik na~białym tle. 
+Kamerą PCAM 5C wykonano trzy zdjęcia przy różnym poziomie oświetlenia (Rys. \ref{fig:osw1}, \ref{fig:osw2}, \ref{fig:osw3}). %TODO2 tu odnośnik do dalszej części pracy
+Po~przejściu na~obraz w~skali szarości, posługując się narzędziem \textit{roipoly} w~programie Matlab, obliczono histogramy obszaru znacznika (rys. \ref{fig:bw_hist1}, \ref{fig:bw_hist2}, \ref{fig:bw_hist3}).\\
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{rgb_ciemny.jpg}
+		\caption{}
+		\label{fig:osw1}
+	\end{subfigure}%
+	\begin{subfigure}{0.55\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{bw_hist1.jpg}
+		\caption{}
+		\label{fig:bw_hist1}
+	\end{subfigure}\\
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{rgb_sredni.jpg}
+		\caption{}
+		\label{fig:osw2}
+	\end{subfigure}
+	\begin{subfigure}{0.55\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{bw_hist2.jpg}
+		\caption{}
+		\label{fig:bw_hist2}
+	\end{subfigure}\\
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{rgb_jasny.jpg}
+		\caption{}
+		\label{fig:osw3}
+	\end{subfigure}
+	\begin{subfigure}{0.55\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{bw_hist3.jpg}
+		\caption{}
+		\label{fig:bw_hist3}
+	\end{subfigure}
+	\caption{Zdjęcia pierwszej wersji znacznika wraz z~histogramami obszaru znacznika}
+	\label{fig:zdjecia_wejsciowe}
+\end{figure}
+
+Analiza histogramów wskazuje na~silne uzależnienie wartości koloru od~oświetlenia.  %TODO2 raczej położenia maksimów odpowiadających tłu i znacznikowi.
+Dla kolejnych obrazów, wartości progów binaryzacji mogłyby zawierać się w~zakresach: 50-100, 100-200, 150-210. Poziom białego tła dla obrazka najsłabiej oświetlonego jest mniejszy niż wartość czarnego koloru znacznika najlepiej oświetlonego. 
+W~takiej sytuacji niemożliwy jest dobór stałego progu umożliwiającego skuteczną binaryzację.
+
+Z~tego powodu zdecydowano się na~powtórzenie eksperymentu w~przestrzeni YCbCr. 
+Tak jak opisano w~rozdziale \ref{sec:implementacja_modelu_programowego}, piksel w~tej przestrzeni opisuje współrzędna luminancji i~dwie składowe chrominacji. 
+Podobnie jak w~przypadku RGB, przestrzeń YCbCr również da~się przedstawić w~postaci sześcianu. 
+Tym razem skala szarości przebiega przez środek płaszczyzn Cb-Cr i~za zmianę poziomu szarości odpowiada współrzędna luminancji (rys. \ref{fig:szescian_ycbcr}). 
+Dla~każdej wartości piksela informacja o~jasności oddzielona jest od~barwy.
+
+Kolor znacznika określono jako czerwony, natomiast tło niebieskie, gdyż te~barwy znajdują się na~przeciwnych stronach płaszczyzny Cr-Cb. 
+Zdjęcia wykonano przy takich samych poziomach oświetlenia jak poprzednio. 
+Histogramy kolejnych obrazów przedstawiono na~rysunku \ref{fig:ycbcr_hist1}, \ref{fig:ycbcr_hist2}, \ref{fig:ycbcr_hist3}. 
+\begin{figure}
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{ycbcr_hist1.jpg}
+		\caption{}
+		\label{fig:ycbcr_hist1}
+	\end{subfigure}\\
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{ycbcr_hist2.jpg}
+		\caption{}
+		\label{fig:ycbcr_hist2}
+	\end{subfigure}\\
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{ycbcr_hist3.jpg}
+		\caption{}
+		\label{fig:ycbcr_hist3}
+	\end{subfigure}
+	\caption{Histogramy obszarów znacznika w~przestrzeni YCbCr.}
+	\label{fig:histogramy_ycbcr}
+\end{figure}
+%TODO2 Super by było jakby jednak na rysunku pojawiły się obrazy wejściowe.
+
+Zgodnie z~oczekiwaniami, zmiana poziomu oświetlenia przełożyła~się na~zmianę wartości luminancji, natomiast składowe chrominancji nie zmieniały się znacząco. 
+Każdy z~obrazów może być skutecznie zbinaryzowany przy użyciu stałych progów: górnego 120 dla składowej Cb i~dolnego 150 dla składowej Cr. 
+Różnice pomiędzy wartościami składowych dla znacznika i~tła nie są jednak duże -- wynoszą około 30 poziomów. 
+Ostatecznie zdecydowano się na~znacznik przedstawiony na~rys. \ref{fig:znacznik}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{znacznik.jpg}
+	\caption{Wybrana postać znacznika}
+	\label{fig:znacznik}
+\end{figure}
+
+%TODO2 Nic nigdzie nie pisze Pan o orientacji. Wiem, że nie ma detekcji, ale jakieś zdanie komentarza ?
+
+
+\section{Analiza kąta widzenia kamery przy różnych ustawieniach rozdzielczości}
+\label{sec:wyznaczenie_kata_widzenia_kamery_przy_roznych_ustawieniach}
+W~celu zbadania kąta widzenia kamery stworzono moduł nakładający na~obraz prostopadłe linie przecinające się w~jego środku. %TODO2 to znowu odniesienie do tego rozdziału o SD
+Następnie umieszczono kamerę na wysokości 49 cm i~skierowano ją w~dół. 
+Odczytanie odległości od~środka obrazu do~jego krawędzi w~poziomie i~pionie pozwoliło na wyznaczenie kątów widzenia kamery. 
+Skorzystano ze wzoru \eqref{eq:kat}.
+\begin{equation}
+\label{eq:kat}
+\alpha=\arctan{\frac{l}{h}}
+\end{equation}
+gdzie:
+\begin{eqwhere}[2cm]
+	\item[$\alpha$] kąt widzenia kamery,
+	\item[$h$] wysokość, na jakiej umieszczona jest kamera,
+	\item[$l$] odległość środka obrazu od jego krawędzi.
+\end{eqwhere}
+Na podstawie obrazu przedstawionego na rysunku \ref{fig:1080p} obliczono kąty widzenia kamery w~pionie i~poziomie dla rozdzielczości 1920 x 1080. 
+Dla rozdzielczości 1280 x 720 skorzystano z~obrazu pokazanego na rysunku \ref{fig:720p}. 
+Korzystając ze wzoru \eqref{eq:kat} otrzymano przybliżone wyniki, przedstawione w tabeli \ref{tab:rozdzielczosc}.
+\begin{table}[]
+	\caption{Wartości kąta widzenia kamery w zależności od rozdzielczości}
+	\label{tab:rozdzielczosc}
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\begin{tabular}[c]{@{}c@{}}Rozdzielczość\end{tabular} &  Kąt widzenia kamery w pionie w stopniach  &  Kąt widzenia kamery w poziomie w stopniach  \\ \hline
+		1920 x 1080                                                                          & 14 & 27 \\ \hline
+		1280 x 720                                                                         & 19 & 38 \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{1080p.jpg}
+	\caption{Obraz służący do wyznaczenia kąta widzenia kamery dla rozdzielczości 1920 x 1080.}
+	\label{fig:1080p}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{720p.jpg}
+	\caption{Obraz służący do wyznaczenia kąta widzenia kamery dla rozdzielczości 1280 x 720.}
+	\label{fig:720p}
+\end{figure}
+
+%TODO Jakieś wnioski...
+
+
+\section{Podsumowanie}
+
+%TODO Kilka zdań o tym modelu...
+
+
+%TODO2 !!!! Bardzo nie lubię się potwarzać ! I jak dyplomant ignoruje moje uwagi ! To nie może tak być. Tu proszę przekopiować treść rozdziału testy - wybór znacznika i kąta widzenia. Ale nie tylko skopiować, ale też połączyć i uzupełnić zgodnie z uwagami. Natomiast w takim układzie implementacja sprzętowa + te dwa testy (bardziej sprzętowe) do nowego rozdziału (tzn. nowy \chapter). A ten "Test" znika !!!. I stosowana korekta treści we wstępie.
+
+
+
+>>>>>>> 1f128f6bdf2d2b222fe828b89fbd544de01b028f
